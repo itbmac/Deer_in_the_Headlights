@@ -208,7 +208,6 @@ package topdown
 				FlxG.keys.update();
 				if (FlxG.keys.pressed("SPACE"))
 				{
-					//srtScreenImg.exists = false;
 					srtScreenGroup.exists = false;
 					gameNotStarted = false;
 				}
