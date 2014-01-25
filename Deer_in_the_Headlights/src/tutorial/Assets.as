@@ -157,20 +157,20 @@ package tutorial
 													  new FlxPoint(1,1)
 													);
 		public static var LA_01_NPCS:Array = new Array(
-			new Array(220, 670, 0,       Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS),
-			new Array(600, 670, 0,       Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_KING,        Assets.REGION_PLAINS),
-			new Array(1300, 670, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(1400, 670, 1,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(850, 750, 0,       Assets.SPRITE_DEER,             Assets.STR_5,           Assets.REGION_PLAINS, 1, 650, 0, 3),
-			new Array(1650, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_4,           Assets.REGION_PLAINS, 1, 150, 0, 2),
+	//		new Array(220, 670, 0,       Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS),
+	//		new Array(600, 670, 0,       Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_KING,        Assets.REGION_PLAINS),
+	//		new Array(1300, 670, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+	//		new Array(1400, 670, 1,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+	//		new Array(850, 750, 0,       Assets.SPRITE_DEER,             Assets.STR_5,           Assets.REGION_PLAINS, 1, 650, 0, 3),
+	//		new Array(1650, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_4,           Assets.REGION_PLAINS, 1, 150, 0, 2),
 			new Array(1820, 670, 0,      Assets.SPRITE_BUSH,              Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(2150, 770, 0,      Assets.SPRITE_DEER,               Assets.STR_3,           Assets.REGION_PLAINS, 1, 275, 0, 2),
+	//		new Array(2150, 770, 0,      Assets.SPRITE_DEER,               Assets.STR_3,           Assets.REGION_PLAINS, 1, 275, 0, 2),
 			new Array(2300, 270, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS), 
-			new Array(2750, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_2,           Assets.REGION_PLAINS, 1, 125, 0, 2), 
-			new Array(3350, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_1,           Assets.REGION_PLAINS, 1, 200, 0, 2),
+	//		new Array(2750, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_2,           Assets.REGION_PLAINS, 1, 125, 0, 2), 
+	//		new Array(3350, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_1,           Assets.REGION_PLAINS, 1, 200, 0, 2),
 			new Array(2650, 170, 0,      Assets.SPRITE_TREE_2,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(3600, 390, 0,      Assets.SPRITE_TREE_3,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(4200, 670, 1,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+			new Array(3600, 390, 0,      Assets.SPRITE_TREE_3,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+	//		new Array(4200, 670, 1,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 			);	
 		
 		
@@ -202,31 +202,31 @@ package tutorial
 													  new FlxPoint(1,1)
 													);
 		public static var LA_02_NPCS:Array = new Array(
-			new Array(-450, 750, 0,      Assets.SPRITE_MOUSE,             Assets.STR_A,           Assets.REGION_PLAINS, 1, 205, 0, 2),
-			new Array(250, 670, 0,       Assets.SPRITE_WOLF,              Assets.STR_B,           Assets.REGION_PLAINS, 1, 400, 0, 2),
+	//		new Array(-450, 750, 0,      Assets.SPRITE_MOUSE,             Assets.STR_A,           Assets.REGION_PLAINS, 1, 205, 0, 2),
+	//		new Array(250, 670, 0,       Assets.SPRITE_WOLF,              Assets.STR_B,           Assets.REGION_PLAINS, 1, 400, 0, 2),
 			new Array(-350, 270, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS), 
-			new Array(950, 830, 0,       Assets.SPRITE_DEAD_WOLF,         Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(1000, 770, 2,      Assets.SPRITE_WOLF_CUB,          Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+	//		new Array(950, 830, 0,       Assets.SPRITE_DEAD_WOLF,         Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+	//		new Array(1000, 770, 2,      Assets.SPRITE_WOLF_CUB,          Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 			new Array(850, 540, 0,       Assets.SPRITE_SPIDER,            Assets.STR_C,           Assets.REGION_PLAINS, 1, 0, 70, 0, 1),
 			new Array(820, 170, 0,       Assets.SPRITE_TREE_2,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 			new Array(1300, 670, 0,      Assets.SPRITE_SQUIRREL,          Assets.STR_D,           Assets.REGION_PLAINS, 1, 0, 110, 0, 1),
-			new Array(1500, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_E,           Assets.REGION_PLAINS, 1, 150, 0, 2),
-			new Array(1780, 780, 0,      Assets.SPRITE_FOX,               Assets.STR_F,           Assets.REGION_PLAINS, 1, 125, 0, 2), 
+	//		new Array(1500, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_E,           Assets.REGION_PLAINS, 1, 150, 0, 2),
+	//		new Array(1780, 780, 0,      Assets.SPRITE_FOX,               Assets.STR_F,           Assets.REGION_PLAINS, 1, 125, 0, 2), 
 			new Array(1650, 760, 0,      Assets.SPRITE_BUSH,              Assets.STR_EMPTY,       Assets.REGION_PLAINS), 
 			new Array(1850, 470, 0,      Assets.SPRITE_TREE_3,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 			new Array(1850, 470, 0,      Assets.SPRITE_OWL,          Assets.STR_G,           Assets.REGION_PLAINS),
 			new Array(2150, 400, 0,      Assets.SPRITE_BIRD,              Assets.STR_H,           Assets.REGION_PLAINS, 1, 300, 0, 2),
-			new Array(2300, 170, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(2650, 600, 0,      Assets.SPRITE_ZEBRA,             Assets.STR_I,           Assets.REGION_PLAINS, 1, 300, 0, 2),
-			new Array(3200, 700, 0,      Assets.SPRITE_PRAIRIE_DOG,       Assets.STR_J,           Assets.REGION_PLAINS),
-			new Array(3450, 700, 0,      Assets.SPRITE_LIZARD,            Assets.STR_K,           Assets.REGION_PLAINS, 1, 200, 0, 2),
-			new Array(3700, 660, 0,      Assets.SPRITE_SNAKE,             Assets.STR_L,           Assets.REGION_PLAINS),
-			new Array(3950, 560, 0,      Assets.SPRITE_BAT,               Assets.STR_M,           Assets.REGION_PLAINS, 1, 150, 0, 2),
-			new Array(4100, 480, 0,      Assets.SPRITE_CAVE_OWL,          Assets.STR_N,           Assets.REGION_PLAINS),
-			new Array(4250, 660, 0,      Assets.SPRITE_OCELOT,            Assets.STR_O,           Assets.REGION_PLAINS, 1, 150, 0, 2),
-			new Array(4600, 680, 0,      Assets.SPRITE_DOG,               Assets.STR_P,           Assets.REGION_PLAINS),
-			new Array(4700, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_KNIGHT,      Assets.REGION_PLAINS),
-			new Array(4800, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS)
+			new Array(2300, 170, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+	//		new Array(2650, 600, 0,      Assets.SPRITE_ZEBRA,             Assets.STR_I,           Assets.REGION_PLAINS, 1, 300, 0, 2),
+	//		new Array(3200, 700, 0,      Assets.SPRITE_PRAIRIE_DOG,       Assets.STR_J,           Assets.REGION_PLAINS),
+	//		new Array(3450, 700, 0,      Assets.SPRITE_LIZARD,            Assets.STR_K,           Assets.REGION_PLAINS, 1, 200, 0, 2),
+	//		new Array(3700, 660, 0,      Assets.SPRITE_SNAKE,             Assets.STR_L,           Assets.REGION_PLAINS),
+	//		new Array(3950, 560, 0,      Assets.SPRITE_BAT,               Assets.STR_M,           Assets.REGION_PLAINS, 1, 150, 0, 2),
+	//		new Array(4100, 480, 0,      Assets.SPRITE_CAVE_OWL,          Assets.STR_N,           Assets.REGION_PLAINS),
+	//		new Array(4250, 660, 0,      Assets.SPRITE_OCELOT,            Assets.STR_O,           Assets.REGION_PLAINS, 1, 150, 0, 2),
+	//		new Array(4600, 680, 0,      Assets.SPRITE_DOG,               Assets.STR_P,           Assets.REGION_PLAINS),
+	//		new Array(4700, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_KNIGHT,      Assets.REGION_PLAINS),
+	//		new Array(4800, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS)
 			);
 			
 		
