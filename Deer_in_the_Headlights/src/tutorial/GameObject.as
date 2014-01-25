@@ -189,18 +189,15 @@ package tutorial
 				break;
 				default:
 					loadGraphic(
-						Assets.SPRITE_ZEBRA, // image to use
-						true, // animated
-						false, // don't generate "flipped" images since they're already in the image
-						286, // width of each frame (in pixels)
-						209  // height of each frame (in pixels)
+						displayGraphic, // image to use
+						false // animated
 					);
 					addAnimation("walk_right", [0], 7, false);
 					addAnimation("walk_left", [0], 7, false);
 					addAnimation("idle", [0], 12, false);
 					
-					xProximityOffset = 139;
-					yProximityOffset = 89;
+					xProximityOffset = 0;
+					yProximityOffset = 0;
 			}
 			
 			play("idle");

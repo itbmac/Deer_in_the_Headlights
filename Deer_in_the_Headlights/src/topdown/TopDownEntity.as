@@ -104,9 +104,9 @@ package topdown
 		 */
 		public function moveSprint():void {
 			if (facing == RIGHT)
-				acceleration.x = RUNSPEED * 8;
+				acceleration.x = RUNSPEED * 12;
 			if (facing == LEFT)
-				acceleration.x = -RUNSPEED * 8;
+				acceleration.x = -RUNSPEED * 12;
 		}
 	}
 }
