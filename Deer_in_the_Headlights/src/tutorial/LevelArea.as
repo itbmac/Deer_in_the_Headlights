@@ -42,7 +42,7 @@ package tutorial
 			{
 				backg.exists = doesExist;
 			}
-			for each (var npc:NPC in areasNPCs)
+			for each (var npc:GameObject in areasNPCs)
 			{
 				npc.exists = doesExist;
 			}
@@ -67,7 +67,7 @@ package tutorial
 				var npc_vx : int = int( NPC_Array[i][9]);
 				var npc_vy : int = int( NPC_Array[i][10]);
 				
-				var npc_at_index : NPC = new NPC(npc_x + areaPosition.x, npc_y + areaPosition.y, player, areaIndex, npc_is, npc_gc, npc_ds, npc_re, npc_ms, npc_dx, npc_dy, npc_vx, npc_vy);
+				var npc_at_index : GameObject = new GameObject(npc_x + areaPosition.x, npc_y + areaPosition.y, player, areaIndex, npc_is, npc_gc, npc_ds, npc_re, npc_ms, npc_dx, npc_dy, npc_vx, npc_vy);
 				npc_at_index.exists = false;
 				
 				areasNPCs.push(npc_at_index);

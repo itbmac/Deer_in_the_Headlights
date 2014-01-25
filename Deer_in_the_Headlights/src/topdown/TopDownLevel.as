@@ -5,7 +5,7 @@ package topdown
 	import tutorial.Player;
 	import tutorial.PlayState;
 	import tutorial.ZoomCamera;
-	import tutorial.NPC;
+	import tutorial.GameObject;
 	/**
 	 * Base class for all levels
 	 * @author MacKenzie Bates
