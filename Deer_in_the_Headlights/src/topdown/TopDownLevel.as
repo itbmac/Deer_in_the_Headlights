@@ -2,8 +2,6 @@ package topdown
 {
 	import org.flixel.*;
 	import tutorial.Assets;
-	import tutorial.Log;
-	import tutorial.LogBlock;
 	import tutorial.Player;
 	import tutorial.PlayState;
 	import tutorial.ZoomCamera;
@@ -21,7 +19,9 @@ package topdown
 		public var levelSize:FlxPoint; // width and height of level (in pixels)
 		public var imgGroup:FlxGroup;
 		public var npcGroup:FlxGroup;
+		public var guiGroup:FlxGroup;
 		public var srtScreenGroup:FlxGroup;
+		private var srtScreenImg: FlxSprite;
 		
 		/**
 		 * Player
@@ -29,11 +29,17 @@ package topdown
 		public var player:Player;
 		public var playerStart:FlxPoint = new FlxPoint(1437, 1437);
 		public var playerState:int = 0; // 0 - attached, 1 - in transit
-		public var soul_switch_timer:int = 0;
+		
 		public var maxDistToSwitch:int = 500;
 		public var currObjectStr:String = "";
 		
-		public var storyStr:String = "";
+		private var desiredZoom:Number = 1;
+		private var desiredZoomReached:Boolean = false;
+		private var zoomMode:Boolean = false;
+		private var zoomOffset:int = -285;
+		private var zoomAcceleration:Number = .05;
+		private var zoomSwitchTimer:int = 0;
+		private var zoomSwitchTimerDelay:int = 50;
 		
 		public var displayMode : Boolean = false;
 		public var gameNotStarted:Boolean = true;
@@ -53,6 +59,7 @@ package topdown
 			// setup groups
 			this.imgGroup = new FlxGroup();
 			this.npcGroup = new FlxGroup();
+			this.guiGroup = new FlxGroup();
 			this.srtScreenGroup = new FlxGroup();
 			// create the level
 			this.create();
@@ -63,18 +70,40 @@ package topdown
 		 */
 		public function create():void {
 			createMap();
+			createGUI();
 			createPlayer();
+			createStartScreen();
 			addGroups();
 			createCamera();
 		}
 		public function getPlayerXY():FlxPoint {
 			return player.getMidpoint();
 		}
+		
 		/**
 		 * Create the map (walls, decals, etc)
 		 */
 		protected function createMap():void {
-
+		}
+		
+		/**
+		 * Create the start screen
+		 */
+		protected function createStartScreen():void {
+			srtScreenImg = new FlxSprite(0,0, Assets.HUD_START_SCREEN);
+			srtScreenImg.scrollFactor.x = srtScreenImg.scrollFactor.y = 0;
+			srtScreenImg.exists = true;
+			srtScreenGroup.add(srtScreenImg);
+		}
+		
+		/**
+		 * Create the overlay screen
+		 */
+		protected function createGUI():void {
+			var img = new FlxSprite(0,0, Assets.PANIC_OVERLAY);
+			img.scrollFactor.x = img.scrollFactor.y = 0;
+			img.exists = true;
+			guiGroup.add(img);
 		}
 		
 		/**
@@ -91,6 +120,7 @@ package topdown
 		protected function addGroups():void {
 			add(imgGroup);
 			add(npcGroup);
+			add(guiGroup);
 			add(player);
 			add(srtScreenGroup);
 		}
@@ -102,15 +132,6 @@ package topdown
 			trace(levelSize.x);
 			
 			FlxG.worldBounds = new FlxRect(0, 0, levelSize.x, levelSize.y);
-			
-			
-			//var zoomCam:ZoomCamera = new ZoomCamera(0, 0, levelSize.x, levelSize.y, 1);  
-			//FlxG.resetCameras( zoomCam );  
-			//zoomCam.targetZoom = 1; 
-			//zoomCam.follow(player, FlxCamera.STYLE_LOCKON);
-			//zoomCam.setBounds(0, 0, levelSize.x, levelSize.y, true);
-			
-
 			
 			FlxG.camera.setBounds(0, 0, levelSize.x, levelSize.y, true);
 			FlxG.camera.follow(player, FlxCamera.STYLE_LOCKON);
@@ -149,8 +170,6 @@ package topdown
 			
 			if ((maxDistToSwitch > closestDist))
 			{
-				//player.health -= 10;
-				
 				for(i = 0; i < npcGroup.length; i++)
 				{
 					if (npcGroup.members[i].getState() == 1)
@@ -170,8 +189,6 @@ package topdown
 				playerState = 1;
 				player.state = 1;
 			}
-			
-			//FlxG.log("SWITCH TO: " + closestIndex.toString() + " ... WITH DISTANCE: " + closestDist.toString());
 		}
 		
 		/**
@@ -190,67 +207,73 @@ package topdown
 				FlxG.keys.update();
 				if (FlxG.keys.pressed("SPACE"))
 				{
+					srtScreenImg.exists = false;
+					srtScreenGroup.exists = false;
 					gameNotStarted = false;
-				//	soulSwitch();
 				}
 			}
 			else
 			{
 				var i:int;
-				if (soul_switch_timer < 200)
-					soul_switch_timer += 1;
-				FlxG.keys.update();
-			/*	
-				if (FlxG.keys.pressed("SPACE") && soul_switch_timer > 40 && playerState == 0 && !displayMode)
-				{
-					soulSwitch();
-					soul_switch_timer = 0;
-				}
+				var moving:Boolean = true;
 				
-				if (FlxG.keys.pressed("ENTER") && soul_switch_timer > 40 && playerState == 0 && player.state == 0)
-				{
-					soul_switch_timer = 0;
-				}
-			*/
+				FlxG.keys.update();
 				
 				if (FlxG.keys.pressed("RIGHT"))
 					player.moveRight();
-				if (FlxG.keys.pressed("LEFT"))
+				else if (FlxG.keys.pressed("LEFT"))
 					player.moveLeft();
-				if (FlxG.keys.pressed("UP"))
+				else if (FlxG.keys.pressed("UP"))
 					player.moveUp();
-				if (FlxG.keys.pressed("DOWN"))
+				else if (FlxG.keys.pressed("DOWN"))
 					player.moveDown();
-				
-//				updateSoul();
-				
-				for(i = 0; i < npcGroup.length; i++)
+				else
+					moving = false;
+					
+				if (FlxG.keys.pressed("SPACE") && moving)
+					player.moveSprint();
+					
+				if (zoomSwitchTimer > 0)
+					zoomSwitchTimer--;
+					
+				if (FlxG.keys.pressed("ENTER") && (zoomSwitchTimer <= 0))
 				{
-				//	npcGroup.members[i].px = player.x;
-				//	npcGroup.members[i].py = player.y;
+					zoomMode = !zoomMode;
+					zoomSwitchTimer = zoomSwitchTimerDelay;
+					desiredZoomReached = false;
 				}
 				
-				if (player.health == 0)
+				if (zoomMode)
+					desiredZoom = 2;
+				else
+					desiredZoom = 1;
+				
+				if (!desiredZoomReached)
 				{
-					//FlxG.switchState(new PlayState());
+					if (FlxG.camera.zoom < desiredZoom)
+					{
+						FlxG.camera.zoom += zoomAcceleration;
+						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
+					}
+					if (FlxG.camera.zoom > desiredZoom)
+					{
+						FlxG.camera.zoom -= zoomAcceleration;
+						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
+					}
+					if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 1)
+					{
+						FlxG.camera.y = 0;
+						desiredZoomReached = true;
+					}
+					else if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 2)
+					{
+						FlxG.camera.y = zoomOffset;
+						desiredZoomReached = true;
+					}
 				}
 				
-				//update_GUI_lives(player.health);
+				FlxG.log(FlxG.camera.zoom);
 			}
-			
-			// Update camera
-			//FlxG.camera.setBounds(0, 0, levelSize.x, levelSize.y, true);
-			//FlxG.camera.follow(player, FlxCamera.STYLE_TOPDOWN);
-			
-			/*
-			var n:NPC;
-			foreach(n in npcGroup.members)
-			{
-				n.px = player.x;
-				n.py = player.y;
-			}*/
-			//npcGroup.setAll(px, player.getMidpoint().x);
-			//npcGroup.setAll(py, player.getMidpoint().y);
 		}
 	}
 }

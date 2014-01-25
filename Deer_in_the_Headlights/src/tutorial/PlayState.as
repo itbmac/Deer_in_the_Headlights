@@ -28,7 +28,7 @@ package tutorial
 		override public function create():void {
 			//FlxG.mouse.show();
 			
-			FlxG.playMusic(Assets.musicLoop, 0.3);
+		//	FlxG.playMusic(Assets.musicLoop, 0.3);
 			
 			// load level
 			LEVEL = new IndoorHouseLevel(this, LEVEL_SIZE);

@@ -16,9 +16,9 @@ package tutorial
 		private var areaPosition:FlxPoint;
 		public var areaIndex:int;
 		
-		public function LevelArea(LEVEL_POSITION:FlxPoint, NPC_ARRAY:Array, BACKGROUND_IMG_ARRAY:Array, BACKGROUND_SCROLL_FACTOR_ARRAY:Array, player:Player, imgGroup:FlxGroup, npcGroup:FlxGroup, i:int):void
+		public function LevelArea(LEVEL_POSITION:FlxPoint, NPC_ARRAY:Array, BACKGROUND_IMG_ARRAY:Array, BACKGROUND_SCROLL_FACTOR_ARRAY:Array, player:Player, imgGroup:FlxGroup, npcGroup:FlxGroup, j:int):void
 		{
-			areaIndex = i;
+			areaIndex = j;
 			areaPosition = LEVEL_POSITION;
 			areasNPCs = new Array();
 			areasBackgrounds = new Array();

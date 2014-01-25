@@ -74,9 +74,10 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/status_bar_dropdown_full_final.png")] public static var HUD:Class;
-		[Embed(source = "../../assets/screen_overlay.png")] public static var HUD_SCREEN_OVERLAY:Class;
+		//[Embed(source = "../../assets/status_bar_dropdown_full_final.png")] public static var HUD:Class;
+		//[Embed(source = "../../assets/screen_overlay.png")] public static var HUD_SCREEN_OVERLAY:Class;
 		[Embed(source = "../../assets/start_screen.png")] public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/panic_mode.png")] public static var PANIC_OVERLAY:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------

@@ -98,5 +98,15 @@ package topdown
 			facing = DOWN;
 			acceleration.y = RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
 		}
+		
+		/**
+		 * Move playe rdown
+		 */
+		public function moveSprint():void {
+			if (facing == RIGHT)
+				acceleration.x = RUNSPEED * 8;
+			if (facing == LEFT)
+				acceleration.x = -RUNSPEED * 8;
+		}
 	}
 }
