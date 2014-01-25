@@ -45,34 +45,6 @@ package tutorial
 			return player.getMidpoint();
 		}
 		
-		override protected function createGUI():void 
-		{
-			if (!hudCreated)
-			{					
-				hud_img = new FlxSprite(0, 0, Assets.HUD);
-				screenOverlay = new FlxSprite(0, 0, Assets.HUD_SCREEN_OVERLAY);
-				screenOverlay.visible = false; 
-				
-				start_screen_img = new FlxSprite(0, 0, Assets.HUD_START_SCREEN);
-				start_screen_img.scrollFactor.x = start_screen_img.scrollFactor.y = 0;
-				srtScreenGroup.add(start_screen_img);
-				
-				hudg.add(screenOverlay);
-				hudg.add(hud_img);
-				add(hudg);
-				
-				// set the scrollFactor to 0 on all hud pieces so
-				// that they stay put when the camera moves
-				hudg.setAll("scrollFactor", new FlxPoint(0, 0));
-				hudg.setAll("solid", false);
-				
-				imgGroup.add(backg);
-				guiGroup.add(hudg);
-			 
-				hudCreated = true;
-			}
-		}
-		
 		override protected function createMap():void 
 		{
 			for (var i:int = 0; i < Assets.LA_NUM_TOTAL; i++)
@@ -129,51 +101,7 @@ package tutorial
 		{
 			return (i >= 0) && (i < Assets.LA_NUM_TOTAL);
 		}
-		
-		public function update_GUI():void
-		{
-			var logSize:int = storyLog.LogDisplaySize();
-			
-			if (gameNotStarted)
-			{
-				start_screen_img.visible = true;
-			}
-			else
-			{
-				start_screen_img.visible = false;
-			}
-			
-			if (!displayMode)
-			{
-				if (soul_cur_display_text.text == "")
-					hud_img.y = - 720;
-				else
-					hud_img.y = soul_cur_display_text.height - 694;
-			}
-			else
-			{
-				if (logSize > 0)
-					hud_img.y = soul_cur_display_text.height - storyLog.logBlockHeight * logSize - 140;
-				else
-					hud_img.y = soul_cur_display_text.height - storyLog.logBlockHeight * logSize - 100;
-			}
-			
-			if (displayMode)
-			{
-				screenOverlay.visible = true;
-				screenOverlay.y = 0;
-			}
-			else
-			{
-				screenOverlay.visible = false;
-				screenOverlay.y = 0;
-			}
-			
-			hudg.setAll("solid", false);
-			hudg.setAll("velocity", new FlxPoint(0, 0));
-			hudg.setAll("visible", false);
-		}
-		
+	
 		/**
 		 * Decide the order of the groups. They are rendered in the order they're added, so last added is always on top.
 		 */
@@ -181,8 +109,6 @@ package tutorial
 			add(imgGroup);
 			add(npcGroup);
 			add(player);
-			add(guiGroup);
-			add(logGroup);
 			add(srtScreenGroup);
 			// :)
 		}
@@ -193,8 +119,6 @@ package tutorial
 		 */
 		override public function update():void 
 		{			
-			update_GUI();
-			
 			if (activeLAChanged)
 				setLAAreas(activeLA);
 			

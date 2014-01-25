@@ -37,7 +37,6 @@ package topdown
 		
 		public var storyStr:String = "";
 		
-		public var storyLog:Log = new Log();
 		public var displayMode : Boolean = false;
 		public var gameNotStarted:Boolean = true;
 		public var activeLA:int = 0;
@@ -69,10 +68,8 @@ package topdown
 		public function create():void {
 			createMap();
 			createPlayer();
-			createGUI();
 			addGroups();
 			createCamera();
-			createGUI_lives();
 		}
 		public function getPlayerXY():FlxPoint {
 			return player.getMidpoint();
@@ -90,12 +87,6 @@ package topdown
 		protected function createPlayer():void {
 			player = new Player(playerStart.x, playerStart.y);
 			player.health = 100;
-		}
-		
-		/**
-		 * Create light beam & HUD info
-		 */
-		protected function createGUI():void {
 		}
 		
 		/**
@@ -135,50 +126,6 @@ package topdown
 		/**
 		 * Create text, buttons, indicators, etc
 		 */
-		public var soul_cur_display_text:FlxText;
-		
-		protected function createGUI_lives():void 
-		{
-				var text_colo : uint = 0xFFFFFFFF;// 0xFFDDDDDD;
-				var text_size : int  = 32;
-				var text_font : String = "ArcadeClassic";
-				
-				soul_cur_display_text =  new FlxText(167, 4, 670, ""); // new FlxText(800 - 100, 9, 100, "SOUL | " + soul_cur_perc.toString());
-				soul_cur_display_text = soul_cur_display_text.setFormat(text_font, text_size, text_colo, "center");
-				soul_cur_display_text.scrollFactor.x = soul_cur_display_text.scrollFactor.y = 0; 
-				
-				guiGroup.add(soul_cur_display_text);
-		}
-		
-		//runs the clock
-		public function update_GUI_lives(soul_perc_loc : int):void
-		{	
-			if (!displayMode)
-				soul_cur_display_text.text = currObjectStr;
-			else
-				storyLog.update();
-			
-			
-			if (currObjectStr == "")
-			{
-				soul_cur_display_text.height = 0;
-			}
-		}
-		
-		public function displayModeSwitch():void
-		{
-			displayMode = !displayMode;
-			
-			if (displayMode)
-			{
-				soul_cur_display_text.text = "";
-			}
-			else
-			{
-				storyLog.update(false);
-			}
-		}
-		
 		public function updateStartScreen():void
 		{
 			
@@ -277,20 +224,7 @@ package topdown
 				}
 				
 				if ((npcGroup.members[i].state == 1) && (player.state == 4))
-				{
-					currObjectStr = npcGroup.members[i].displayText;
-					if (!npcGroup.members[i].visited)
-					{
-						var newLogBlock:LogBlock = new LogBlock(currObjectStr, npcGroup.members[i].thumbnailGraphic, npcGroup.members[i].region);
-						storyLog.LogPush(newLogBlock);
-						
-						logGroup.add(newLogBlock.background);
-						logGroup.add(newLogBlock.thumbnail_background);
-						logGroup.add(newLogBlock.thumbnail_img);
-						logGroup.add(newLogBlock.textDisplay);
-						npcGroup.members[i].visited = true;
-					}
-					
+				{					
 					player.state = 0;
 				}
 			}
@@ -333,7 +267,6 @@ package topdown
 				
 				if (FlxG.keys.pressed("ENTER") && soul_switch_timer > 40 && playerState == 0 && player.state == 0)
 				{
-					displayModeSwitch();
 					soul_switch_timer = 0;
 				}
 				
