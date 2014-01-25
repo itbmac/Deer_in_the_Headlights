@@ -29,7 +29,9 @@ package tutorial
 		public var py:int;
 		public var displayText:String;
 		
-		public function GameObject(X:int, Y:int, player:TopDownEntity, LA:int, initialState:int = 0, dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0, xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
+		public function GameObject(X:int, Y:int, player:TopDownEntity = null, LA:int = 0, initialState:int = 0,
+			dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0,
+			xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
 		{
 			super(X, Y);			
 			state = initialState;

@@ -7,6 +7,7 @@ package tutorial
 	public class ProceduralObjectProtoype 
 	{
 		private var probability : Number;
+		private var gameObjectPrototype : GameObjectPrototype;
 		
 		public function ProceduralObjectProtoype() 
 		{
@@ -15,9 +16,7 @@ package tutorial
 		
 		public function make() : GameObject
 		{
-			
+			return new gameObjectPrototype();
 		}
-		
 	}
-
 }

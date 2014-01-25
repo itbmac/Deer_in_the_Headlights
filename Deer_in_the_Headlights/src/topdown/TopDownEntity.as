@@ -11,7 +11,7 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const RUNSPEED:int = 1;// 130;
+		public static const RUNSPEED:int = 1;// 1; 130; // TODO: changed for dev
 		public static const FRICTION:Number = 0.8;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		
