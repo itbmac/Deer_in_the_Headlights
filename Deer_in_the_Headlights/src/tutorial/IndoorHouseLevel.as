@@ -170,7 +170,8 @@ package tutorial
 			}
 			
 			hudg.setAll("solid", false);
-			hudg.setAll("velocity", new FlxPoint(0,0));
+			hudg.setAll("velocity", new FlxPoint(0, 0));
+			hudg.setAll("visible", false);
 		}
 		
 		/**

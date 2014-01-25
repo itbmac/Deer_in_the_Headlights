@@ -350,7 +350,7 @@ package topdown
 					//FlxG.switchState(new PlayState());
 				}
 				
-				update_GUI_lives(player.health);
+				//update_GUI_lives(player.health);
 			}
 			
 			// Update camera
