@@ -8,7 +8,7 @@ package tutorial
 	 * ...
 	 * @author MacKenzie Bates
 	 */
-	public class NPC extends FlxSprite 
+	public class Object extends FlxSprite 
 	{
 		public var state:int;//0 - soulless, 1 - soulful, 2 - soul end.
 		public var visited:Boolean;
@@ -29,7 +29,7 @@ package tutorial
 		public var py:int;
 		public var displayText:String;
 		
-		public function NPC(X:int, Y:int, player:TopDownEntity, LA:int, initialState:int = 0, dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0, xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
+		public function Object(X:int, Y:int, player:TopDownEntity, LA:int, initialState:int = 0, dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0, xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
 		{
 			super(X, Y);			
 			state = initialState;
