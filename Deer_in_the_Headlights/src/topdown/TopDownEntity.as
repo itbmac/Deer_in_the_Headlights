@@ -11,7 +11,8 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const RUNSPEED:int = 130;
+		public static const RUNSPEED:int = 1;// 130;
+		public static const FRICTION:Number = 0.8;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		
 		/**
@@ -58,7 +59,12 @@ package topdown
 		 * Check keyboard/mouse controls
 		 */
 		protected function updateControls():void {
-			acceleration.x = acceleration.y = 0; // no gravity or drag by default
+			acceleration.y = 0; // no gravity or drag by default
+			
+			velocity.x += acceleration.x;
+			this.x += velocity.x;
+			acceleration.x *= FRICTION;
+			velocity.x *= FRICTION;
 		}
 		
 		/**

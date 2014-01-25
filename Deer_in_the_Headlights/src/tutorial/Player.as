@@ -21,13 +21,13 @@ package tutorial
 			super(X, Y);
 			createAnimations();
 			loadGraphic(
-				Assets.SOUL_SPRITE, // image to use
-				true, // animated
-				false, // don't generate "flipped" images since they're already in the image
-				TopDownEntity.SIZE.x, // width of each frame (in pixels)
-				TopDownEntity.SIZE.y // height of each frame (in pixels)
-			);
-			
+						Assets.SPRITE_DEER, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						231, // width of each frame (in pixels)
+						226 // height of each frame (in pixels)
+					);
+					
 			health = 100;
 		}
 		public function getX():int {
@@ -57,17 +57,17 @@ package tutorial
 		 * NOTE: these will be different if your art is different
 		 */
 		override protected function createAnimations():void {
-			addAnimation("walk", [0,1,2,3,4,5,6,7,6,5,4,3,2,1], 15, true);
-			addAnimation("idle", [0,1,2,3,4,5,6,7,6,5,4,3,2,1], 15, true);
-			addAnimation("expand", [8,9,10,11,12,13,14,15], 15, false);
-			addAnimation("contract", [16,17,18,19,20,21,22,23], 15, false);
+			addAnimation("walk", [0], 7, true);
+			addAnimation("idle", [0], 7, true);
+			addAnimation("expand", [0], 7, false);
+			addAnimation("contract", [0], 7, false);
 		}
 		override protected function updateAnimations():void 
 		{
 			switch (state) 
 			{
 				case 0:
-					this.visible = false;
+					this.visible = true;
 					break;
 				case 1:
 					play("expand");
@@ -85,7 +85,7 @@ package tutorial
 					play("contract");
 					break;
 				case 4:
-					visible = false;
+					visible = true;
 					break;
 				default:
 			}
@@ -94,10 +94,11 @@ package tutorial
 		override public function update():void {
 			angle = 0; // (Math.atan2(FlxG.mouse.y - (y + 25), FlxG.mouse.x - (x + 25)) * 180 / Math.PI) +90;
 			
+			
 			switch (state) 
 			{
 				case 0:
-					visible = false;
+					visible = true;
 					break;
 				case 1:
 					visible = true;
@@ -113,7 +114,7 @@ package tutorial
 						state = 4;
 					break;
 				case 4:
-					visible = false;
+					visible = true;
 					break;
 				default:
 			}

@@ -174,58 +174,6 @@ package topdown
 			//FlxG.log("SWITCH TO: " + closestIndex.toString() + " ... WITH DISTANCE: " + closestDist.toString());
 		}
 		
-		public function updateSoul():void
-		{
-			for(var i:int = 0; i < npcGroup.length; i++)
-			{
-				//FlxG.log("SOUL: " + i.toString() + " ... STATE" + npcGroup.members[i].state  + " ... WITH LOCATION: (" + npcGroup.members[i].x.toString() +"," + npcGroup.members[i].y.toString() + ")");
-				
-				if (npcGroup.members[i].state == 1)
-				{
-					//FlxG.log("SOUL ATTACHED TO: " + i.toString() + " ... PREV ATTACHED TO: " + prevObjIndex.toString());
-				}
-				
-				if ((npcGroup.members[i].state == 1) && (playerState == 0) && (player.state < 2))
-				{
-					player.x = npcGroup.members[i].x + npcGroup.members[i].xSoulOffset - TopDownEntity.SIZE.x/2;
-					player.y = npcGroup.members[i].y + npcGroup.members[i].ySoulOffset - TopDownEntity.SIZE.y/2;
-					
-					npcGroup.members[i].color = 0x0000FF; // 0xFF7CF7FF;
-					
-					//FlxG.log("CURRENTLY LOCKED TO: " + i.toString() + " ... WITH LOCATION: (" + npcGroup.members[i].x.toString() +"," + npcGroup.members[i].y.toString() + ")");
-				}
-				else if ((npcGroup.members[i].state == 1) && (player.state >= 1) && (player.state < 4))
-				{
-					var curDist:Number = Math.sqrt( Math.pow((npcGroup.members[i].x + npcGroup.members[i].xSoulOffset - player.x - TopDownEntity.SIZE.x/2), 2) +  Math.pow((npcGroup.members[i].y + npcGroup.members[i].ySoulOffset - player.y - TopDownEntity.SIZE.y/2), 2) );
-					
-					var pangle:Number = Math.atan2((npcGroup.members[i].y + npcGroup.members[i].ySoulOffset - player.y - TopDownEntity.SIZE.y/2), (npcGroup.members[i].x + npcGroup.members[i].xSoulOffset - player.x - TopDownEntity.SIZE.x/2));
-					player.angle = pangle;
-					player.velocity.x = Math.cos(pangle) * Math.max(curDist, 77); // 112;
-					player.velocity.y = Math.sin(pangle) * Math.max(curDist, 77); // 112;
-					
-					if (curDist < 10)
-					{
-						playerState = 0;
-						player.state = 3;
-						
-						FlxG.log("LOG PUSHED! MESSAGE: " + currObjectStr + " ;;; region: " + npcGroup.members[i].region.toString());
-					}
-					
-					FlxG.log("CURRENTLY LOCKED TO: " + i.toString() + " ... WITH LOCATION: (" + npcGroup.members[i].x.toString() +"," + npcGroup.members[i].y.toString() + ")");
-				}
-				else {
-					npcGroup.members[i].color = 0xFFFFFFFF;
-				}
-				
-				if ((npcGroup.members[i].state == 1) && (player.state == 4))
-				{					
-					player.state = 0;
-				}
-			}
-			
-			
-		}
-		
 		/**
 		 * Update each timestep
 		 */
@@ -243,7 +191,7 @@ package topdown
 				if (FlxG.keys.pressed("SPACE"))
 				{
 					gameNotStarted = false;
-					soulSwitch();
+				//	soulSwitch();
 				}
 			}
 			else
@@ -252,7 +200,7 @@ package topdown
 				if (soul_switch_timer < 200)
 					soul_switch_timer += 1;
 				FlxG.keys.update();
-				
+			/*	
 				if (FlxG.keys.pressed("SPACE") && soul_switch_timer > 40 && playerState == 0 && !displayMode)
 				{
 					soulSwitch();
@@ -263,13 +211,23 @@ package topdown
 				{
 					soul_switch_timer = 0;
 				}
+			*/
 				
-				updateSoul();
+				if (FlxG.keys.pressed("RIGHT"))
+					player.moveRight();
+				if (FlxG.keys.pressed("LEFT"))
+					player.moveLeft();
+				if (FlxG.keys.pressed("UP"))
+					player.moveUp();
+				if (FlxG.keys.pressed("DOWN"))
+					player.moveDown();
+				
+//				updateSoul();
 				
 				for(i = 0; i < npcGroup.length; i++)
 				{
-					npcGroup.members[i].px = player.x;
-					npcGroup.members[i].py = player.y;
+				//	npcGroup.members[i].px = player.x;
+				//	npcGroup.members[i].py = player.y;
 				}
 				
 				if (player.health == 0)
