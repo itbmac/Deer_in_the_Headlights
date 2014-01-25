@@ -195,32 +195,27 @@ package tutorial
 		[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_03_BL_02:Class;
 		[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_03_BL_03:Class;
 		[Embed(source = "../../assets/background/background_clouds_2_h2.png")]          public static var LA_03_BL_04:Class;
-		[Embed(source = "../../assets/city/building_1_store.png")]                      public static var LA_03_BL_05:Class;
-		[Embed(source = "../../assets/city/bus_stop.png")]                              public static var LA_03_BL_06:Class;
-		[Embed(source = "../../assets/city/stoplight.png")]                             public static var LA_03_BL_07:Class;
-		[Embed(source = "../../assets/city/street_light.png")]                          public static var LA_03_BL_08:Class;
-		[Embed(source = "../../assets/forest/tree2.png")]                                 public static var TREE:Class;
+		[Embed(source = "../../assets/city/building_1_store.png")]                      public static var BUILDING_01:Class;
+		[Embed(source = "../../assets/city/bus_stop.png")]                              public static var BUS_STOP_SIGN:Class;
+		[Embed(source = "../../assets/city/stoplight.png")]                             public static var STOP_LIGHT:Class;
+		[Embed(source = "../../assets/city/street_light.png")]                          public static var STREET_LIGHT:Class;
+		[Embed(source = "../../assets/forest/tree2.png")]                               public static var TREE:Class;
 		public static var LA_03_BL:Array = new Array( Assets.LA_01_BL_01,
 													  Assets.LA_03_BL_02,
 													  Assets.LA_03_BL_03, 
-													  Assets.LA_03_BL_04,
-													  Assets.LA_03_BL_05,
-													  Assets.LA_03_BL_06,
-													  Assets.LA_03_BL_07,
-													  Assets.LA_03_BL_08
+													  Assets.LA_03_BL_04
 													);
 		public static var LA_03_SF:Array = new Array( new FlxPoint(.3,1),
 													  new FlxPoint(.4,1),
 													  new FlxPoint(.5,1),
-													  new FlxPoint(.5,1),
-													  new FlxPoint(.75,1),
-													  new FlxPoint(.8,1),
-													  new FlxPoint(.8, 1),
-													  new FlxPoint(.8,1)
+													  new FlxPoint(.5,1)
 													);
 		public static var LA_03_NPCS:Array = new Array(
-				new Array(0, 300, 0,      Assets.LA_03_BL_05,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(0, 100, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+				new Array(0, 300, 0,      Assets.BUILDING_01,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(50, 100, 0,      Assets.STOP_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(0, 150, 0,      Assets.STREET_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(100, 150, 0,      Assets.BUS_STOP_SIGN,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(400, 100, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 				
 			);
 			
