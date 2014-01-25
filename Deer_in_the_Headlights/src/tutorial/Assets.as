@@ -58,7 +58,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/sound/god_beat_3.mp3")] public static var musicLoop:Class;
 		
-		
+		[Embed(source = "../../assets/city/test_city.png")]                  public static var BBB:Class;
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------               REGION ENCODINGS               --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -123,6 +123,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
 		public static var LA_02_LOC:FlxPoint = new FlxPoint(5000, 0);
+		
 		[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_02_BL_02:Class;
 		[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_02_BL_03:Class;
 		[Embed(source = "../../assets/background/background_clouds_2_h2.png")]          public static var LA_02_BL_04:Class;
@@ -135,7 +136,7 @@ package tutorial
 													  Assets.LA_02_BL_04,
 													  Assets.LA_02_BL_05,
 													  Assets.LA_02_BL_06,
-													  Assets.LA_02_BL_07
+													  Assets.BBB
 													);
 		public static var LA_02_SF:Array = new Array( new FlxPoint(.3,1),
 													  new FlxPoint(.4,1),
@@ -148,11 +149,11 @@ package tutorial
 		public static var LA_02_NPCS:Array = new Array(
 	//		new Array(-450, 750, 0,      Assets.SPRITE_MOUSE,             Assets.STR_A,           Assets.REGION_PLAINS, 1, 205, 0, 2),
 	//		new Array(250, 670, 0,       Assets.SPRITE_WOLF,              Assets.STR_B,           Assets.REGION_PLAINS, 1, 400, 0, 2),
-			new Array(-350, 270, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS), 
+	//		new Array(-350, 270, 0,      Assets.SPRITE_TREE_1,            Assets.STR_EMPTY,       Assets.REGION_PLAINS), 
 	//		new Array(950, 830, 0,       Assets.SPRITE_DEAD_WOLF,         Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 	//		new Array(1000, 770, 2,      Assets.SPRITE_WOLF_CUB,          Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-			new Array(850, 540, 0,       Assets.SPRITE_SPIDER,            Assets.STR_EMPTY,           Assets.REGION_PLAINS, 1, 0, 70, 0, 1),
-			new Array(820, 170, 0,       Assets.SPRITE_TREE_2,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+	//		new Array(850, 540, 0,       Assets.SPRITE_SPIDER,            Assets.STR_EMPTY,           Assets.REGION_PLAINS, 1, 0, 70, 0, 1),
+	/*		new Array(820, 170, 0,       Assets.SPRITE_TREE_2,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 			new Array(1300, 670, 0,      Assets.SPRITE_SQUIRREL,          Assets.STR_EMPTY,           Assets.REGION_PLAINS, 1, 0, 110, 0, 1),
 	//		new Array(1500, 670, 0,      Assets.SPRITE_DEER,              Assets.STR_E,           Assets.REGION_PLAINS, 1, 150, 0, 2),
 	//		new Array(1780, 780, 0,      Assets.SPRITE_FOX,               Assets.STR_F,           Assets.REGION_PLAINS, 1, 125, 0, 2), 
@@ -170,7 +171,7 @@ package tutorial
 	//		new Array(4250, 660, 0,      Assets.SPRITE_OCELOT,            Assets.STR_O,           Assets.REGION_PLAINS, 1, 150, 0, 2),
 	//		new Array(4600, 680, 0,      Assets.SPRITE_DOG,               Assets.STR_P,           Assets.REGION_PLAINS),
 	//		new Array(4700, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_KNIGHT,      Assets.REGION_PLAINS),
-	//		new Array(4800, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS)
+	//		new Array(4800, 680, 0,      Assets.CHARACTER_DEAD_SPRITE,    Assets.STR_PRINCESS,    Assets.REGION_PLAINS) */
 			);
 				
 		
@@ -182,28 +183,28 @@ package tutorial
 		public static var LA_03_LOC:FlxPoint = new FlxPoint(10000, 0);
 		//[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_03_BL_02:Class;
 		//[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_03_BL_03:Class;
-		//[Embed(source = "../../assets/background/background_clouds_2_h2.png")]          public static var LA_03_BL_04:Class;
+		[Embed(source = "../../assets/city/buildings_background_small.png")]                  public static var LA_03_BL_04:Class;
 		[Embed(source = "../../assets/city/building_1_store.png")]                      public static var BUILDING_01:Class;
 		[Embed(source = "../../assets/city/bus_stop.png")]                              public static var BUS_STOP_SIGN:Class;
 		[Embed(source = "../../assets/city/stoplight.png")]                             public static var STOP_LIGHT:Class;
 		[Embed(source = "../../assets/city/street_light.png")]                          public static var STREET_LIGHT:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                               public static var TREE:Class;
-		public static var LA_03_BL:Array = new Array( Assets.LA_01_BL_01,
-													  Assets.LA_02_BL_02,
-													  Assets.LA_02_BL_03, 
-													  Assets.LA_02_BL_04
+		public static var LA_03_BL:Array = new Array( //Assets.LA_01_BL_01,
+													//  Assets.LA_02_BL_02,
+												//	  Assets.LA_02_BL_03, 
+													  Assets.BBB
 													);
-		public static var LA_03_SF:Array = new Array( new FlxPoint(.3,1),
-													  new FlxPoint(.4,1),
-													  new FlxPoint(.5,1),
-													  new FlxPoint(.5,1)
+		public static var LA_03_SF:Array = new Array(// new FlxPoint(.3,1),
+													  //new FlxPoint(.4,1),
+													  //new FlxPoint(.5,1),
+													  new FlxPoint(1,1)
 													);
 		public static var LA_03_NPCS:Array = new Array(
-				new Array(0, 300, 0,      Assets.BUILDING_01,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(50, 0, 0,      Assets.STOP_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(0, 350, 0,      Assets.STREET_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(100, 450, 0,      Assets.BUS_STOP_SIGN,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(400, 100, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+				new Array(-900, 300, 0,      Assets.BUILDING_01,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(-950, 0, 0,      Assets.STOP_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(-900, 350, 0,      Assets.STREET_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(-800, 450, 0,      Assets.BUS_STOP_SIGN,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(-400, 100, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 				
 			);
 			

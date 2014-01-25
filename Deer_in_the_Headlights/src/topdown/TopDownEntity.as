@@ -14,6 +14,7 @@ package topdown
 		public static const RUNSPEED:int = 1;// 130;
 		public static const FRICTION:Number = 0.8;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
+		public var sprint:Boolean = false;
 		
 		/**
 		 * Constructor
@@ -109,6 +110,7 @@ package topdown
 		 * Move playe rdown
 		 */
 		public function moveSprint():void {
+			sprint = true;
 			if (facing == RIGHT)
 				acceleration.x = RUNSPEED * 12;
 			if (facing == LEFT)
