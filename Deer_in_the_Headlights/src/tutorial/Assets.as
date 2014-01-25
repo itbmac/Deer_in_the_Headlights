@@ -34,28 +34,16 @@ package tutorial
 		[Embed(source = "../../assets/sprites/character_dead.png")]        public static var CHARACTER_DEAD_SPRITE:Class;
 		[Embed(source = "../../assets/sprites/soul.png")]                  public static var SOUL_SPRITE:Class;
 		
-		[Embed(source = "../../assets/sprites/bat.png")]                   public static var SPRITE_BAT:Class;
 		[Embed(source = "../../assets/sprites/bird.png")]                  public static var SPRITE_BIRD:Class;
 		[Embed(source = "../../assets/sprites/bush.png")]                  public static var SPRITE_BUSH:Class;
-		[Embed(source = "../../assets/sprites/cave_owl.png")]              public static var SPRITE_CAVE_OWL:Class;
-		[Embed(source = "../../assets/sprites/dead_wolf.png")]             public static var SPRITE_DEAD_WOLF:Class;
-		[Embed(source = "../../assets/sprites/deer.png")]                  public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer1.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/sprites/dog.png")]                   public static var SPRITE_DOG:Class;
-		[Embed(source = "../../assets/sprites/fox.png")]                   public static var SPRITE_FOX:Class;
-		[Embed(source = "../../assets/sprites/lizard.png")]                public static var SPRITE_LIZARD:Class;
-		[Embed(source = "../../assets/sprites/mouse.png")]                 public static var SPRITE_MOUSE:Class;
-		[Embed(source = "../../assets/sprites/ocelot.png")]                public static var SPRITE_OCELOT:Class;
 		[Embed(source = "../../assets/sprites/owl.png")]                   public static var SPRITE_OWL:Class;
-		[Embed(source = "../../assets/sprites/prairie_dog.png")]           public static var SPRITE_PRAIRIE_DOG:Class;
-		[Embed(source = "../../assets/sprites/snake.png")]                 public static var SPRITE_SNAKE:Class;
 		[Embed(source = "../../assets/sprites/spider.png")]                public static var SPRITE_SPIDER:Class;
 		[Embed(source = "../../assets/sprites/squirrel.png")]              public static var SPRITE_SQUIRREL:Class;
 		[Embed(source = "../../assets/sprites/tree01.png")]                public static var SPRITE_TREE_1:Class;
 		[Embed(source = "../../assets/sprites/tree02.png")]                public static var SPRITE_TREE_2:Class;
 		[Embed(source = "../../assets/sprites/tree03.png")]                public static var SPRITE_TREE_3:Class;
-		[Embed(source = "../../assets/sprites/wolf.png")]                  public static var SPRITE_WOLF:Class;
-		[Embed(source = "../../assets/sprites/wolf_cub.png")]              public static var SPRITE_WOLF_CUB:Class;
-		[Embed(source = "../../assets/sprites/zebra.png")]                 public static var SPRITE_ZEBRA:Class;
 	
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -192,18 +180,18 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
 		public static var LA_03_LOC:FlxPoint = new FlxPoint(10000, 0);
-		[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_03_BL_02:Class;
-		[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_03_BL_03:Class;
-		[Embed(source = "../../assets/background/background_clouds_2_h2.png")]          public static var LA_03_BL_04:Class;
+		//[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_03_BL_02:Class;
+		//[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_03_BL_03:Class;
+		//[Embed(source = "../../assets/background/background_clouds_2_h2.png")]          public static var LA_03_BL_04:Class;
 		[Embed(source = "../../assets/city/building_1_store.png")]                      public static var BUILDING_01:Class;
 		[Embed(source = "../../assets/city/bus_stop.png")]                              public static var BUS_STOP_SIGN:Class;
 		[Embed(source = "../../assets/city/stoplight.png")]                             public static var STOP_LIGHT:Class;
 		[Embed(source = "../../assets/city/street_light.png")]                          public static var STREET_LIGHT:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                               public static var TREE:Class;
 		public static var LA_03_BL:Array = new Array( Assets.LA_01_BL_01,
-													  Assets.LA_03_BL_02,
-													  Assets.LA_03_BL_03, 
-													  Assets.LA_03_BL_04
+													  Assets.LA_02_BL_02,
+													  Assets.LA_02_BL_03, 
+													  Assets.LA_02_BL_04
 													);
 		public static var LA_03_SF:Array = new Array( new FlxPoint(.3,1),
 													  new FlxPoint(.4,1),
@@ -212,9 +200,9 @@ package tutorial
 													);
 		public static var LA_03_NPCS:Array = new Array(
 				new Array(0, 300, 0,      Assets.BUILDING_01,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(50, 100, 0,      Assets.STOP_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(0, 150, 0,      Assets.STREET_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
-				new Array(100, 150, 0,      Assets.BUS_STOP_SIGN,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(50, 0, 0,      Assets.STOP_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(0, 350, 0,      Assets.STREET_LIGHT,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
+				new Array(100, 450, 0,      Assets.BUS_STOP_SIGN,            Assets.STR_EMPTY,       Assets.REGION_PLAINS),
 				new Array(400, 100, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 				
 			);

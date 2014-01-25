@@ -38,7 +38,7 @@ package tutorial
 		 * Create the player
 		 */
 		override protected function createPlayer():void {
-			player = new Player(4290, 720); //(playerStart.x, playerStart.y); // (4290, 720);
+			player = new Player(4290, 420); //(playerStart.x, playerStart.y); // (4290, 720);
 		}
 		
 		public function getPlayerX():FlxPoint {

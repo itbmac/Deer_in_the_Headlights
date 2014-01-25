@@ -65,6 +65,12 @@ package topdown
 			this.x += velocity.x;
 			acceleration.x *= FRICTION;
 			velocity.x *= FRICTION;
+			
+			if (Math.abs(velocity.x) < .1)
+			{
+				velocity.x = 0;
+				acceleration.x = 0;
+			}
 		}
 		
 		/**

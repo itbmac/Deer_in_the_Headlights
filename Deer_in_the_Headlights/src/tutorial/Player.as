@@ -24,8 +24,8 @@ package tutorial
 						Assets.SPRITE_DEER, // image to use
 						true, // animated
 						false, // don't generate "flipped" images since they're already in the image
-						231, // width of each frame (in pixels)
-						226 // height of each frame (in pixels)
+						512, // width of each frame (in pixels)
+						512 // height of each frame (in pixels)
 					);
 					
 			health = 100;
@@ -57,38 +57,22 @@ package tutorial
 		 * NOTE: these will be different if your art is different
 		 */
 		override protected function createAnimations():void {
-			addAnimation("walk", [0], 7, true);
+			addAnimation("walk", [0,1,2,3,4,5,6,7,8], 12, true);
 			addAnimation("idle", [0], 7, true);
 			addAnimation("expand", [0], 7, false);
 			addAnimation("contract", [0], 7, false);
 		}
 		override protected function updateAnimations():void 
 		{
-			switch (state) 
+			if (Math.abs(velocity.x) > 0 || Math.abs(velocity.y) > 0) 
 			{
-				case 0:
-					this.visible = true;
-					break;
-				case 1:
-					play("expand");
-					break;
-				case 2:
-					if (Math.abs(velocity.x) > 0 || Math.abs(velocity.y) > 0) 
-					{
-						play("walk");
-					}
-					else {
-						play("idle");
-					}
-					break;
-				case 3:
-					play("contract");
-					break;
-				case 4:
-					visible = true;
-					break;
-				default:
+				play("walk");
 			}
+			else {
+				play("idle");
+			}
+			
+			//= (velocity.x > 0);
 		}
 		
 		override public function update():void {

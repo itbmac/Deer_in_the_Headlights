@@ -87,8 +87,8 @@ package tutorial
 						Assets.SPRITE_DEER, // image to use
 						true, // animated
 						false, // don't generate "flipped" images since they're already in the image
-						231, // width of each frame (in pixels)
-						226 // height of each frame (in pixels)
+						512, // width of each frame (in pixels)
+						512 // height of each frame (in pixels)
 					);
 					addAnimation("walk_right", [0], 7, false);
 					addAnimation("walk_left", [0], 7, false);
