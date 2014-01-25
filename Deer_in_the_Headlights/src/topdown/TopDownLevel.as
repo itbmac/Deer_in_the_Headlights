@@ -251,7 +251,7 @@ package topdown
 				else
 				{
 					desiredZoom = 1;
-					guiGroup.exists = false;
+					guiGroup.exists = true;
 				}
 				
 				
@@ -273,7 +273,7 @@ package topdown
 					{
 						FlxG.camera.y = 0;
 						desiredZoomReached = true;
-						panicOverlayImg.alpha = 0;
+						panicOverlayImg.alpha = 1;
 					}
 					else if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 2)
 					{

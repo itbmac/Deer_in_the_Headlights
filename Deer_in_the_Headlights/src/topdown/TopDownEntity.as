@@ -16,6 +16,23 @@ package topdown
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
+		/** Free Roam (Player has control only in this state) */
+		public static const STATE_FREE_ROAM:int = 0;
+		/** Trigger Approach Started (Player has caused a trigger to start and deer will slow to stop) */
+		public static const STATE_TRIG_APRC_STRT:int = 1;
+		/** Trigger Approach Stopped (Player has come to a stop and the approach is complete) */
+		public static const STATE_TRIG_APRC_STOP:int = 2;
+		/** Trigger Animation Started */
+		public static const STATE_TRIG_ANIM_STRT:int = 3;
+		/** Trigger Animation Stopped */
+		public static const STATE_TRIG_ANIM_STOP:int = 4;
+		/** Focus Mode started (slow zoom in, deer sprints, white fades in, music change?) */
+		public static const STATE_FCUS_STRT:int = 5;
+		/** Focus Mode in progress (zoomed, sprinting, white background) */
+		public static const STATE_FCUS_PROG:int = 6;
+		/** Focus Mode stopped */
+		public static const STATE_FCUS_STOP:int = 7;
+		
 		/**
 		 * Constructor
 		 * @param	X	X location of the entity

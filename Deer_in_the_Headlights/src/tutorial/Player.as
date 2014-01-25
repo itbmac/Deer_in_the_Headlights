@@ -14,25 +14,8 @@ package tutorial
 		 * @param	Y	Y location of the entity
 		 */
 		
-		/** Free Roam (Player has control only in this state) */
-		private static const STATE_FREE_ROAM = 0;
-		/** Trigger Approach Started (Player has caused a trigger to start and deer will slow to stop) */
-		private static const STATE_TRIG_APRC_STRT = 1;
-		/** Trigger Approach Stopped (Player has come to a stop and the approach is complete) */
-		private static const STATE_TRIG_APRC_STOP = 2;
-		/** Trigger Animation Started */
-		private static const STATE_TRIG_ANIM_STRT = 3;
-		/** Trigger Animation Stopped */
-		private static const STATE_TRIG_ANIM_STOP = 4;
-		/** Focus Mode started (slow zoom in, deer sprints, white fades in, music change?) */
-		private static const STATE_FCUS_STRT = 5;
-		/** Focus Mode in progress (zoomed, sprinting, white background) */
-		private static const STATE_FCUS_PROG = 6;
-		/** Focus Mode stopped */
-		private static const STATE_FCUS_STOP = 7;
 		
-		
-		public var state:int = 0; // 0 - free roam, 1 - engaged, 2 - free, 3 - arriving, 4 - arrived (add to log)
+		public var state:int = 0;
 		private var lastAnimFinished:Boolean = true;
 		
 		public function Player(X:Number=100, Y:Number=100):void {
@@ -103,24 +86,15 @@ package tutorial
 			
 			switch (state) 
 			{
-				case 0:
-					visible = true;
+				case STATE_FREE_ROAM:
 					break;
 				case 1:
-					visible = true;
-					if (this.finished && !lastAnimFinished)
-						state = 2;
 					break;
 				case 2:
-					visible = true;
 					break;
 				case 3:
-					visible = true;
-					if (this.finished && !lastAnimFinished)
-						state = 4;
 					break;
 				case 4:
-					visible = true;
 					break;
 				default:
 			}

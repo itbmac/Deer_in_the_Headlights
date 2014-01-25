@@ -20,7 +20,7 @@ package tutorial
 			super(X, Y);
 			if (hudImg == 0)
 			{
-				this.loadGraphic(Assets.HUD, false, false, picWidth, picHeight);
+				this.loadGraphic(Assets.PANIC_OVERLAY, false, false, picWidth, picHeight);
 				this.scrollFactor.x = 0;
 				this.scrollFactor.y = 0;
 				isHUD = true;
