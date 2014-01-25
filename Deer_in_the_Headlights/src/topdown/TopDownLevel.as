@@ -20,8 +20,6 @@ package topdown
 		public var state:FlxState; // state displaying the level
 		public var levelSize:FlxPoint; // width and height of level (in pixels)
 		public var imgGroup:FlxGroup;
-		public var guiGroup:FlxGroup; // gui elements
-		public var logGroup:FlxGroup; // gui log elements
 		public var npcGroup:FlxGroup;
 		public var srtScreenGroup:FlxGroup;
 		
@@ -54,8 +52,6 @@ package topdown
 			this.levelSize = levelSize;
 			// setup groups
 			this.imgGroup = new FlxGroup();
-			this.logGroup = new FlxGroup();
-			this.guiGroup = new FlxGroup();
 			this.npcGroup = new FlxGroup();
 			this.srtScreenGroup = new FlxGroup();
 			// create the level
@@ -96,8 +92,6 @@ package topdown
 			add(imgGroup);
 			add(npcGroup);
 			add(player);
-			add(guiGroup);
-			add(logGroup);
 			add(srtScreenGroup);
 		}
 		
