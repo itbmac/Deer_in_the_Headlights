@@ -22,6 +22,7 @@ package topdown
 		public var guiGroup:FlxGroup;
 		public var srtScreenGroup:FlxGroup;
 		private var srtScreenImg: FlxSprite;
+		private var panicOverlayImg:FlxSprite;
 		
 		/**
 		 * Player
@@ -35,7 +36,7 @@ package topdown
 		
 		private var desiredZoom:Number = 1;
 		private var desiredZoomReached:Boolean = false;
-		private var zoomMode:Boolean = false;
+		public var zoomMode:Boolean = false;
 		private var zoomOffset:int = -285;
 		private var zoomAcceleration:Number = .05;
 		private var zoomSwitchTimer:int = 0;
@@ -100,10 +101,10 @@ package topdown
 		 * Create the overlay screen
 		 */
 		protected function createGUI():void {
-			var img = new FlxSprite(0,0, Assets.PANIC_OVERLAY);
-			img.scrollFactor.x = img.scrollFactor.y = 0;
-			img.exists = true;
-			guiGroup.add(img);
+			panicOverlayImg = new FlxSprite(0,0, Assets.PANIC_OVERLAY);
+			panicOverlayImg.scrollFactor.x = panicOverlayImg.scrollFactor.y = 0;
+			panicOverlayImg.exists = true;
+			guiGroup.add(panicOverlayImg);
 		}
 		
 		/**
@@ -207,7 +208,7 @@ package topdown
 				FlxG.keys.update();
 				if (FlxG.keys.pressed("SPACE"))
 				{
-					srtScreenImg.exists = false;
+					//srtScreenImg.exists = false;
 					srtScreenGroup.exists = false;
 					gameNotStarted = false;
 				}
@@ -244,9 +245,16 @@ package topdown
 				}
 				
 				if (zoomMode)
+				{
 					desiredZoom = 2;
+					guiGroup.exists = true;
+				}
 				else
+				{
 					desiredZoom = 1;
+					guiGroup.exists = false;
+				}
+				
 				
 				if (!desiredZoomReached)
 				{
@@ -254,21 +262,25 @@ package topdown
 					{
 						FlxG.camera.zoom += zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
+						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
 					}
 					if (FlxG.camera.zoom > desiredZoom)
 					{
 						FlxG.camera.zoom -= zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
+						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
 					}
 					if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 1)
 					{
 						FlxG.camera.y = 0;
 						desiredZoomReached = true;
+						panicOverlayImg.alpha = 0;
 					}
 					else if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 2)
 					{
 						FlxG.camera.y = zoomOffset;
 						desiredZoomReached = true;
+						panicOverlayImg.alpha = 1;
 					}
 				}
 				

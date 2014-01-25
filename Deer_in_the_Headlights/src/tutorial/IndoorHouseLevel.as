@@ -102,17 +102,6 @@ package tutorial
 			return (i >= 0) && (i < Assets.LA_NUM_TOTAL);
 		}
 	
-		/**
-		 * Decide the order of the groups. They are rendered in the order they're added, so last added is always on top.
-		 */
-		override protected function addGroups():void {
-			add(imgGroup);
-			add(npcGroup);
-			add(player);
-			add(srtScreenGroup);
-			// :)
-		}
-		
 		
 		/**
 		 * Update each timestep
