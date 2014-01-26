@@ -12,7 +12,7 @@ package tutorial
 		
 		public var zoomOnStop : Boolean = true;
 		public var visited:Boolean;
-		public var shortCircuit : Boolean = false; // simply zoom out after stopping
+		public var shortCircuit : Boolean = true; // simply zoom out after stopping
 		public var flipDirectionOnRun : Boolean = true;
 		
 		public function Trigger(X:int, Y:int, player:TopDownEntity=null, LA:int=0, initialState:int=0, dispGraphic:Class=null, dispText:String="", dispRegion:int=0, moveStyle:int=0, xOffsetThres:int=0, yOffsetThres:int=0, xVel:int=0, yVel:int=0) 

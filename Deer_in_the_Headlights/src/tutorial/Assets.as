@@ -53,7 +53,7 @@ package tutorial
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/images/start_screen_3.png")]           public static var HUD_START_SCREEN:Class;
-		[Embed(source = "../../assets/images/panic_mode_square_3.png")]      public static var FOG_OVERLAY:Class;
+		[Embed(source = "../../assets/images/panic_mode_extreme.png")]       public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
 		
@@ -114,6 +114,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 
 			);	
 		
@@ -132,7 +133,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-//				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS);
@@ -150,7 +151,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS);
@@ -167,7 +168,7 @@ package tutorial
 													);
 		
 		private static var LA_05_NPCS:Array = new Array(
-			
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
 		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS);
