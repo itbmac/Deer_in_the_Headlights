@@ -81,24 +81,24 @@ package tutorial
 			addAnimation("sprint_left_11", [27, 28, 29, 30, 31, 32, 33, 34, 35], 10, false);
 			addAnimation("sprint_left_11", [27, 28, 29, 30, 31, 32, 33, 34, 35], 13, false);
 			
-			addAnimation("idle_right_9",  [0], 9,  false);
-			addAnimation("idle_right_10", [0], 7,  false);
-			addAnimation("idle_right_11", [0], 10, false);
-			addAnimation("idle_right_12", [0], 13, false);
+			addAnimation("idle_right_9",  [36,37,38,39,40,41,42,43,44], 9,  false);
+			addAnimation("idle_right_10", [36,37,38,39,40,41,42,43,44], 7,  false);
+			addAnimation("idle_right_11", [36,37,38,39,40,41,42,43,44], 10, false);
+			addAnimation("idle_right_12", [36,37,38,39,40,41,42,43,44], 13, false);
 			
-			addAnimation("idle_left_9",  [9], 9,  false);
-			addAnimation("idle_left_10", [9], 7,  false);
-			addAnimation("idle_left_11", [9], 10, false);
-			addAnimation("idle_left_12", [9], 13, false);
+			addAnimation("idle_left_9",  [45,46,47,48,49,50,51,52,53], 9,  false);
+			addAnimation("idle_left_10", [45,46,47,48,49,50,51,52,53], 7,  false);
+			addAnimation("idle_left_11", [45,46,47,48,49,50,51,52,53], 10, false);
+			addAnimation("idle_left_12", [45,46,47,48,49,50,51,52,53], 13, false);
 		}
 		override protected function updateAnimations():void 
 		{
 			var curAnimName:String;
-			if (velocity.x > (RUNSPEED * 4))
+			if (velocity.x > (RUNSPEED * .85))
 			{
 				curAnimName = "sprint_right_";
 			}
-			else if (velocity.x < (RUNSPEED * -4))
+			else if (velocity.x < (RUNSPEED * -.85))
 			{
 				curAnimName = "sprint_left_";
 			}

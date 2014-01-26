@@ -11,7 +11,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                   SPRITES                    --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/deer/deer3_quad_small.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer/deer4.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                         public static var TREE:Class;
 		[Embed(source = "../../assets/forest/tree1_resize.png")]                         public static var TREE1:Class;
 		[Embed(source = "../../assets/forest/tree2_resize.png")]                         public static var TREE2:Class;

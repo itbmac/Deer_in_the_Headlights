@@ -235,11 +235,20 @@ package topdown
 				if (FlxG.keys.pressed("DOWN"))
 					player.moveDown();
 				
-				if (!(FlxG.keys.pressed("DOWN") || FlxG.keys.pressed("UP") || FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT")))
+				{
+					player.acceleration.y = 0;
+				}
+				
+				if (!(FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT")))
+				{
+					player.acceleration.x = 0;
 					moving = false;
+				}
 					
 				if (FlxG.keys.pressed("SPACE") && moving)
 					player.moveSprint();
+				else
+					player.sprint = false;
 					
 				if (zoomSwitchTimer > 0)
 					zoomSwitchTimer--;

@@ -11,16 +11,20 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const RUNSPEED:int = 1;// 1; 130; // TODO: changed for dev
-		public static const FRICTION:Number = 0.8;
+		public static const WALKSPEED:int = 130;
+		public static const RUNSPEED:int =  280;
+		public static const FRICTION:Number = 5;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
-		public static const MIN_Y:int = 530;
-		public static const MAX_Y:int = 610;//635;
+		public static const MIN_Y:int = 665;
+		public static const MAX_Y:int = 770;//635;
 		public var RANGE_Y:int = MAX_Y - MIN_Y;
-		public static const NORM_SCALE :Number = .35;
+		public static const NORM_SCALE :Number = .6;
 		public var curScale :Number = .35;
+		
+		public var desiredMaxSpeed:Number = 130;
+		private const maxSpeedAccel:Number = 1;
 		
 		/** Free Roam (Player has control only in this state) */
 		public static const STATE_FREE_ROAM:int = 0;
@@ -48,8 +52,8 @@ package topdown
 			super(X, Y);
 			makeGraphic(SIZE.x, SIZE.y, 0xFFFF0000); // use this if you want a generic box graphic by default
 			// movement
-			maxVelocity = new FlxPoint(RUNSPEED, RUNSPEED);
-			drag = new FlxPoint(RUNSPEED * 4, RUNSPEED * 4); // decelerate to a stop within 1/4 of a second
+			maxVelocity = new FlxPoint(WALKSPEED, WALKSPEED);
+			drag = new FlxPoint(WALKSPEED*.6, WALKSPEED*.7); // decelerate to a stop within 1/4 of a second
 			// animations
 			createAnimations();
 		}
@@ -85,27 +89,17 @@ package topdown
 		protected function updateControls():void {
 			//acceleration.y = 0; // no gravity or drag by default
 			
-			velocity.x += acceleration.x;
-			this.x += velocity.x;
-			acceleration.x *= FRICTION;
-			velocity.x *= FRICTION;
+			if (sprint)
+				desiredMaxSpeed = RUNSPEED;
+			else
+				desiredMaxSpeed = WALKSPEED;
 			
-			if (Math.abs(velocity.x) < .1)
-			{
-				velocity.x = 0;
-				acceleration.x = 0;
-			}
+			if ((desiredMaxSpeed - this.maxVelocity.x) > 1)
+				this.maxVelocity.x++;
+			else if ((this.maxVelocity.x - desiredMaxSpeed) > 1)
+				this.maxVelocity.x--;
 			
-			velocity.y += acceleration.y;
-			this.y += velocity.y;
-			acceleration.y *= FRICTION;
-			velocity.y *= FRICTION;
-			
-			if (Math.abs(velocity.y) < .1)
-			{
-				velocity.y = 0;
-				acceleration.y = 0;
-			}
+			updateMotion();
 			
 			if (y <= MIN_Y)
 			{
@@ -118,6 +112,8 @@ package topdown
 			
 			curScale = NORM_SCALE + (((y - MIN_Y) / RANGE_Y) * 0.2);
 			scale = new FlxPoint(curScale, curScale);
+			
+			trace(scale.x + " ;;; " + scale.y);
 		}
 		
 		/**
@@ -125,7 +121,7 @@ package topdown
 		 */
 		public function moveLeft():void {
 			facing = LEFT;
-			acceleration.x = -RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
+			acceleration.x = -RUNSPEED * .5; // accelerate to top speed in 1/4 of a second
 		}
 		
 		/**
@@ -133,7 +129,7 @@ package topdown
 		 */
 		public function moveRight():void {
 			facing = RIGHT;
-			acceleration.x = RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
+			acceleration.x = RUNSPEED * .5; // accelerate to top speed in 1/4 of a second
 		}
 		
 		/**
@@ -143,7 +139,7 @@ package topdown
 			if (y >= MIN_Y)
 			{
 				facing = UP;
-				acceleration.y = -RUNSPEED * 2; // accelerate to top speed in 1/4 of a second
+				acceleration.y = -RUNSPEED * .5; // accelerate to top speed in 1/4 of a second
 			}
 		}
 		
@@ -154,7 +150,7 @@ package topdown
 			if (y <= MAX_Y)
 			{
 				facing = DOWN;
-				acceleration.y = RUNSPEED * 2; // accelerate to top speed in 1/4 of a second
+				acceleration.y = RUNSPEED * .5; // accelerate to top speed in 1/4 of a second
 			}
 		}
 		
@@ -164,9 +160,10 @@ package topdown
 		public function moveSprint():void {
 			sprint = true;
 			if (facing == RIGHT)
-				acceleration.x = RUNSPEED * 12;
+				acceleration.x = RUNSPEED * .5;
 			if (facing == LEFT)
-				acceleration.x = -RUNSPEED * 12;
+				acceleration.x = -RUNSPEED * .5;
 		}
 	}
 }
+
