@@ -15,13 +15,32 @@ package tutorial
 		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array,
 			width : int = LevelArea.DEFAULT_WIDTH, height : int = LevelArea.DEFAULT_HEIGHT) 
 		{
-			proceduralObjectPrototypes = newProceduralObjectPrototypes;
+			
+			this.proceduralObjectPrototypes = newProceduralObjectPrototypes;
 		}
 		
 		public function make(pos : FlxPoint, level : TopDownLevel) : LevelArea
 		{
-			return new LevelArea(pos, Assets.LA_NPCS[0], Assets.LA_BLS[0], Assets.LA_SFS[0], level.player, level.imgGroup, level.npcGroup, 0);
-			//new LevelArea(pos, new Array(), Assets.LA_01_BL, Assets.LA_01_SF, player, new FlxGroup(), new FlxGroup(), 0);
+			trace("Got " + proceduralObjectPrototypes.length + " prototypes");
+			var npcArray = new Array();
+			
+			for each (var proceduralObjectPrototype : ProceduralObjectProtoype in proceduralObjectPrototypes)
+			{
+				var last : int = -1;
+				// TODO: maybe allow overlap across regions? by deleting "- proceduralObjectPrototype.width"
+				for (var x:int = pos.x; x < pos.x + PlayState.LEVEL_SIZE.x - proceduralObjectPrototype.width; x++)
+				{
+					var newGameObject : GameObject = proceduralObjectPrototype.make(x, last);
+					if (newGameObject != null)
+					{
+						last = x;
+						npcArray.push(newGameObject);
+					}
+				}
+			}
+			trace("Generated " + npcArray.length + " npcs");
+			
+			return new LevelArea(pos, npcArray, Assets.LA_BLS[0], Assets.LA_SFS[0], level.player, level.imgGroup, level.npcGroup, 0);
 		}
 		
 	}

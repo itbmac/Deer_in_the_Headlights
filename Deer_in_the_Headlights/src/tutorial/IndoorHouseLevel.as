@@ -58,7 +58,7 @@ package tutorial
 		override protected function createMap():void 
 		{
 			// TODO: add objects
-			CurrentLAP = new LevelAreaPrototype(new Array()); 
+			CurrentLAP = Assets.LA_01_P; 
 			// TODO: make actually circular
 			
 			LALeft = CurrentLAP.make(new FlxPoint(0,0), this);

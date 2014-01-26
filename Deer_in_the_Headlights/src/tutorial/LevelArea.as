@@ -101,27 +101,25 @@ package tutorial
 			
 			for (var i : int = 0; i < num_NPCs; i++)
 			{
-				var npc_x : int = int( NPC_Array[i][0]);
-				var npc_y : int = int( NPC_Array[i][1]);
-				var npc_is : int = int( NPC_Array[i][2]);
-				var npc_gc : Class = Class( NPC_Array[i][3]);
-				var npc_ds : String = String (NPC_Array[i][4]);
-				var npc_re : int = int (NPC_Array[i][5]);
-				var npc_ms : int = int( NPC_Array[i][6]);
-				var npc_dx : int = int( NPC_Array[i][7]);
-				var npc_dy : int = int( NPC_Array[i][8]);
-				var npc_vx : int = int( NPC_Array[i][9]);
-				var npc_vy : int = int( NPC_Array[i][10]);
+				//var npc_x : int = -500 ;// int( NPC_Array[i][0]);
+				//var npc_y : int = 200;// int( NPC_Array[i][1]);
+				//var npc_is : int = 0;// int( NPC_Array[i][2]);
+				//var npc_gc : Class = Assets.TREE; // Class( NPC_Array[i][3]);
+				//var npc_ds : String = String (NPC_Array[i][4]);
+				//var npc_re : int = int (NPC_Array[i][5]);
+				//var npc_ms : int = int( NPC_Array[i][6]);
+				//var npc_dx : int = int( NPC_Array[i][7]);
+				//var npc_dy : int = int( NPC_Array[i][8]);
+				//var npc_vx : int = int( NPC_Array[i][9]);
+				//var npc_vy : int = int( NPC_Array[i][10]);
 				
-				var npc_at_index : GameObject = new GameObject(npc_x + areaPosition.x, npc_y + areaPosition.y, player, areaIndex, npc_is, npc_gc, npc_ds, npc_re, npc_ms, npc_dx, npc_dy, npc_vx, npc_vy);
+				//var npc_at_index : GameObject = new GameObject(npc_x + areaPosition.x, npc_y + areaPosition.y, player, areaIndex, npc_is, npc_gc, npc_ds, npc_re, npc_ms, npc_dx, npc_dy, npc_vx, npc_vy);
+				var npc_at_index : GameObject = NPC_Array[i];// new GameObject( -500 + areaPosition.x, 200 + areaPosition.y, player, areaIndex, 0, Assets.TREE, npc_ds, npc_re, npc_ms, npc_dx, npc_dy, npc_vx, npc_vy);
 				npc_at_index.exists = true;
 				
 				areasNPCs.push(npc_at_index);
 				npcGroup.add(npc_at_index);
 			}
 		}
-		
-		
 	}
-
 }
