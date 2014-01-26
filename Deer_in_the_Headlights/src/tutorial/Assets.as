@@ -7,11 +7,11 @@ package tutorial
 	 * @author MacKenzie Bates
 	 */
 	public class Assets
-	{
+	{	
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                   SPRITES                    --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/deer/deer3_quad_small.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer/deer3_triple.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                         public static var TREE:Class;
 		
 		

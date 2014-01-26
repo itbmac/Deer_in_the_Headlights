@@ -11,15 +11,15 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const RUNSPEED:int = 1;// 130;
+		public static const RUNSPEED:int = 1;// 1; 130; // TODO: changed for dev
 		public static const FRICTION:Number = 0.8;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
-		public static const MIN_Y:int = 665;
-		public static const MAX_Y:int = 770;//635;
+		public static const MIN_Y:int = 530;
+		public static const MAX_Y:int = 610;//635;
 		public var RANGE_Y:int = MAX_Y - MIN_Y;
-		public static const NORM_SCALE :Number = .7;
+		public static const NORM_SCALE :Number = .35;
 		public var curScale :Number = .35;
 		
 		/** Free Roam (Player has control only in this state) */
@@ -90,7 +90,7 @@ package topdown
 			acceleration.x *= FRICTION;
 			velocity.x *= FRICTION;
 			
-			if (Math.abs(velocity.x) < .2)
+			if (Math.abs(velocity.x) < .1)
 			{
 				velocity.x = 0;
 				acceleration.x = 0;
@@ -101,7 +101,7 @@ package topdown
 			acceleration.y *= FRICTION;
 			velocity.y *= FRICTION;
 			
-			if (Math.abs(velocity.y) < .2)
+			if (Math.abs(velocity.y) < .1)
 			{
 				velocity.y = 0;
 				acceleration.y = 0;

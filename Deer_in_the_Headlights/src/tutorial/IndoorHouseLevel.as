@@ -1,5 +1,7 @@
 package tutorial 
 {
+	import flash.events.ErrorEvent;
+	import flash.geom.Rectangle;
 	import org.flixel.*;
 	import topdown.*;
 	
@@ -33,7 +35,7 @@ package tutorial
 		
 		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 90, 620);
 		
-		var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
+		private var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
 
 		/**
 		 * Constructor
@@ -69,10 +71,12 @@ package tutorial
 				LACurrent.destroy();
 			if (LARight != null)
 				LARight.destroy();
+
 			LALeft = CurrentLAP.make(new FlxPoint(0,0), this);
 			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this);
 			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this);
 			LACurrent.toggleAllContent(true);
+			
 			if (player != null)
 			{
 				player.x = DEFAULT_START.x;
@@ -124,15 +128,14 @@ package tutorial
 		{
 			return (i >= 0) && (i < Assets.LA_NUM_TOTAL);
 		}
-	
 		
 		/**
 		 * Update each timestep
 		 */
 		override public function update():void 
 		{			
-			if (activeLAChanged)
-				setLAAreas(activeLA);
+			//if (activeLAChanged)
+				//setLAAreas(activeLA);
 			
 			super.update(); // NOTE: map -> player collision happens in super.update()
 

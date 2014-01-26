@@ -295,7 +295,7 @@ package topdown
 					}
 				}
 				
-				FlxG.log(FlxG.camera.zoom);
+				//FlxG.log(FlxG.camera.zoom);
 			}
 		}
 	}

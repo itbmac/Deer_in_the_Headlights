@@ -1,5 +1,7 @@
 package tutorial 
 {
+	import Math;
+	
 	/**
 	 * ...
 	 * @author ...
@@ -53,5 +55,4 @@ package tutorial
 			}
 		}
 	}
-
 }
