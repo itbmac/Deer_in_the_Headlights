@@ -83,11 +83,12 @@ package tutorial
 		
 		public static var LA_01_BL:Array = new Array( Assets.R_01_BL
 													);
-		public static var LA_01_FL:Array = new Array(// Assets.R_01_FL
+		public static var LA_01_FL:Array = new Array( //Assets.R_01_FL
 													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
+				new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200)
 				//new FixedObjectPrototype(Assets.TREE1, 50, 50)
 				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
 				/*new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 1.0),
@@ -184,7 +185,7 @@ package tutorial
 													);
 		
 		private static var LA_06_NPCS:Array = new Array(
-				new FixedObjectPrototype(Assets.FOUNTAIN, 50, 400)
+				
 			);	
 		
 		public static var LA_06 : LevelAreaPrototype = new LevelAreaPrototype(LA_06_NPCS);

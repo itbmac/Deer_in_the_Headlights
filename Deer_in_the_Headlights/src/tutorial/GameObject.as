@@ -10,8 +10,7 @@ package tutorial
 	 */
 	public class GameObject extends FlxSprite 
 	{
-		public var state:int;//0 - soulless, 1 - soulful, 2 - soul end.
-		public var visited:Boolean;
+		
 		public var movementStyle:int; //0 - stationary, 1 - linear looping, 2 - circular looping
 		public var displayGraphic:Class;
 		public var thumbnailGraphic:Class;
@@ -19,23 +18,24 @@ package tutorial
 		public var levelArea:int;
 		public var xOrigin:int;
 		public var yOrigin:int;
-		public var xOffsetThreshold:int = 0;
-		public var yOffsetThreshold:int = 0;
+
 		public var xVelocity:int = 0;
 		public var yVelocity:int = 0;
-		public var xProximityOffset:int = 0; //Point from which to judge if player is close
-		public var yProximityOffset:int = 0; //Point from which to judge if player is close
+		public var xOffsetThreshold:int = 0;
+		public var yOffsetThreshold:int = 0;
+		
 		public var px:int;
 		public var py:int;
 		public var displayText:String;
+		
+		public var xProximityOffset:int = 0; //Point from which to judge if player is close
+		public var yProximityOffset:int = 0; //Point from which to judge if player is close
 		
 		public function GameObject(X:int, Y:int, player:TopDownEntity = null, LA:int = 0, initialState:int = 0,
 			dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0,
 			xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
 		{
-			super(X, Y);			
-			state = initialState;
-			visited = false;
+			super(X, Y);
 			movementStyle = moveStyle;
 			displayGraphic = dispGraphic;
 			displayText = dispText;
@@ -101,14 +101,6 @@ package tutorial
 		public function setXY(pnt:FlxPoint):void {
 			px = pnt.x;
 			py = pnt.y;
-		}
-		
-		public function setState(nstate:int):void {
-			state = nstate;
-		}
-		
-		public function getState():int {
-			return state;
 		}
 		
 		protected function createAnimations():void {

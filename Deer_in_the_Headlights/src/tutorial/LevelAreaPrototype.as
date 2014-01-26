@@ -1,5 +1,6 @@
 package tutorial 
 {
+	import org.flixel.FlxBasic;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import topdown.TopDownEntity;
@@ -23,11 +24,11 @@ package tutorial
 			trace("Got " + proceduralObjectPrototypes.length + " prototypes");
 			var npcArray : Array= new Array();
 			
-			for each (var obj in proceduralObjectPrototypes)
+			for each (var obj : Object in proceduralObjectPrototypes)
 			{
 				if (obj is ProceduralObjectProtoype)
 				{
-					var proceduralObjectPrototype : ProceduralObjectProtoype = obj;
+					var proceduralObjectPrototype : ProceduralObjectProtoype = obj as ProceduralObjectProtoype;
 					trace("--");
 					var last : int = -1;
 					
@@ -43,7 +44,7 @@ package tutorial
 					}
 				} else if (obj is FixedObjectPrototype)
 				{
-					var fixedObjectPrototype : FixedObjectPrototype = obj;
+					var fixedObjectPrototype : FixedObjectPrototype = obj as FixedObjectPrototype;
 					var newGameObject : GameObject = fixedObjectPrototype.make(pos);
 					npcArray.push(newGameObject);
 				}

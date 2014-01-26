@@ -8,19 +8,35 @@ package tutorial
 	 */
 	public class Player extends TopDownEntity
 	{
+		/** Free Roam (Player has control only in this state) */
+		public static const STATE_FREE_ROAM:int = 0;
+		/** Trigger Approach Started (Player has caused a trigger to start and deer will slow to stop) */
+		public static const STATE_TRIG_APRC_STRT:int = 1;
+		/** Trigger Approach Stopped (Player has come to a stop and the approach is complete) */
+		public static const STATE_TRIG_APRC_STOP:int = 2;
+		/** Trigger Animation Started */
+		public static const STATE_TRIG_ANIM_STRT:int = 3;
+		/** Trigger Animation Stopped */
+		public static const STATE_TRIG_ANIM_STOP:int = 4;
+		/** Focus Mode started (slow zoom in, deer sprints, white fades in, music change?) */
+		public static const STATE_FCUS_STRT:int = 5;
+		/** Focus Mode in progress (zoomed, sprinting, white background) */
+		public static const STATE_FCUS_PROG:int = 6;
+		/** Focus Mode stopped */
+		public static const STATE_FCUS_STOP:int = 7;
+		
+		public var state:int = STATE_FREE_ROAM;
+		private var lastAnimFinished:Boolean = true;
+		private var animSwitch:Boolean = false;
+		private var lastAnimName:String = "";
+		private var lastAnimFrameRate:int = 9;
+		private var trigger : Trigger;
+		
 		/**
 		 * Constructor
 		 * @param	X	X location of the entity
 		 * @param	Y	Y location of the entity
 		 */
-		
-		
-		public var state:int = 0;
-		private var lastAnimFinished:Boolean = true;
-		private var animSwitch:Boolean = false;
-		private var lastAnimName:String = "";
-		private var lastAnimFrameRate:int = 9;
-		
 		public function Player(X:Number=100, Y:Number=100):void {
 			super(X, Y);
 			createAnimations();
@@ -156,6 +172,51 @@ package tutorial
 			lastAnimFinished = this.finished;
 			
 			super.update();
+			
+			if (state == STATE_TRIG_APRC_STRT)
+			{
+				FlxG.log("slowing, at " + velocity.x);
+				var index : Number = FlxU.abs(velocity.x) + FlxU.abs(velocity.y);
+				if (index > 10.0)
+				{
+					var slowing : Number = 60.0;
+					if (index <= 25.0)
+					{
+						if (index <= 5.0)
+							slowing = 5.0;
+						else
+							slowing = index;
+					}
+						
+					if (velocity.x > 0.0)
+						acceleration.x = -slowing;
+					else
+						acceleration.x = slowing;
+						
+					if (velocity.y > 0.0)
+						acceleration.y = -slowing;
+					else
+						acceleration.y = slowing;
+				} else
+				{
+					acceleration.x = 0.0;
+					acceleration.y = 0.0;
+					velocity.x = 0.0;
+					velocity.y = 0.0;
+					state = STATE_TRIG_APRC_STOP;
+					// cheat
+					state = STATE_FREE_ROAM;
+					IndoorHouseLevel.instance.endZoom();
+					
+				}
+			}
+		}
+		
+		public function triggerBegin(byTrigger : Trigger) : void {
+			trigger = byTrigger;
+			 state = STATE_TRIG_APRC_STRT;
+			 if (trigger.zoomOnStop)
+				IndoorHouseLevel.instance.beginZoom();
 		}
 	}
 }

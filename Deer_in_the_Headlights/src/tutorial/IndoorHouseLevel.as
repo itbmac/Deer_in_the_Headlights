@@ -36,6 +36,8 @@ package tutorial
 		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 990, 620);
 		
 		private var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
+		
+		public static var instance : IndoorHouseLevel;
 
 		/**
 		 * Constructor
@@ -45,6 +47,7 @@ package tutorial
 		 */
 		public function IndoorHouseLevel(state:FlxState, levelSize:FlxPoint):void {
 			super(state, levelSize);
+			instance = this;
 		}
 		
 		/**
@@ -52,7 +55,8 @@ package tutorial
 		 */
 		override protected function createPlayer():void {
 			player = new Player(DEFAULT_START.x, DEFAULT_START.y); //(playerStart.x, playerStart.y); // (4290, 720);
-			FlxG.watch(player, "x", "Player x");
+			FlxG.watch(player, "x", "x");
+			FlxG.watch(player, "y", "y");
 			FlxG.watch(this, "total", "Total Entities");
 		}
 		

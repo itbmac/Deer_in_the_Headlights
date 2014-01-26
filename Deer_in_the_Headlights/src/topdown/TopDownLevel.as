@@ -4,6 +4,7 @@ package topdown
 	import tutorial.Assets;
 	import tutorial.Player;
 	import tutorial.PlayState;
+	import tutorial.Trigger;
 	import tutorial.ZoomCamera;
 	import tutorial.GameObject;
 	/**
@@ -32,7 +33,6 @@ package topdown
 		 */
 		public var player:Player;
 		public var playerStart:FlxPoint = new FlxPoint(1437, 1437);
-		public var playerState:int = 0; // 0 - attached, 1 - in transit
 		
 		public var maxDistToSwitch:int = 500;
 		public var currObjectStr:String = "";
@@ -175,48 +175,37 @@ package topdown
 			
 		}
 		
-		public function soulSwitch():void
+		// The old soulSwitch
+		public function checkTriggers():void
 		{
-			var closestIndex:int = -1;
 			var closestDist:Number = 1000.0;
-			var saved:Boolean = false;
-			var savedIndex:int;
-			var i:int;
-			for(i = 0; i < npcGroup.length; i++)
+			var closest : Trigger;
+			
+			for each (var obj : FlxBasic in npcGroup.members)
 			{
-				var curDist:Number = Math.sqrt( Math.pow((npcGroup.members[i].x + npcGroup.members[i].xSoulOffset - player.x), 2) +  Math.pow((npcGroup.members[i].y + npcGroup.members[i].ySoulOffset - player.y), 2) );
-				
-				if (i == prevObjIndex)
-					curDist += 200;
-				
-				if ((curDist < closestDist) && (npcGroup.members[i].getState() == 0))
+				if (obj is Trigger)
 				{
-					closestIndex = i;
-					closestDist = curDist;
-					FlxG.log("SWITCH TO: " + i.toString() + " .. CUR STATE: " + npcGroup.members[i].getState() + " ... WITH DISTANCE: " + curDist.toString());;
+					var npc : Trigger = obj as Trigger;
+					
+					var curDist:Number = Math.sqrt( Math.pow(npc.x + npc.xProximityOffset - player.x, 2) 
+						+  Math.pow(npc.y + npc.yProximityOffset - player.y, 2) );
+					
+					//FlxG.log("AT " + (npc.x + npc.xProximityOffset) + "," + (npc.y + npc.yProximityOffset) + " WITH DISTANCE: " + curDist.toString());
+					
+					if (!npc.visited && (curDist < closestDist) && (curDist < npc.proximityThreshold))
+					{
+						closestDist = curDist;
+						closest = npc;
+						//FlxG.log("good");
+					}
 				}
 			}
 			
-			if ((maxDistToSwitch > closestDist))
+			if (closest)
 			{
-				for(i = 0; i < npcGroup.length; i++)
-				{
-					if (npcGroup.members[i].getState() == 1)
-					{
-						prevObjIndex = i;
-						npcGroup.members[i].setState(0);
-					}
-				}
-				
-				if (npcGroup.members[closestIndex].levelArea != activeLA)
-				{
-					activeLA = npcGroup.members[closestIndex].levelArea;
-					activeLAChanged = true;
-				}
-				
-				npcGroup.members[closestIndex].setState(1);
-				playerState = 1;
-				player.state = 1;
+				FlxG.log("triggered");
+				closest.activate();
+				player.triggerBegin(closest); 
 			}
 		}
 		
@@ -249,30 +238,35 @@ package topdown
 				
 				FlxG.keys.update();
 				
-				if (FlxG.keys.pressed("RIGHT"))
-					player.moveRight();
-				if (FlxG.keys.pressed("LEFT"))
-					player.moveLeft();
-				if (FlxG.keys.pressed("UP"))
-					player.moveUp();
-				if (FlxG.keys.pressed("DOWN"))
-					player.moveDown();
-				
-				if (!(FlxG.keys.pressed("DOWN") || FlxG.keys.pressed("UP")))
+				if (player.state == Player.STATE_FREE_ROAM)
 				{
-					player.acceleration.y = 0;
-				}
-				
-				if (!(FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT")))
-				{
-					player.acceleration.x = 0;
-					moving = false;
-				}
+					if (FlxG.keys.pressed("RIGHT"))
+						player.moveRight();
+					if (FlxG.keys.pressed("LEFT"))
+						player.moveLeft();
+					if (FlxG.keys.pressed("UP"))
+						player.moveUp();
+					if (FlxG.keys.pressed("DOWN"))
+						player.moveDown();
 					
-				if (FlxG.keys.pressed("SPACE") && moving)
-					player.moveSprint();
-				else
-					player.sprint = false;
+					if (!(FlxG.keys.pressed("DOWN") || FlxG.keys.pressed("UP")))
+					{
+						player.acceleration.y = 0;
+					}
+					
+					if (!(FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT")))
+					{
+						player.acceleration.x = 0;
+						moving = false;
+					}
+						
+					if (FlxG.keys.pressed("SPACE") && moving)
+						player.moveSprint();
+					else
+						player.sprint = false;
+						
+					checkTriggers();
+				}
 					
 				if (zoomSwitchTimer > 0)
 					zoomSwitchTimer--;
@@ -330,6 +324,20 @@ package topdown
 				
 				//FlxG.log(FlxG.camera.zoom);
 			}
+		}
+		
+		public function beginZoom() : void
+		{
+			zoomMode = true;
+			zoomSwitchTimer = zoomSwitchTimerDelay;
+			desiredZoomReached = false;
+		}
+		
+		public function endZoom() : void
+		{
+			zoomMode = false;
+			zoomSwitchTimer = zoomSwitchTimerDelay;
+			desiredZoomReached = false;
 		}
 	}
 }
