@@ -22,8 +22,12 @@ package tutorial
 		public static const STATE_FCUS_STRT:int = 5;
 		/** Focus Mode in progress (zoomed, sprinting, white background) */
 		public static const STATE_FCUS_PROG:int = 6;
+		
+		public static const STATE_NXTL_SLOW1:int = 7;
+		
+		public static const STATE_NXTL_SLOW2:int = 8;
 		/** Focus Mode stopped */
-		public static const STATE_FCUS_STOP:int = 7;
+		//public static const STATE_FCUS_STOP:int = 9;
 		
 		public var state:int = STATE_FREE_ROAM;
 		private var lastAnimFinished:Boolean = true;
@@ -32,6 +36,7 @@ package tutorial
 		private var lastAnimFrameRate:int = 9;
 		private var trigger : Trigger;
 		private var lastX : int;
+		private var odeermeter : int;
 		
 		
 		/**
@@ -206,7 +211,7 @@ package tutorial
 					velocity.x = 0.0;
 					velocity.y = 0.0;
 					state = STATE_TRIG_APRC_STOP;
-					// cheat
+					// TODO: intermediary animation
 					if (trigger.shortCircuit)
 					{
 						state = STATE_FREE_ROAM;
@@ -217,10 +222,59 @@ package tutorial
 							changeDirection();
 						
 						 moveSprint();
+						 odeermeter = 0;
+						 state = STATE_FCUS_STRT;
 					}
 					
 				}
+			} else if (state == STATE_FCUS_STRT)
+			{
+				if (odeermeter >= 2500)
+				{
+					state = STATE_FCUS_PROG;
+					odeermeter = 0;
+					// TODO: add another ring
+				}
+			} else if (state == STATE_FCUS_PROG)
+			{
+				var fog : Number = odeermeter / 2500.0;
+				if (fog > 1.0) fog = 1.0;
+				IndoorHouseLevel.instance.setFog(fog);
+				
+				if (odeermeter >= 2500)
+				{
+					IndoorHouseLevel.instance.nextLevel();
+					state = STATE_NXTL_SLOW1;
+					odeermeter = 0;
+				}
+			} else if (state == STATE_NXTL_SLOW1)
+			{
+				var fog : Number = 1.0 - (odeermeter / 2500.0);
+				if (fog < 0.0) fog = 0.0;
+				IndoorHouseLevel.instance.setFog( fog);
+				
+				if (odeermeter >= 2500)
+				{
+					state = STATE_NXTL_SLOW2;
+					// TODO: make gradual
+					IndoorHouseLevel.instance.endZoom();
+				}
+			} else if (state == STATE_NXTL_SLOW2)
+			{
+				if (odeermeter >= 2500)
+				{
+					state = STATE_NXTL_SLOW2;
+					// TODO: make gradual
+					IndoorHouseLevel.instance.endZoom();
+					state = STATE_FREE_ROAM;
+				}
 			}
+			
+			var delta : int = FlxU.abs(this.x - lastX);
+			if (delta > 1000)
+				delta = 0; // warp, don't count it;
+			odeermeter += delta;
+			lastX = this.x;
 		}
 		
 		public function triggerBegin(byTrigger : Trigger) : void {

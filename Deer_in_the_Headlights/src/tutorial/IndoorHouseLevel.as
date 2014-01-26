@@ -133,6 +133,10 @@ package tutorial
 			}
 		}
 		
+		public function nextLevel() : void {
+			setLAP((currentLAPIndex + 1) % Assets.LAs.length);
+		}
+		
 		/**
 		 * Update each timestep
 		 */
@@ -196,7 +200,7 @@ package tutorial
 			else if (FlxG.keys.pressed("SIX"))
 				setLAP(Assets.REGION_06);
 			else if (FlxG.keys.pressed("L"))
-				setLAP((currentLAPIndex + 1) % Assets.LAs.length);
+				nextLevel();
 		}
 	}
 }

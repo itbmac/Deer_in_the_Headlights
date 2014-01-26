@@ -25,7 +25,7 @@ package topdown
 		public var srtScreenGroup:FlxGroup;
 		private var srtScreenImg: FlxSprite;
 		private var panicOverlayImg:FlxSprite;
-		private var fogOverlayImg:FlxSprite;
+		public var fogOverlayImg:FlxSprite;
 		private var foregroundImg:FlxSprite;
 		
 		/**
@@ -338,6 +338,12 @@ package topdown
 			zoomMode = false;
 			zoomSwitchTimer = zoomSwitchTimerDelay;
 			desiredZoomReached = false;
+		}
+		
+		public function setFog(val : Number): void
+		{
+			fogOverlayImg.alpha = val;
+			FlxG.log(val);
 		}
 	}
 }
