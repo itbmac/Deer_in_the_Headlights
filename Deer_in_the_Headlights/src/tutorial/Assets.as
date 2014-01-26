@@ -53,7 +53,7 @@ package tutorial
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/images/start_screen_3.png")]           public static var HUD_START_SCREEN:Class;
-		[Embed(source = "../../assets/images/panic_mode_extreme.png")]       public static var FOG_OVERLAY:Class;
+		[Embed(source = "../../assets/images/panic_mode_extreme_square.png")]       public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
 		
@@ -88,7 +88,7 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200)
+			new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200, true, false, true)
 				//new FixedObjectPrototype(Assets.TREE1, 50, 50)
 				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
 				/*new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 1.0),

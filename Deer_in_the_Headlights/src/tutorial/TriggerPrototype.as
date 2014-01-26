@@ -11,10 +11,19 @@ package tutorial
 		private var yProximityOffset : Number;
 		private var proximityThreshold : Number;
 		
-		public function TriggerPrototype(graphic:Class, relX:int, relY:int, proximityThreshold:Number=250, xProximityOffset:Number = 0, yProximityOffset:Number = 0,
+		public var zoomOnStop : Boolean ;
+		public var shortCircuit : Boolean; // simply zoom out after stopping
+		public var flipDirectionOnRun : Boolean;
+		
+		public function TriggerPrototype(graphic:Class, relX:int, relY:int, proximityThreshold:Number = 250, xProximityOffset:Number = 0,
+			yProximityOffset:Number = 0,zoomOnStop : Boolean = true, shortCircuit : Boolean = false, flipDirectionOnRun : Boolean = true,
 			scale:Number = 1.0, state:int = 0, movementStyle:int = 0, region:int = 0, scrollFactor:Number = 1.0) 
 		{
 			super(graphic, relX, relY, scale, state, movementStyle, region, scrollFactor);
+			
+			this.zoomOnStop = zoomOnStop;
+			this.shortCircuit = shortCircuit;
+			this.flipDirectionOnRun = flipDirectionOnRun;
 			
 			this.yProximityOffset = yProximityOffset;
 			var g = (new graphic).bitmapData;
@@ -40,6 +49,9 @@ package tutorial
 			go.proximityThreshold = proximityThreshold;
 			go.xProximityOffset = xProximityOffset;
 			go.yProximityOffset = yProximityOffset;
+			go.zoomOnStop = zoomOnStop;
+			go.shortCircuit = shortCircuit;
+			go.flipDirectionOnRun = flipDirectionOnRun;
 			
 			return go;
 		}
