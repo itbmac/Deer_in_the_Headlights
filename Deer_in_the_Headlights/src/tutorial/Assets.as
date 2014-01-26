@@ -71,6 +71,13 @@ package tutorial
 		[Embed(source = "../../assets/sound/god_beat_3.mp3")]      public static var track2:Class; // music for region 3-4
 		[Embed(source = "../../assets/sound/street_music_1.mp3")]  public static var track3:Class; // music for region 5
 		[Embed(source = "../../assets/sound/act_1_hack.mp3")]      public static var track4:Class; // music for region 6
+
+		
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ----------------------------------------------                SOUND EFFECTS                     ----------------------------------------
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		[Embed(source = "../../assets/sound/light_voltage.mp3")]      public static var SCARED:Class; // music when scared; TODO: change me
+		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------               REGION ENCODINGS               --------------------------------------------
