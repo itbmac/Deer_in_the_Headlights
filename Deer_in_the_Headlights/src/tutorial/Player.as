@@ -244,6 +244,8 @@ package tutorial
 			} 
 			else if (state == STATE_FCUS_STRT)
 			{
+				if (!sprint)
+					moveSprint();
 				if (odeermeter >= 2500)
 				{
 					state = STATE_FCUS_PROG;
