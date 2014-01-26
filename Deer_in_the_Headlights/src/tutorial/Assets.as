@@ -95,7 +95,7 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.STREETLIGHT, 1590, 400, 250, 200, 200, true, false, true,1000),
+				new TriggerPrototype(Assets.STREETLIGHT, 1590, 475, 250, 200, 200, true, false, true,0),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
@@ -114,7 +114,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,1000),
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,0),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
@@ -133,7 +133,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.CAR_TRIGGER, 3590, 400, 250, 200, 200,true, false, true,1000)
+				new TriggerPrototype(Assets.CAR_TRIGGER, 3590, 600, 400, 200, 200,true, false, true,0)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS, [[Assets.R_03_L],[Assets.R_03_C],[Assets.R_03_R]]);
@@ -151,7 +151,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.STOPLIGHT, 2590, 400, 250, 200, 200,true, false, true,1000)
+				new TriggerPrototype(Assets.STOPLIGHT, 2590, 400, 250, 200, 200,true, false, true,0)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS, [[Assets.R_04_L],[Assets.R_04_C],[Assets.R_04_R]]);
@@ -168,7 +168,7 @@ package tutorial
 													);
 		
 		private static var LA_05_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.ROOT_TRIGGER, 2590, 400, 250, 200, 200,true, false, true,1000)
+				new TriggerPrototype(Assets.ROOT_TRIGGER, 2590, 750, 150, 200, 100,true, false, true,0)
 			);	
 		
 		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS, [[Assets.R_05_L],[Assets.R_05_C],[Assets.R_05_R]]);
