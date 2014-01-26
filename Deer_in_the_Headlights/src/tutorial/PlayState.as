@@ -42,6 +42,13 @@ package tutorial
 			// whenever the user presses the space bar.
 			
 			super.update();
+			
+			if (FlxG.keys.pressed("R"))
+			{
+				trace("Reloading game");
+				this.remove(LEVEL);
+				create();
+			}
 		}
 	}
 }
