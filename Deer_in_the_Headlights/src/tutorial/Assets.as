@@ -26,17 +26,17 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                  DEMO IMGS                   --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_BL:Class;
+		[Embed(source = "../../assets/grounds/area_01_back_center.png")]   public static var R_01_BL:Class;
 		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_FL:Class;
 		
 		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_BL:Class;
 		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_FL:Class;
 		
-		[Embed(source = "../../assets/demo/area_03_back.png")]             public static var R_03_BL:Class;
+		[Embed(source = "../../assets/grounds/area_03_back.png")]          public static var R_03_BL:Class;
 		[Embed(source = "../../assets/demo/area_03_back.png")]             public static var R_03_FL:Class;
 		
-		[Embed(source = "../../assets/demo/area_04_back.png")]             public static var R_04_BL:Class;
-		[Embed(source = "../../assets/demo/area_04_fore.png")]             public static var R_04_FL:Class;
+		[Embed(source = "../../assets/grounds/area_04_back.png")]          public static var R_04_BL:Class;
+		[Embed(source = "../../assets/grounds/area_04_fore.png")]          public static var R_04_FL:Class;
 		
 		[Embed(source = "../../assets/demo/area_05_back.png")]             public static var R_05_BL:Class;
 		[Embed(source = "../../assets/demo/area_05_fore.png")]             public static var R_05_FL:Class;
@@ -52,7 +52,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/images/start_screen_3.png")]           public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/start_screen_4.png")]           public static var HUD_START_SCREEN:Class;
 		[Embed(source = "../../assets/images/panic_mode_extreme_square.png")]       public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
