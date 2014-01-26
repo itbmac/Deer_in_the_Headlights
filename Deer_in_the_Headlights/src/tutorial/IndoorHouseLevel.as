@@ -233,6 +233,17 @@ package tutorial
 				setLAP(Assets.REGION_06);
 			else if (FlxG.keys.pressed("L"))
 				nextLevel();
+			
+			if (FlxG.keys.pressed("X"))
+			{
+				player.acceleration.x = 0;
+				player.acceleration.y = 0;
+				player.velocity.x = 0;
+				player.velocity.y = 0;
+				setFog(0.0);
+				player.state = Player.STATE_FREE_ROAM;
+				endZoom();
+			}
 		}
 	}
 }
