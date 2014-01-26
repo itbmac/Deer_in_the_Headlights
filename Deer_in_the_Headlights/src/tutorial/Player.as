@@ -126,14 +126,14 @@ package tutorial
 					lastAnimFrameRate = 9;
 				play(lastAnimName + lastAnimFrameRate);
 				animSwitch = false;
-				trace("same anim diff framerate \n");
-				trace("." + lastAnimName + lastAnimFrameRate + ".");
+				//trace("same anim diff framerate \n");
+				//trace("." + lastAnimName + lastAnimFrameRate + ".");
 			}
 			else if ((curAnimName == lastAnimName) && !animSwitch)
 			{
 				play(lastAnimName + lastAnimFrameRate);
-				trace("same anim same framerate \n");
-				trace("." + lastAnimName + lastAnimFrameRate + ".");
+				//trace("same anim same framerate \n");
+				//trace("." + lastAnimName + lastAnimFrameRate + ".");
 			}
 			else
 			{
@@ -141,8 +141,8 @@ package tutorial
 				lastAnimName = curAnimName;
 				if (animSwitch)
 					animSwitch = false;
-				trace("diff anim \n");
-				trace(curAnimName + lastAnimFrameRate);
+				//trace("diff anim \n");
+				//trace(curAnimName + lastAnimFrameRate);
 			}
 		}
 		

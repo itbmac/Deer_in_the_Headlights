@@ -52,6 +52,8 @@ package tutorial
 		 */
 		override protected function createPlayer():void {
 			player = new Player(DEFAULT_START.x, DEFAULT_START.y); //(playerStart.x, playerStart.y); // (4290, 720);
+			FlxG.watch(player, "x", "Player x");
+			FlxG.watch(this, "total", "Total Entities");
 		}
 		
 		override protected function createMap() : void {
@@ -80,6 +82,8 @@ package tutorial
 			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this);
 			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this);
 			LACurrent.toggleAllContent(true);
+			LALeft.toggleAllContent(true);
+			LARight.toggleAllContent(true);
 			
 			if (player != null)
 			{
@@ -88,6 +92,8 @@ package tutorial
 			}
 		}
 		
+		var done : Boolean;
+		
 		/**
 		 * Update each timestep
 		 */
@@ -95,26 +101,32 @@ package tutorial
 		{			
 			super.update(); // NOTE: map -> player collision happens in super.update()
 
-			FlxG.log("Player at " + player.x.toString()  );
+			//FlxG.log("Player at " + player.x.toString()  );
 			var center : Number = (player.x + player.width / 2) ;
 			
+			if (done)
+			return;
 			// TODO: move to subroutine?
 			var currentArea : Rectangle = LACurrent.area;
 			if (! LACurrent.area.contains(player.x, player.y))
 			{
 				if (player.x < currentArea.left)
 				{
+					FlxG.log("Left shift");
+					FlxG.log(npcGroup.length);
 					LARight.destroy();
+					FlxG.log(npcGroup.length);
 					
 					player.x = currentArea.right - (currentArea.left - player.x);
+					LACurrent.shift(5000);
+					LALeft.shift(5000);
 					LARight = LACurrent;
 					LACurrent = LALeft;
 					
-					LARight.shift(5000);
-					LACurrent.shift(5000);
 					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
 				} else if (player.x > currentArea.right)
 				{
+					trace("Right shift");
 					LALeft.destroy();
 					
 					player.x = currentArea.left + (player.x - currentArea.right);

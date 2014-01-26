@@ -81,10 +81,9 @@ package tutorial
 		
 		override public function destroy():void
 		{
-			super.destroy();
 			for each (var npc:GameObject in areasNPCs)
 			{
-				npcGroup.remove(npc);
+				npcGroup.remove(npc, true);
 				npc.destroy();
 			}
 			
@@ -93,6 +92,8 @@ package tutorial
 				imgGroup.remove(backg);
 				backg.destroy();
 			}
+			
+			super.destroy();
 		}
 		
 		protected function createNPCs(NPC_Array:Array, player:Player, npcGroup:FlxGroup):void

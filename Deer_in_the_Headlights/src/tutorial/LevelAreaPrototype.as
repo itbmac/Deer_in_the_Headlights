@@ -20,24 +20,26 @@ package tutorial
 		
 		public function make(pos : FlxPoint, level : TopDownLevel) : LevelArea
 		{
-			trace("Got " + proceduralObjectPrototypes.length + " prototypes");
+			//trace("Got " + proceduralObjectPrototypes.length + " prototypes");
 			var npcArray : Array= new Array();
 			
 			for each (var proceduralObjectPrototype : ProceduralObjectProtoype in proceduralObjectPrototypes)
 			{
+				trace("--");
 				var last : int = -1;
-				// TODO: maybe allow overlap across regions? by deleting "- proceduralObjectPrototype.width"
-				for (var x:int = pos.x; x < pos.x + PlayState.LEVEL_SIZE.x - proceduralObjectPrototype.width; x++)
+				
+				for (var x:int = pos.x; x < pos.x + LevelArea.DEFAULT_WIDTH; x++)
 				{
 					var newGameObject : GameObject = proceduralObjectPrototype.request(x, last);
 					if (newGameObject != null)
 					{
+						trace("Created at " + x);
 						last = x;
 						npcArray.push(newGameObject);
 					}
 				}
 			}
-			trace("Generated " + npcArray.length + " npcs");
+			trace("===== Generated " + npcArray.length + " npcs =====");
 			
 			return new LevelArea(pos, npcArray, Assets.LA_BLS[0], Assets.LA_SFS[0], level.player, level.imgGroup, level.npcGroup, 0);
 		}

@@ -68,6 +68,24 @@ package topdown
 			this.create();
 		}
 		
+		public function get total() : int {
+			return groupTotal(this as FlxGroup);
+		}
+		
+		public function groupTotal(g : FlxGroup) : int {
+			var total : int = 0;
+			for each (var x : FlxBasic in g.members) {
+				if (x is FlxGroup)
+				{
+					total += groupTotal(x as FlxGroup);
+				} else
+				{
+					total += 1;
+				}
+			}
+			return total;
+		}
+		
 		/**
 		 * Create the whole level, including all sprites, maps, blocks, etc
 		 */
@@ -137,7 +155,7 @@ package topdown
 		 * Create the default camera for this level
 		 */
 		protected function createCamera():void {
-			trace(levelSize.x);
+			//trace(levelSize.x);
 			
 			FlxG.worldBounds = new FlxRect(0, 0, levelSize.x, levelSize.y);
 			

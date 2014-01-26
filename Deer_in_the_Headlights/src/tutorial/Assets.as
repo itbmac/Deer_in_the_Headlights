@@ -68,15 +68,13 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
-				new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
-				new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 0.9),
-				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.5, 1),
-				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.8, 0.75),
-				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
-				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
-				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_PLAINS, 0.00015, 200)
-				
-				
+				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
+				new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 1.0),
+				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 1, 1),
+				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 1, 0.75),
+				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),
+				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),
+				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_PLAINS, 0.00025, 200)
 			);	
 		
 		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);

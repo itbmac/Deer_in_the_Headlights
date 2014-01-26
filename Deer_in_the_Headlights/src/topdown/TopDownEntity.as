@@ -11,7 +11,7 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const WALKSPEED:int = 130;
+		public static const WALKSPEED:int = 200;
 		public static const RUNSPEED:int =  280;
 		public static const FRICTION:Number = 5;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
@@ -113,7 +113,7 @@ package topdown
 			curScale = NORM_SCALE + (((y - MIN_Y) / RANGE_Y) * 0.2);
 			scale = new FlxPoint(curScale, curScale);
 			
-			trace(scale.x + " ;;; " + scale.y);
+			//trace(scale.x + " ;;; " + scale.y);
 		}
 		
 		/**
