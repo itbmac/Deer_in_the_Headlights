@@ -122,7 +122,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200, true, false, true, 0),
+				new TriggerPrototype(Assets.FOUNTAIN, 3590, 450, 150, 200, 200, true, false, true, 0),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		

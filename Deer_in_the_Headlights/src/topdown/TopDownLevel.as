@@ -262,7 +262,9 @@ package topdown
 					}
 						
 					if (FlxG.keys.pressed("SPACE") && moving)
-						player.moveSprint();
+					{
+						//player.moveSprint();
+					}
 					else
 						player.sprint = false;
 						
@@ -272,12 +274,14 @@ package topdown
 				if (zoomSwitchTimer > 0)
 					zoomSwitchTimer--;
 					
+				/*
 				if (FlxG.keys.pressed("ENTER") && (zoomSwitchTimer <= 0))
 				{
 					zoomMode = !zoomMode;
 					zoomSwitchTimer = zoomSwitchTimerDelay;
 					desiredZoomReached = false;
 				}
+				*/
 				
 				if (zoomMode)
 				{
