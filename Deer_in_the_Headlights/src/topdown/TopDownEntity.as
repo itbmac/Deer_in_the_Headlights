@@ -17,8 +17,8 @@ package topdown
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
-		public static const MIN_Y:int = 635;
-		public static const MAX_Y:int = 735;//635;
+		public static const MIN_Y:int = 642;
+		public static const MAX_Y:int = 731;//635;
 		public var RANGE_Y:int = MAX_Y - MIN_Y;
 		public static const NORM_SCALE :Number = .6;
 		public var curScale :Number = .35;
