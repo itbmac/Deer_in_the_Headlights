@@ -237,21 +237,22 @@ package tutorial
 				}
 			} else if (state == STATE_FCUS_PROG)
 			{
-				var fog : Number = odeermeter / 2500.0;
+				var fog : Number = odeermeter / 2400.0;
 				if (fog > 1.0) fog = 1.0;
 				IndoorHouseLevel.instance.setFog(fog);
 				
 				if (odeermeter >= 2500)
 				{
+					odeermeter = 0;
 					IndoorHouseLevel.instance.nextLevel();
 					state = STATE_NXTL_SLOW1;
-					odeermeter = 0;
 				}
 			} else if (state == STATE_NXTL_SLOW1)
 			{
-				var fog : Number = 1.0 - (odeermeter / 2500.0);
+				var fog : Number = ((2500 - odeermeter) / 2400.0);
+				if (fog > 1.0) fog = 1.0;
 				if (fog < 0.0) fog = 0.0;
-				IndoorHouseLevel.instance.setFog( fog);
+				IndoorHouseLevel.instance.setFog(fog);
 				
 				if (odeermeter >= 2500)
 				{
