@@ -50,7 +50,7 @@ package tutorial
 			}
 			trace("===== Generated " + npcArray.length + " objects =====");
 			
-			return new LevelArea(pos, npcArray, Assets.LA_BLS[index-1], Assets.LA_SFS[index-1], level.player, level.imgGroup, level.npcGroup, 0);
+			return new LevelArea(pos, npcArray, Assets.LA_BLS[index-1], Assets.LA_SFS[index-1], level.player, level.backgroundImgGroup, level.npcGroup, 0,level.foregroundImgGroup, Assets.LA_FLS[index-1]);
 		}
 		
 	}
