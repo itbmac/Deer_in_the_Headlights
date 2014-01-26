@@ -25,7 +25,7 @@ package tutorial
 			
 			for each (var proceduralObjectPrototype : ProceduralObjectProtoype in proceduralObjectPrototypes)
 			{
-				trace("--");
+				//trace("--");
 				var last : int = -1;
 				
 				for (var x:int = pos.x; x < pos.x + LevelArea.DEFAULT_WIDTH; x++)
@@ -33,13 +33,13 @@ package tutorial
 					var newGameObject : GameObject = proceduralObjectPrototype.request(x, last);
 					if (newGameObject != null)
 					{
-						trace("Created at " + x);
+						//trace("Created at " + x);
 						last = x;
 						npcArray.push(newGameObject);
 					}
 				}
 			}
-			trace("===== Generated " + npcArray.length + " npcs =====");
+			//trace("===== Generated " + npcArray.length + " npcs =====");
 			
 			return new LevelArea(pos, npcArray, Assets.LA_BLS[index-1], Assets.LA_SFS[index-1], level.player, level.imgGroup, level.npcGroup, 0);
 		}

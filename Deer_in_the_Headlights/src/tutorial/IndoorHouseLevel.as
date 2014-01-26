@@ -150,9 +150,7 @@ package tutorial
 				if (player.x < currentArea.left)
 				{
 					FlxG.log("Left shift");
-					FlxG.log(npcGroup.length);
 					LARight.destroy();
-					FlxG.log(npcGroup.length);
 					
 					player.x = currentArea.right - (currentArea.left - player.x);
 					LACurrent.shift(5000);
@@ -163,7 +161,7 @@ package tutorial
 					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex);
 				} else if (player.x > currentArea.right)
 				{
-					trace("Right shift");
+					FlxG.log("Right shift");
 					LALeft.destroy();
 					
 					player.x = currentArea.left + (player.x - currentArea.right);
