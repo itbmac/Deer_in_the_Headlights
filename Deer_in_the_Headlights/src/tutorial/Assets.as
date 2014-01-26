@@ -21,7 +21,7 @@ package tutorial
 		[Embed(source = "../../assets/forest/forest_backdrop_light.png")]                public static var FOREST_BG_LIGHT:Class;
 		[Embed(source = "../../assets/forest/ground_mid_light.png")]                     public static var FOREST_GROUND_MID_LIGHT:Class;*/
 		[Embed(source = "../../assets/forest/drunk_leaf.png")]                           public static var DRUNK_LEAF:Class;
-		
+		[Embed(source = "../../assets/forest/firefly.png")]                           public static var FIREFLY:Class;
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                  DEMO IMGS                   --------------------------------------------
@@ -89,7 +89,7 @@ package tutorial
 													);
 		private static var LA_01_NPCS:Array = new Array(
 			new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200, true, false, true,1000),
-			new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
+			new ProceduralObjectProtoype(Assets.DRUNK_LEAF, 0, 0, 0, 0.01, 0, 0, 1.0, 1.0, 64.0)
 				//new FixedObjectPrototype(Assets.TREE1, 50, 50)
 				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
 				/*new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 1.0),
@@ -186,6 +186,7 @@ package tutorial
 													);
 		
 		private static var LA_06_NPCS:Array = new Array(
+		new ProceduralObjectProtoype(Assets.FIREFLY,0,0,0,0.01,0,LevelArea.DEFAULT_HEIGHT-200,1.0,1.0,200.0)
 				
 			);	
 		
