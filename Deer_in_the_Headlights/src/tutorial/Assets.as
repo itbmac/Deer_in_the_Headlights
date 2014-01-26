@@ -13,6 +13,13 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/deer/deer3_quad_small.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                         public static var TREE:Class;
+		[Embed(source = "../../assets/forest/tree1_resize.png")]                         public static var TREE1:Class;
+		[Embed(source = "../../assets/forest/tree2_resize.png")]                         public static var TREE2:Class;
+		[Embed(source = "../../assets/forest/tree3_resize.png")]                         public static var TREE3:Class;
+		[Embed(source = "../../assets/forest/forest_mid_light.png")]                         public static var FOREST_MID_LIGHT:Class;
+		[Embed(source = "../../assets/forest/tree_bg_light.png")]                         public static var TREE_BG_LIGHT:Class;
+		[Embed(source = "../../assets/forest/forest_backdrop_light.png")]                         public static var FOREST_BG_LIGHT:Class;
+		[Embed(source = "../../assets/forest/ground_mid_light.png")]                         public static var FOREST_GROUND_MID_LIGHT:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -56,12 +63,20 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 01                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_01_BL:Array = new Array( Assets.FIR
+		public static var LA_01_BL:Array = new Array( //Assets.FIR
 													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
-				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+				new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
+				new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 0.9),
+				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.5, 1),
+				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.8, 0.75),
+				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
+				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
+				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_PLAINS, 0.00015, 200)
+				
+				
 			);	
 		
 		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);

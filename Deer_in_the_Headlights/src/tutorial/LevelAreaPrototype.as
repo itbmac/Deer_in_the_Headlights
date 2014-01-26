@@ -29,7 +29,7 @@ package tutorial
 				// TODO: maybe allow overlap across regions? by deleting "- proceduralObjectPrototype.width"
 				for (var x:int = pos.x; x < pos.x + PlayState.LEVEL_SIZE.x - proceduralObjectPrototype.width; x++)
 				{
-					var newGameObject : GameObject = proceduralObjectPrototype.make(x, last);
+					var newGameObject : GameObject = proceduralObjectPrototype.request(x, last);
 					if (newGameObject != null)
 					{
 						last = x;
