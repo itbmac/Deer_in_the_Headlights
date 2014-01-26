@@ -17,9 +17,10 @@ package tutorial
 		public var shortCircuit : Boolean; // simply zoom out after stopping
 		public var flipDirectionOnRun : Boolean;
 		
+		private var sound :Class;
 		public function TriggerPrototype(graphic:Class, relX:int, relY:int, proximityThreshold:Number = 250, xProximityOffset:Number = 0,
 			yProximityOffset:Number = 0,zoomOnStop : Boolean = true, shortCircuit : Boolean = false, flipDirectionOnRun : Boolean = true,
-			minOdeermeter:int = 0, scale:Number = 1.0, state:int = 0, movementStyle:int = 0, region:int = 0, scrollFactor:Number = 1.0) 
+			minOdeermeter:int = 0, sound:Class=null, scale:Number = 1.0, state:int = 0, movementStyle:int = 0, region:int = 0, scrollFactor:Number = 1.0) 
 		{
 			super(graphic, relX, relY, scale, state, minOdeermeter, movementStyle, region, scrollFactor);
 			
@@ -41,6 +42,8 @@ package tutorial
 				this.yProximityOffset = yProximityOffset;
 				
 			this.proximityThreshold = proximityThreshold;
+			
+			this.sound = sound;
 		}
 		
 		override public function make(base : FlxPoint, player : Player) : GameObject
@@ -57,6 +60,7 @@ package tutorial
 				go.zoomOnStop = zoomOnStop;
 				go.shortCircuit = shortCircuit;
 				go.flipDirectionOnRun = flipDirectionOnRun;
+				go.sound = sound;
 				
 				return go;
 			} else

@@ -15,6 +15,7 @@ package tutorial
 		public var visited:Boolean;
 		public var shortCircuit : Boolean = false; // simply zoom out after stopping
 		public var flipDirectionOnRun : Boolean = true;
+		public var sound : Class;
 		
 		public function Trigger(X:int, Y:int, player:TopDownEntity=null, LA:int=0, initialState:int=0, dispGraphic:Class=null, dispText:String="", dispRegion:int=0, moveStyle:int=0, xOffsetThres:int=0, yOffsetThres:int=0, xVel:int=0, yVel:int=0) 
 		{
@@ -29,6 +30,8 @@ package tutorial
 		public function animate():void 
 		{
 			play("animate");
+			if (sound != null)
+				FlxG.play(sound);
 		}
 	}
 

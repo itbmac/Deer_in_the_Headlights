@@ -77,7 +77,9 @@ package tutorial
 		// ----------------------------------------------                SOUND EFFECTS                     ----------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/sound/scared.mp3")]      public static var SCARED:Class; // music when scared
-		
+		[Embed(source = "../../assets/sound/fountain_2.mp3")]      public static var WHAT_DOES_THE_FOUNTAIN_SAY:Class; // music when scared
+		[Embed(source = "../../assets/sound/lightbulb_smash.mp3")]      public static var LIGHTBULB_SMASH:Class; // music when scared
+		[Embed(source = "../../assets/sound/car_engine.mp3")]      public static var CAR_ENGINE:Class; // music when scared
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------               REGION ENCODINGS               --------------------------------------------
@@ -103,7 +105,7 @@ package tutorial
 													);
 		private static var LA_01_NPCS:Array = new Array(
 		//new FixedObjectPrototype(Assets.CAR_TRIGGER,990,500),
-				new TriggerPrototype(Assets.STREETLIGHT, 1590, 475, 250, 200, 200, true, false, true,500),
+		new TriggerPrototype(Assets.STREETLIGHT, 1590, 475, 250, 200, 200, true, false, true,500,Assets.LIGHTBULB_SMASH),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
@@ -122,7 +124,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 3590, 450, 190, 200, 200, true, false, true, 500),
+		new TriggerPrototype(Assets.FOUNTAIN, 3590, 450, 190, 200, 200, true, false, true, 500,Assets.WHAT_DOES_THE_FOUNTAIN_SAY),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
@@ -141,7 +143,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.CAR_TRIGGER, 3088, 580, 400, 200, 200,true, false, true,500)
+		new TriggerPrototype(Assets.CAR_TRIGGER, 3088, 580, 400, 200, 200,true, false, true,500, Assets.CAR_ENGINE)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS, [[Assets.R_03_L],[Assets.R_03_C],[Assets.R_03_R]]);
@@ -159,7 +161,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.STOPLIGHT, 1935, 400, 250, 200, 200,true, false, true,500)
+		new TriggerPrototype(Assets.STOPLIGHT, 1935, 400, 250, 200, 200,true, false, true,500, Assets.LIGHTBULB_SMASH)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS, [[Assets.R_04_L],[Assets.R_04_C],[Assets.R_04_R]]);
