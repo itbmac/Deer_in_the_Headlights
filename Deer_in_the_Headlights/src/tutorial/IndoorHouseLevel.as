@@ -33,7 +33,7 @@ package tutorial
 		private var CurrentLAP : LevelAreaPrototype;
 		private var currentLAPIndex : int;
 		
-		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 90, 620);
+		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 990, 620);
 		
 		private var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
 

@@ -37,9 +37,9 @@ package topdown
 		public var maxDistToSwitch:int = 500;
 		public var currObjectStr:String = "";
 		
-		private var desiredZoom:Number = 1;
-		private var desiredZoomReached:Boolean = false;
-		public var zoomMode:Boolean = false;
+		private var desiredZoom:Number = 2;
+		private var desiredZoomReached:Boolean = true;
+		public var zoomMode:Boolean = true;
 		private var zoomOffset:int = -325;
 		private var zoomAcceleration:Number = .05;
 		private var zoomSwitchTimer:int = 0;
@@ -236,6 +236,8 @@ package topdown
 				FlxG.keys.update();
 				if (FlxG.keys.pressed("SPACE"))
 				{
+					zoomMode = false;
+					desiredZoomReached = false;
 					srtScreenGroup.exists = false;
 					gameNotStarted = false;
 				}

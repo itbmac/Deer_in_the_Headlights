@@ -42,7 +42,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/images/start_screen_2.png")]           public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/start_screen_3.png")]           public static var HUD_START_SCREEN:Class;
 		[Embed(source = "../../assets/images/panic_mode_square_3.png")]      public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
