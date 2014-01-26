@@ -14,7 +14,8 @@ package tutorial
 		 * @param	Y	Y location of the entity
 		 */
 		
-		public var state:int = 0; // 0 - attached, 1 - leaving, 2 - free, 3 - arriving, 4 - arrived (add to log)
+		
+		public var state:int = 0;
 		private var lastAnimFinished:Boolean = true;
 		
 		public function Player(X:Number=100, Y:Number=100):void {
@@ -57,22 +58,27 @@ package tutorial
 		 * NOTE: these will be different if your art is different
 		 */
 		override protected function createAnimations():void {
-			addAnimation("walk", [0,1,2,3,4,5,6,7,8], 12, true);
-			addAnimation("idle", [0], 7, true);
-			addAnimation("expand", [0], 7, false);
-			addAnimation("contract", [0], 7, false);
+			addAnimation("walk_right", [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
+			addAnimation("walk_left",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
+			addAnimation("sprint_right",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
+			addAnimation("sprint_left", [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
+			addAnimation("idle_right", [0], 12, true);
+			addAnimation("idle_left", [9], 12, true);
 		}
 		override protected function updateAnimations():void 
 		{
-			if (Math.abs(velocity.x) > 0 || Math.abs(velocity.y) > 0) 
-			{
-				play("walk");
-			}
-			else {
-				play("idle");
-			}
-			
-			//= (velocity.x > 0);
+			if (velocity.x > (RUNSPEED * 4))
+				play("sprint_right");
+			else if (velocity.x < (RUNSPEED * -4))
+				play("sprint_left");
+			else if (velocity.x > 0) 
+				play("walk_right");
+			else if (velocity.x < 0) 
+				play("walk_left");
+			else if (facing == RIGHT)
+				play("idle_right");
+			else if (facing == LEFT)
+				play("idle_left");
 		}
 		
 		override public function update():void {
@@ -81,24 +87,15 @@ package tutorial
 			
 			switch (state) 
 			{
-				case 0:
-					visible = true;
+				case STATE_FREE_ROAM:
 					break;
 				case 1:
-					visible = true;
-					if (this.finished && !lastAnimFinished)
-						state = 2;
 					break;
 				case 2:
-					visible = true;
 					break;
 				case 3:
-					visible = true;
-					if (this.finished && !lastAnimFinished)
-						state = 4;
 					break;
 				case 4:
-					visible = true;
 					break;
 				default:
 			}

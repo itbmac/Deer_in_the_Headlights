@@ -31,17 +31,12 @@ package tutorial
 			areasBackgrounds = new Array();
 			
 			for (var i:int = 0; i < BACKGROUND_IMG_ARRAY.length; i++)
-			{
-				var s = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
-				var z = LEVEL_POSITION.x;
-					
-				var adjusted = z; // - (z - 384) * (1 - s); // - z * (1 - s); // (z - 100) * s + 100
-				
-				var background: FlxSprite = new FlxSprite(adjusted , LEVEL_POSITION.y, BACKGROUND_IMG_ARRAY[i]); 
+			{	
+				var background: FlxSprite = new FlxSprite(LEVEL_POSITION.x , LEVEL_POSITION.y, BACKGROUND_IMG_ARRAY[i]); 
 				
 				background.scrollFactor.x = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
 				background.scrollFactor.y = BACKGROUND_SCROLL_FACTOR_ARRAY[i].y;
-				background.mod = true;
+				//background.mod = true;
 				background.exists = true;
 				imgGroup.add(background);
 				areasBackgrounds.push(background);

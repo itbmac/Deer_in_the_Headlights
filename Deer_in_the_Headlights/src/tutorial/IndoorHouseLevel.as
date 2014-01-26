@@ -61,9 +61,9 @@ package tutorial
 			CurrentLAP = new LevelAreaPrototype(new Array()); 
 			// TODO: make actually circular
 			
-			LALeft = CurrentLAP.make(new FlxPoint(midpoint - LevelArea.DEFAULT_WIDTH,0), this);
-			LACurrent = CurrentLAP.make(new FlxPoint(midpoint, 0), this);
-			LARight = CurrentLAP.make(new FlxPoint(midpoint + LevelArea.DEFAULT_WIDTH, 0), this);
+			LALeft = CurrentLAP.make(new FlxPoint(0,0), this);
+			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this);
+			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this);
 			LACurrent.toggleAllContent(true);
 			
 			/*for (var i:int = 0; i < Assets.LA_NUM_TOTAL; i++)
@@ -132,7 +132,7 @@ package tutorial
 			super.update(); // NOTE: map -> player collision happens in super.update()
 			
 			
-			//FlxG.log("Player at " + player.x.toString() + ", scroll at " + FlxG.camera.scroll.x.toString() );
+			FlxG.log("Player at " + player.x.toString()  );
 			var center : Number = (player.x + player.width / 2) ;
 			//FlxG.log("(" + (player.x -FlxG.camera.scroll.x ) + "; " + player.x + ", Scroll: " + FlxG.camera.scroll.x.toString() + "," + FlxG.camera.scroll.y.toString() + ")");
 			
@@ -143,22 +143,24 @@ package tutorial
 				if (player.x < currentArea.left)
 				{
 					LARight.destroy();
-					LACurrent.shift(5000);
-					LARight.shift(5000);
-					player.x += 5000;
 					
+					player.x = currentArea.right - (currentArea.left - player.x);
 					LARight = LACurrent;
 					LACurrent = LALeft;
+					
+					LARight.shift(5000);
+					LACurrent.shift(5000);
 					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
 				} else if (player.x > currentArea.right)
 				{
 					LALeft.destroy();
-					LACurrent.shift(-5000);
-					LARight.shift(-5000);
-					player.x += -5000;
 					
+					player.x = currentArea.left + (player.x - currentArea.right);
 					LALeft = LACurrent;
 					LACurrent = LARight;
+					LALeft.shift(-5000);
+					LACurrent.shift(-5000);
+					
 					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
 				} else
 				{
