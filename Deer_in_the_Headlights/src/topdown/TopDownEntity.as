@@ -11,14 +11,14 @@ package topdown
 		/**
 		 * Constants
 		 */
-		public static const WALKSPEED:int = 200;
+		public static const WALKSPEED:int = 100;
 		public static const RUNSPEED:int =  280;
 		public static const FRICTION:Number = 5;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
-		public static const MIN_Y:int = 665;
-		public static const MAX_Y:int = 770;//635;
+		public static const MIN_Y:int = 635;
+		public static const MAX_Y:int = 735;//635;
 		public var RANGE_Y:int = MAX_Y - MIN_Y;
 		public static const NORM_SCALE :Number = .6;
 		public var curScale :Number = .35;
@@ -52,8 +52,8 @@ package topdown
 			super(X, Y);
 			makeGraphic(SIZE.x, SIZE.y, 0xFFFF0000); // use this if you want a generic box graphic by default
 			// movement
-			maxVelocity = new FlxPoint(WALKSPEED, WALKSPEED);
-			drag = new FlxPoint(WALKSPEED*.6, WALKSPEED*.7); // decelerate to a stop within 1/4 of a second
+			maxVelocity = new FlxPoint(WALKSPEED, WALKSPEED*.3);
+			drag = new FlxPoint(WALKSPEED*.6, WALKSPEED*.6); // decelerate to a stop within 1/4 of a second
 			// animations
 			createAnimations();
 		}
