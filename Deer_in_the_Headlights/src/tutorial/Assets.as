@@ -67,7 +67,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                    MUSIC                     --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/sound/act_3_min.mp3")]           public static var track1:Class; // music for region 1-2
+		[Embed(source = "../../assets/sound/act_3_min.mp3")]       public static var track1:Class; // music for region 1-2
 		[Embed(source = "../../assets/sound/god_beat_3.mp3")]      public static var track2:Class; // music for region 3-4
 		[Embed(source = "../../assets/sound/street_music_1.mp3")]  public static var track3:Class; // music for region 5
 		[Embed(source = "../../assets/sound/act_1_hack.mp3")]      public static var track4:Class; // music for region 6
@@ -141,7 +141,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.CAR_TRIGGER, 3590, 600, 400, 200, 200,true, false, true,0)
+				new TriggerPrototype(Assets.CAR_TRIGGER, 3088, 580, 400, 200, 200,true, false, true,0)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS, [[Assets.R_03_L],[Assets.R_03_C],[Assets.R_03_R]]);
@@ -159,7 +159,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.STOPLIGHT, 2590, 400, 250, 200, 200,true, false, true,0)
+				new TriggerPrototype(Assets.STOPLIGHT, 1935, 400, 250, 200, 200,true, false, true,0)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS, [[Assets.R_04_L],[Assets.R_04_C],[Assets.R_04_R]]);
@@ -176,7 +176,7 @@ package tutorial
 													);
 		
 		private static var LA_05_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.ROOT_TRIGGER, 2590, 750, 150, 200, 100,true, false, true,0)
+				new TriggerPrototype(Assets.ROOT_TRIGGER, 4019, 637, 300, 200, 100,true, false, true,0)
 			);	
 		
 		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS, [[Assets.R_05_L],[Assets.R_05_C],[Assets.R_05_R]]);
