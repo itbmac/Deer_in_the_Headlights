@@ -12,14 +12,14 @@ package tutorial
 		// ----------------------------------------------                   SPRITES                    --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		[Embed(source = "../../assets/deer/deer4.png")]                                  public static var SPRITE_DEER:Class;
-		[Embed(source = "../../assets/forest/tree2.png")]                                public static var TREE:Class;
+		/*[Embed(source = "../../assets/forest/tree2.png")]                                public static var TREE:Class;
 		[Embed(source = "../../assets/forest/tree1_resize.png")]                         public static var TREE1:Class;
 		[Embed(source = "../../assets/forest/tree2_resize.png")]                         public static var TREE2:Class;
 		[Embed(source = "../../assets/forest/tree3_resize.png")]                         public static var TREE3:Class;
 		[Embed(source = "../../assets/forest/forest_mid_light.png")]                     public static var FOREST_MID_LIGHT:Class;
 		[Embed(source = "../../assets/forest/tree_bg_light.png")]                        public static var TREE_BG_LIGHT:Class;
 		[Embed(source = "../../assets/forest/forest_backdrop_light.png")]                public static var FOREST_BG_LIGHT:Class;
-		[Embed(source = "../../assets/forest/ground_mid_light.png")]                     public static var FOREST_GROUND_MID_LIGHT:Class;
+		[Embed(source = "../../assets/forest/ground_mid_light.png")]                     public static var FOREST_GROUND_MID_LIGHT:Class;*/
 		[Embed(source = "../../assets/forest/drunk_leaf.png")]                           public static var DRUNK_LEAF:Class;
 		
 		
@@ -99,7 +99,7 @@ package tutorial
 				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),*/
 			);	
 		
-		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);
+		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS, [[Assets.R_01_BL],[Assets.R_01_BL],[Assets.R_01_BL]]);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ package tutorial
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
-		public static var LA_02 : LevelAreaPrototype = new LevelAreaPrototype(LA_02_NPCS);
+		public static var LA_02 : LevelAreaPrototype = new LevelAreaPrototype(LA_02_NPCS, [[Assets.R_02_BL],[Assets.R_02_BL],[Assets.R_02_BL]]);
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ package tutorial
 				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
-		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS);
+		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS, [[Assets.R_03_BL],[Assets.R_03_BL],[Assets.R_03_BL]]);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ package tutorial
 				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
-		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS);
+		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS, [[Assets.R_04_BL],[Assets.R_04_BL],[Assets.R_04_BL]]);
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
@@ -171,7 +171,7 @@ package tutorial
 				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
 			);	
 		
-		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS);
+		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS, [[Assets.R_05_BL],[Assets.R_05_BL],[Assets.R_05_BL]]);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ package tutorial
 				
 			);	
 		
-		public static var LA_06 : LevelAreaPrototype = new LevelAreaPrototype(LA_06_NPCS);
+		public static var LA_06 : LevelAreaPrototype = new LevelAreaPrototype(LA_06_NPCS, [[Assets.R_06_BL],[Assets.R_06_BL],[Assets.R_06_BL]]);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------

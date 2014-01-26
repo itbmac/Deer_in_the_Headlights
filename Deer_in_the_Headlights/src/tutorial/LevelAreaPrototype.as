@@ -12,14 +12,16 @@ package tutorial
 	public class LevelAreaPrototype 
 	{
 		private var proceduralObjectPrototypes : Array;
+		private var backgroundInstances : Array;
 		
-		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array,
+		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array, backgroundInstances : Array,
 			width : int = LevelArea.DEFAULT_WIDTH, height : int = LevelArea.DEFAULT_HEIGHT) 
 		{
 			this.proceduralObjectPrototypes = newProceduralObjectPrototypes;
+			this.backgroundInstances = backgroundInstances;
 		}
 		
-		public function make(pos : FlxPoint, level : TopDownLevel, index:int) : LevelArea
+		public function make(pos : FlxPoint, level : TopDownLevel, index:int, subindex:int) : LevelArea
 		{
 			trace("Got " + proceduralObjectPrototypes.length + " prototypes");
 			var npcArray : Array= new Array();
@@ -54,7 +56,7 @@ package tutorial
 			}
 			trace("===== Generated " + npcArray.length + " objects =====");
 			
-			return new LevelArea(pos, npcArray, Assets.LA_BLS[index-1], Assets.LA_SFS[index-1], level.player, level.backgroundImgGroup, level.npcGroup, 0,level.foregroundImgGroup, Assets.LA_FLS[index-1]);
+			return new LevelArea(pos, npcArray, backgroundInstances[subindex], Assets.LA_SFS[index-1], level.player, level.backgroundImgGroup, level.npcGroup, 0,level.foregroundImgGroup, Assets.LA_FLS[index-1]);
 		}
 		
 	}

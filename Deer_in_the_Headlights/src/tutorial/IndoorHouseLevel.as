@@ -38,6 +38,8 @@ package tutorial
 		private var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
 		
 		public static var instance : IndoorHouseLevel;
+		
+		private var subindex : int;
 
 		/**
 		 * Constructor
@@ -82,9 +84,10 @@ package tutorial
 			if (LARight != null)
 				LARight.destroy();
 
-			LALeft = CurrentLAP.make(new FlxPoint(0,0), this, currentLAPIndex);
-			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex);
-			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex);
+			subindex = 1;
+			LALeft = CurrentLAP.make(new FlxPoint(0,0), this, currentLAPIndex, (subindex - 1) % 3);
+			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex, subindex);
+			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex, (subindex + 1) % 3);			
 			LACurrent.toggleAllContent(true);
 			LALeft.toggleAllContent(true);
 			LARight.toggleAllContent(true);
@@ -127,7 +130,7 @@ package tutorial
 				case Assets.REGION_06:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track4,true);
-					FlxG.music.play();;
+					FlxG.music.play();
 				break;
 				default:
 			}
@@ -159,22 +162,32 @@ package tutorial
 					player.x = currentArea.right - (currentArea.left - player.x);
 					LACurrent.shift(5000);
 					LALeft.shift(5000);
-					LARight = LACurrent;
-					LACurrent = LALeft;
+					LARight.shift( -10000);
+					subindex = (subindex - 1) % 3;
 					
-					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex);
+					//var oldLeft :LevelArea = LALeft; 
+					LALeft = LARight;
+					LARight = LACurrent;
+					//LACurrent = oldLeft;
+					
+					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, (subindex - 1) % 3);
 				} else if (player.x > currentArea.right)
 				{
 					FlxG.log("Right shift");
 					LALeft.destroy();
 					
 					player.x = currentArea.left + (player.x - currentArea.right);
+					LALeft.shift(10000);
+					LACurrent.shift( -5000);
+					LARight.shift( -5000);
+					
+					//var oldLeft :LevelArea = LALeft; 
 					LALeft = LACurrent;
 					LACurrent = LARight;
-					LALeft.shift(-5000);
-					LACurrent.shift(-5000);
+					subindex = (subindex + 1) % 3;
+					//LARight = oldLeft;
 					
-					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex);
+					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, (subindex + 1) % 3);
 				} else
 				{
 					// TODO?: for these 2 errors possibly just move the player back into a valid position
