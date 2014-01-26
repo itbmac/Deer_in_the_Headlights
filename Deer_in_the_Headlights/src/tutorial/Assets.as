@@ -34,28 +34,28 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/images/start_screen_2.png")] public static var HUD_START_SCREEN:Class;
-		[Embed(source = "../../assets/images/panic_mode_square_3.png")] public static var FOG_OVERLAY:Class;
-		[Embed(source = "../../assets/images/panic_mode_square.png")] public static var PANIC_OVERLAY:Class;
+		[Embed(source = "../../assets/images/start_screen_2.png")]           public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/panic_mode_square_3.png")]      public static var FOG_OVERLAY:Class;
+		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                    MUSIC                     --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		//[Embed(source = "../../assets/sound/god_beat_3.mp3")] public static var musicLoop:Class;
-		[Embed(source = "../../assets/sound/act_3.mp3")] public static var musicLoop:Class;
-		
+		[Embed(source = "../../assets/sound/act_3.mp3")]           public static var track1:Class; // music for region 1-2
+		[Embed(source = "../../assets/sound/god_beat_3.mp3")]      public static var track2:Class; // music for region 3-4
+		[Embed(source = "../../assets/sound/street_music_1.mp3")]  public static var track3:Class; // music for region 5
+		[Embed(source = "../../assets/sound/act_1_hack.mp3")]      public static var track4:Class; // music for region 6
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------               REGION ENCODINGS               --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		public static var REGION_PLAINS:int = 0;
-		public static var REGION_JUNGLE:int = 1;
-		public static var REGION_OCEAN :int = 2;
-		public static var REGION_SKY   :int = 3;
-		public static var REGION_SPACE :int = 4;
-		public static var REGION_UNDGRD:int = 5;
-		public static var REGION_MNTN  :int = 6;
+		public static var REGION_01 :int = 1;
+		public static var REGION_02 :int = 2;
+		public static var REGION_03 :int = 3;
+		public static var REGION_04 :int = 4;
+		public static var REGION_05 :int = 5;
+		public static var REGION_06 :int = 6;
 		
 		public static var STR_EMPTY:String = "";
 		
@@ -70,11 +70,11 @@ package tutorial
 		private static var LA_01_NPCS:Array = new Array(
 				new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
 				new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 0.9),
-				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.5, 1),
-				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 0.8, 0.75),
-				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
-				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00015, 200),
-				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_PLAINS, 0.00015, 200)
+				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_01, 0.001, 0, 0, 0.5, 1),
+				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_01, 0.001, 0, 0, 0.8, 0.75),
+				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_01, 0.00015, 200),
+				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_01, 0.00015, 200),
+				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_01, 0.00015, 200)
 				
 				
 			);	
@@ -92,7 +92,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
 			);	
 		
 		public static var LA_02 : LevelAreaPrototype = new LevelAreaPrototype(LA_02_NPCS);
@@ -108,7 +108,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS);
@@ -124,7 +124,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS);
@@ -139,34 +139,55 @@ package tutorial
 													);
 		
 		private static var LA_05_NPCS:Array = new Array(
-				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
 			);	
 		
 		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		
+		public static var LA_06_BL:Array = new Array( Assets.FIR
+													);
+		public static var LA_06_SF:Array = new Array( new FlxPoint(1, 1)
+													);
+		
+		private static var LA_06_NPCS:Array = new Array(
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_01, 0.00075, 200)
+			);	
+		
+		public static var LA_06 : LevelAreaPrototype = new LevelAreaPrototype(LA_06_NPCS);
+			
+		
+		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------             VER 1.1: LEVEL AREAS             --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_NUM_TOTAL:int = 4;
-		public static var LA_NUM_WIDE:int = 4;
+		public static var LA_NUM_TOTAL:int = 6;
+		public static var LA_NUM_WIDE:int = 6;
 		public static var LA_NUM_TALL:int = 1;
 		public static var LA_BLS:Array = new Array( Assets.LA_01_BL,
 													Assets.LA_02_BL,
 													Assets.LA_03_BL,
-													Assets.LA_04_BL
+													Assets.LA_04_BL,
+													Assets.LA_05_BL,
+													Assets.LA_06_BL
 												  );
 		public static var LA_SFS:Array = new Array( Assets.LA_01_SF, 
 													Assets.LA_02_SF,
 													Assets.LA_03_SF,
-													Assets.LA_04_SF
+													Assets.LA_04_SF,
+													Assets.LA_05_SF,
+													Assets.LA_06_SF
 												  );
 		public static var LAs:Array = new Array( Assets.LA_01, 
-													 Assets.LA_02,
-													 Assets.LA_03,
-													 Assets.LA_04,
-													Assets.LA_05
+												 Assets.LA_02,
+												 Assets.LA_03,
+												 Assets.LA_04,
+									  			 Assets.LA_05,
+												 Assets.LA_06
 												   );
 		
 	}

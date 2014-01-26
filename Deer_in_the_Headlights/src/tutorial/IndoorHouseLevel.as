@@ -55,7 +55,7 @@ package tutorial
 		}
 		
 		override protected function createMap() : void {
-			setLAP(0);
+			setLAP(Assets.REGION_01);
 		}
 		
 		public function getPlayerX():FlxPoint {
@@ -67,7 +67,7 @@ package tutorial
 			trace("Loading LAP " + index);
 			// TODO: don't reset if same index?
 			currentLAPIndex = index;
-			CurrentLAP = Assets.LAs[index];
+			CurrentLAP = Assets.LAs[index-1];
 			
 			if (LALeft != null)
 				LALeft.destroy();
@@ -85,6 +85,43 @@ package tutorial
 			{
 				player.x = DEFAULT_START.x;
 				player.y = DEFAULT_START.y;
+			}
+			
+			if (FlxG.music)
+				FlxG.music.stop();
+			switch (currentLAPIndex) 
+			{
+				case Assets.REGION_01:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track1,true);
+					FlxG.music.play();
+				break;
+				case Assets.REGION_02:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track1,true);
+					FlxG.music.play();
+				break;
+				case Assets.REGION_03:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track2,true);
+					FlxG.music.play();
+				break;
+				case Assets.REGION_04:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track2,true);
+					FlxG.music.play();
+				break;
+				case Assets.REGION_05:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track3,true);
+					FlxG.music.play();
+				break;
+				case Assets.REGION_06:
+					FlxG.music = new FlxSound();
+					FlxG.music.loadEmbedded(Assets.track4,true);
+					FlxG.music.play();;
+				break;
+				default:
 			}
 		}
 		
@@ -137,17 +174,17 @@ package tutorial
 			}
 			
 			if (FlxG.keys.pressed("ONE"))
-				setLAP(0);
+				setLAP(Assets.REGION_01);
 			else if (FlxG.keys.pressed("TWO"))
-				setLAP(1);
+				setLAP(Assets.REGION_02);
 			else if (FlxG.keys.pressed("THREE"))
-				setLAP(2);
+				setLAP(Assets.REGION_03);
 			else if (FlxG.keys.pressed("FOUR"))
-				setLAP(3);
+				setLAP(Assets.REGION_04);
 			else if (FlxG.keys.pressed("FIVE"))
-				setLAP(4);
+				setLAP(Assets.REGION_05);
 			else if (FlxG.keys.pressed("SIX"))
-				setLAP(5);
+				setLAP(Assets.REGION_06);
 			else if (FlxG.keys.pressed("L"))
 				setLAP((currentLAPIndex + 1) % Assets.LAs.length);
 		}
