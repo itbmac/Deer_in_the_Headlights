@@ -58,23 +58,27 @@ package tutorial
 		 * NOTE: these will be different if your art is different
 		 */
 		override protected function createAnimations():void {
-			addAnimation("walk", [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
-			addAnimation("sprint", [0,1,2,3,4,5,6,7,8], 12, true);
-			addAnimation("idle", [0], 7, true);
-			addAnimation("expand", [0], 7, false);
-			addAnimation("contract", [0], 7, false);
+			addAnimation("walk_right", [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
+			addAnimation("walk_left",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
+			addAnimation("sprint_right",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
+			addAnimation("sprint_left", [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
+			addAnimation("idle_right", [0], 7, true);
+			addAnimation("idle_left", [9], 7, true);
 		}
 		override protected function updateAnimations():void 
 		{
-			if (Math.abs(velocity.x) > (RUNSPEED * 4))
-				play("sprint");
-			else if (Math.abs(velocity.x) > 0 || Math.abs(velocity.y) > 0) 
-			{
-				play("walk");
-			}
-			else {
-				play("idle");
-			}
+			if (velocity.x > (RUNSPEED * 4))
+				play("sprint_right");
+			else if (velocity.x < (RUNSPEED * -4))
+				play("sprint_left");
+			else if (velocity.x > 0) 
+				play("walk_right");
+			else if (velocity.x < 0) 
+				play("walk_left");
+			else if (facing == RIGHT)
+				play("idle_right");
+			else if (facing == LEFT)
+				play("idle_left");
 			
 			//= (velocity.x > 0);
 		}

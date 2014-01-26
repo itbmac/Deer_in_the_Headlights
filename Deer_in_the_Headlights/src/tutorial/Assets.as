@@ -36,7 +36,7 @@ package tutorial
 		
 		[Embed(source = "../../assets/sprites/bird.png")]                  public static var SPRITE_BIRD:Class;
 		[Embed(source = "../../assets/sprites/bush.png")]                  public static var SPRITE_BUSH:Class;
-		[Embed(source = "../../assets/deer3.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer3_double.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/sprites/dog.png")]                   public static var SPRITE_DOG:Class;
 		[Embed(source = "../../assets/sprites/owl.png")]                   public static var SPRITE_OWL:Class;
 		[Embed(source = "../../assets/sprites/spider.png")]                public static var SPRITE_SPIDER:Class;
