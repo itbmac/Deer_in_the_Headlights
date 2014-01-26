@@ -204,20 +204,35 @@ package tutorial
 						acceleration.y = -slowing;
 					else
 						acceleration.y = slowing;
-				} else
+				} 
+				else
 				{
 					acceleration.x = 0.0;
 					acceleration.y = 0.0;
 					velocity.x = 0.0;
 					velocity.y = 0.0;
 					state = STATE_TRIG_APRC_STOP;
-					trigger.animate();
-					// TODO: intermediary animation
+				}
+			}
+			else if (state == STATE_TRIG_APRC_STOP)
+			{
+				state = STATE_TRIG_ANIM_STRT;
+				trigger.animate();
+			}
+			else if (state == STATE_TRIG_ANIM_STRT)
+			{
+				if (trigger.finished)
+					state = STATE_TRIG_ANIM_STOP;
+			}
+			else if (state == STATE_TRIG_ANIM_STOP)
+			{
+				// TODO: intermediary animation
 					if (trigger.shortCircuit)
 					{
 						state = STATE_FREE_ROAM;
 						IndoorHouseLevel.instance.endZoom();
-					} else
+					} 
+					else
 					{
 						if (trigger.flipDirectionOnRun)
 							changeDirection();
@@ -226,9 +241,8 @@ package tutorial
 						 odeermeter = 0;
 						 state = STATE_FCUS_STRT;
 					}
-					
-				}
-			} else if (state == STATE_FCUS_STRT)
+			} 
+			else if (state == STATE_FCUS_STRT)
 			{
 				if (odeermeter >= 2500)
 				{

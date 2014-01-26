@@ -40,7 +40,7 @@ package topdown
 		private var desiredZoom:Number = 2;
 		private var desiredZoomReached:Boolean = true;
 		public var zoomMode:Boolean = true;
-		private var zoomOffset:int = -325;
+		private var zoomOffset:int = -305;
 		private var zoomAcceleration:Number = .05;
 		private var zoomSwitchTimer:int = 0;
 		private var zoomSwitchTimerDelay:int = 50;
