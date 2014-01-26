@@ -54,6 +54,10 @@ package tutorial
 			player = new Player(DEFAULT_START.x, DEFAULT_START.y); //(playerStart.x, playerStart.y); // (4290, 720);
 		}
 		
+		override protected function createMap() : void {
+			setLAP(0);
+		}
+		
 		public function getPlayerX():FlxPoint {
 			return player.getMidpoint();
 		}
