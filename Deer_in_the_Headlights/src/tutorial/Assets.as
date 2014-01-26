@@ -28,9 +28,15 @@ package tutorial
 		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_DL:Class;
 		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_DL:Class;
 		[Embed(source = "../../assets/demo/area_03.png")]                  public static var R_03_DL:Class;
-		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_04_DL:Class;
-		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_05_DL:Class;
-		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_06_DL:Class;
+		
+		[Embed(source = "../../assets/demo/area_04_back.png")]             public static var R_04_BL:Class;
+		[Embed(source = "../../assets/demo/area_04_fore.png")]             public static var R_04_FL:Class;
+		
+		[Embed(source = "../../assets/demo/area_05_back.png")]             public static var R_05_BL:Class;
+		[Embed(source = "../../assets/demo/area_05_fore.png")]             public static var R_05_FL:Class;
+		
+		[Embed(source = "../../assets/demo/area_04_back.png")]             public static var R_06_BL:Class;
+		[Embed(source = "../../assets/demo/area_04_fore.png")]             public static var R_06_FL:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -67,6 +73,8 @@ package tutorial
 		
 		public static var LA_01_BL:Array = new Array( Assets.R_01_DL
 													);
+		public static var LA_01_FL:Array = new Array(// Assets.R_01_DL
+													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
@@ -88,6 +96,8 @@ package tutorial
 		
 		public static var LA_02_BL:Array = new Array( Assets.R_02_DL
 													);
+		public static var LA_02_FL:Array = new Array(// Assets.R_01_DL
+													);
 		public static var LA_02_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		
@@ -104,6 +114,8 @@ package tutorial
 		
 		public static var LA_03_BL:Array = new Array( Assets.R_03_DL
 													);
+		public static var LA_03_FL:Array = new Array(// Assets.R_01_DL
+													);
 		public static var LA_03_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		
@@ -118,7 +130,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 04                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_04_BL:Array = new Array( Assets.R_04_DL
+		public static var LA_04_BL:Array = new Array( Assets.R_04_BL
+													);
+		public static var LA_04_FL:Array = new Array( Assets.R_04_FL
 													);
 		public static var LA_04_SF:Array = new Array( new FlxPoint(1, 1)
 													);
@@ -133,7 +147,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_05_BL:Array = new Array( Assets.R_05_DL
+		public static var LA_05_BL:Array = new Array( Assets.R_05_BL
+													);
+		public static var LA_05_FL:Array = new Array( Assets.R_05_FL
 													);
 		public static var LA_05_SF:Array = new Array( new FlxPoint(1, 1)
 													);
@@ -149,7 +165,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_06_BL:Array = new Array( Assets.R_06_DL
+		public static var LA_06_BL:Array = new Array( Assets.R_06_BL
+													);
+		public static var LA_06_FL:Array = new Array( Assets.R_06_FL
 													);
 		public static var LA_06_SF:Array = new Array( new FlxPoint(1, 1)
 													);
@@ -174,6 +192,13 @@ package tutorial
 													Assets.LA_04_BL,
 													Assets.LA_05_BL,
 													Assets.LA_06_BL
+												  );
+		public static var LA_FLS:Array = new Array( Assets.LA_01_FL,
+													Assets.LA_02_FL,
+													Assets.LA_03_FL,
+													Assets.LA_04_FL,
+													Assets.LA_05_FL,
+													Assets.LA_06_FL
 												  );
 		public static var LA_SFS:Array = new Array( Assets.LA_01_SF, 
 													Assets.LA_02_SF,

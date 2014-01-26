@@ -17,7 +17,8 @@ package topdown
 		 */
 		public var state:FlxState; // state displaying the level
 		public var levelSize:FlxPoint; // width and height of level (in pixels)
-		public var imgGroup:FlxGroup;
+		public var backgroundImgGroup:FlxGroup;
+		public var foregroundImgGroup:FlxGroup;
 		public var npcGroup:FlxGroup;
 		public var guiGroup:FlxGroup;
 		public var srtScreenGroup:FlxGroup;
@@ -60,7 +61,8 @@ package topdown
 			this.state = state;
 			this.levelSize = levelSize;
 			// setup groups
-			this.imgGroup = new FlxGroup();
+			this.backgroundImgGroup = new FlxGroup();
+			this.foregroundImgGroup = new FlxGroup();
 			this.npcGroup = new FlxGroup();
 			this.guiGroup = new FlxGroup();
 			this.srtScreenGroup = new FlxGroup();
@@ -144,10 +146,11 @@ package topdown
 		 * Decide the order of the groups. They are rendered in the order they're added, so last added is always on top.
 		 */
 		protected function addGroups():void {
-			add(imgGroup);
+			add(backgroundImgGroup);
 			add(npcGroup);
 			add(guiGroup);
 			add(player);
+			add(foregroundImgGroup);
 			add(srtScreenGroup);
 		}
 		

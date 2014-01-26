@@ -17,13 +17,15 @@ package tutorial
 		
 		private var areasNPCs: Array;
 		private var areasBackgrounds: Array;
+		private var areasForegrounds: Array;
 		public var areaPosition:FlxPoint;
 		public var areaIndex:int;
 		public var npcGroup : FlxGroup;
-		private var imgGroup : FlxGroup;
+		private var backImgGroup : FlxGroup;
+		public var foreImgGroup : FlxGroup;
 		
 		public function LevelArea(LEVEL_POSITION:FlxPoint, NPC_ARRAY:Array, BACKGROUND_IMG_ARRAY:Array, 
-			BACKGROUND_SCROLL_FACTOR_ARRAY:Array, player:Player, imgGroup:FlxGroup, npcGroup:FlxGroup, j:int):void
+			BACKGROUND_SCROLL_FACTOR_ARRAY:Array, player:Player, BackImgGroup:FlxGroup, npcGroup:FlxGroup, j:int, ForeImgGroup:FlxGroup, FOREGROUND_IMG_ARRAY:Array):void
 		{
 			areaIndex = j;
 			areaPosition = LEVEL_POSITION;
@@ -32,18 +34,34 @@ package tutorial
 			
 			for (var i:int = 0; i < BACKGROUND_IMG_ARRAY.length; i++)
 			{	
-				var background: FlxSprite = new FlxSprite(LEVEL_POSITION.x , LEVEL_POSITION.y, BACKGROUND_IMG_ARRAY[i]); 
+				var background: FlxSprite = new FlxSprite(LEVEL_POSITION.x , 0, BACKGROUND_IMG_ARRAY[i]); 
 				
 				background.scrollFactor.x = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
 				background.scrollFactor.y = BACKGROUND_SCROLL_FACTOR_ARRAY[i].y;
 				//background.mod = true;
 				background.exists = true;
-				imgGroup.add(background);
+				//background.scale = new FlxPoint(1, .72);
+				BackImgGroup.add(background);
 				areasBackgrounds.push(background);
 			}
 			
+			areasForegrounds = new Array();
+			
+			for (i = 0; i < FOREGROUND_IMG_ARRAY.length; i++)
+			{	
+				var foreground: FlxSprite = new FlxSprite(LEVEL_POSITION.x , 0, FOREGROUND_IMG_ARRAY[i]); 
+				
+				foreground.scrollFactor.x = 1;
+				foreground.scrollFactor.y = 1;
+				foreground.exists = true;
+				//background.scale = new FlxPoint(1, .72);
+				ForeImgGroup.add(foreground);
+				areasForegrounds.push(foreground);
+			}
+			
 			this.npcGroup = npcGroup;
-			this.imgGroup = imgGroup;
+			this.backImgGroup = BackImgGroup;
+			this.foreImgGroup = ForeImgGroup;
 			
 			createNPCs(NPC_ARRAY, player, npcGroup);
 		}
@@ -54,6 +72,10 @@ package tutorial
 			for each (var backg:FlxSprite in areasBackgrounds)
 			{
 				backg.x += dx;
+			}
+			for each (var foreg:FlxSprite in areasForegrounds)
+			{
+				foreg.x += dx;
 			}
 			for each (var npc:GameObject in areasNPCs)
 			{
@@ -73,6 +95,10 @@ package tutorial
 			{
 				backg.exists = doesExist;
 			}
+			for each (var foreg:FlxSprite in areasForegrounds)
+			{
+				foreg.exists = doesExist;
+			}
 			for each (var npc:GameObject in areasNPCs)
 			{
 				npc.exists = doesExist;
@@ -89,8 +115,14 @@ package tutorial
 			
 			for each (var backg:FlxSprite in areasBackgrounds)
 			{
-				imgGroup.remove(backg);
+				backImgGroup.remove(backg);
 				backg.destroy();
+			}
+			
+			for each (var foreg:FlxSprite in areasForegrounds)
+			{
+				foreImgGroup.remove(foreg);
+				foreg.destroy();
 			}
 			
 			super.destroy();
