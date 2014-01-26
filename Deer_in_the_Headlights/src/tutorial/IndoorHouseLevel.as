@@ -76,9 +76,9 @@ package tutorial
 			if (LARight != null)
 				LARight.destroy();
 
-			LALeft = CurrentLAP.make(new FlxPoint(0,0), this);
-			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this);
-			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this);
+			LALeft = CurrentLAP.make(new FlxPoint(0,0), this, currentLAPIndex);
+			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex);
+			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this, currentLAPIndex);
 			LACurrent.toggleAllContent(true);
 			
 			if (player != null)
@@ -149,7 +149,7 @@ package tutorial
 					
 					LARight.shift(5000);
 					LACurrent.shift(5000);
-					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
+					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex);
 				} else if (player.x > currentArea.right)
 				{
 					LALeft.destroy();
@@ -160,7 +160,7 @@ package tutorial
 					LALeft.shift(-5000);
 					LACurrent.shift(-5000);
 					
-					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
+					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex);
 				} else
 				{
 					// TODO?: for these 2 errors possibly just move the player back into a valid position
