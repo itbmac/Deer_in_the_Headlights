@@ -13,12 +13,14 @@ package tutorial
 	{
 		private var proceduralObjectPrototypes : Array;
 		private var backgroundInstances : Array;
+		private var noLoop : Boolean;
 		
-		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array, backgroundInstances : Array,
+		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array, backgroundInstances : Array, noLoop : Boolean=false,
 			width : int = LevelArea.DEFAULT_WIDTH, height : int = LevelArea.DEFAULT_HEIGHT) 
 		{
 			this.proceduralObjectPrototypes = newProceduralObjectPrototypes;
 			this.backgroundInstances = backgroundInstances;
+			this.noLoop = noLoop;
 		}
 		
 		public function make(pos : FlxPoint, level : TopDownLevel, index:int, subindex:int) : LevelArea
@@ -57,7 +59,10 @@ package tutorial
 			}
 			trace("===== Generated " + npcArray.length + " objects =====");
 			
-			return new LevelArea(pos, npcArray, backgroundInstances[subindex], Assets.LA_SFS[index-1], level.player, level.backgroundImgGroup, level.npcGroup, 0,level.foregroundImgGroup, Assets.LA_FLS[index-1]);
+			var LA : LevelArea = new LevelArea(pos, npcArray, backgroundInstances[subindex], Assets.LA_SFS[index - 1], level.player, level.backgroundImgGroup, level.npcGroup, 0, level.foregroundImgGroup, Assets.LA_FLS[index - 1]);
+			LA.noLoop = noLoop;
+			
+			return LA;
 		}
 		
 	}

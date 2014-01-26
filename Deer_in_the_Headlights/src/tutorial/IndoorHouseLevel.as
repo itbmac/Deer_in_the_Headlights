@@ -93,6 +93,11 @@ package tutorial
 			LALeft.toggleAllContent(true);
 			LARight.toggleAllContent(true);
 			
+			if (LACurrent.noLoop)
+				FlxG.camera.setBounds(LACurrent.area.topLeft.x, LACurrent.area.topLeft.y, LACurrent.area.width, LACurrent.area.height, true);
+			else
+				FlxG.camera.setBounds(0, 0, levelSize.x, levelSize.y, true);
+			
 			if (player != null)
 			{
 				player.x = DEFAULT_START.x;
@@ -138,7 +143,7 @@ package tutorial
 		}
 		
 		public function nextLevel() : void {
-			setLAP(1 + ((currentLAPIndex + 1 - 1) % Assets.LAs.length));
+			setLAP((currentLAPIndex + 1) % (Assets.LAs.length + 1));
 		}
 		
 		private function getSubindex(delta : int = 0) : int {
@@ -160,7 +165,13 @@ package tutorial
 			
 			// TODO: move to subroutine?
 			var currentArea : Rectangle = LACurrent.area;
-			if (! LACurrent.area.contains(player.x, player.y))
+			if (LACurrent.noLoop)
+			{
+				if (player.x < currentArea.left)
+					player.x = currentArea.left;
+				else if (player.x > currentArea.right - player.width)
+					player.x = currentArea.right - player.width;
+			} else if (! LACurrent.area.contains(player.x, player.y))
 			{
 				if (player.x < currentArea.left)
 				{

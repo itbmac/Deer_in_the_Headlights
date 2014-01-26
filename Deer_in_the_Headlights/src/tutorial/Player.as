@@ -211,6 +211,7 @@ package tutorial
 					velocity.x = 0.0;
 					velocity.y = 0.0;
 					state = STATE_TRIG_APRC_STOP;
+					trigger.animate();
 					// TODO: intermediary animation
 					if (trigger.shortCircuit)
 					{

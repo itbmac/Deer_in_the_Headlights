@@ -148,10 +148,11 @@ package topdown
 		protected function addGroups():void {
 			add(backgroundImgGroup);
 			add(npcGroup);
-			add(guiGroup);
 			add(player);
 			add(foregroundImgGroup);
+			add(guiGroup)
 			add(srtScreenGroup);
+			;
 		}
 		
 		/**

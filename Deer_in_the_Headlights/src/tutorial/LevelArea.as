@@ -23,6 +23,7 @@ package tutorial
 		public var npcGroup : FlxGroup;
 		private var backImgGroup : FlxGroup;
 		public var foreImgGroup : FlxGroup;
+		public var noLoop : Boolean;
 		
 		public function LevelArea(LEVEL_POSITION:FlxPoint, NPC_ARRAY:Array, BACKGROUND_IMG_ARRAY:Array, 
 			BACKGROUND_SCROLL_FACTOR_ARRAY:Array, player:Player, BackImgGroup:FlxGroup, npcGroup:FlxGroup, j:int, ForeImgGroup:FlxGroup, FOREGROUND_IMG_ARRAY:Array):void
