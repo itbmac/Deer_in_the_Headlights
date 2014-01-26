@@ -270,21 +270,21 @@ package topdown
 						FlxG.camera.zoom += zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
 						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
-						fogOverlayImg.alpha = 1- (FlxG.camera.zoom - 1);
+						fogOverlayImg.alpha = 0;// 1 - (FlxG.camera.zoom - 1);
 					}
 					if (FlxG.camera.zoom > desiredZoom)
 					{
 						FlxG.camera.zoom -= zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
 						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
-						fogOverlayImg.alpha = 1- (FlxG.camera.zoom - 1);
+						fogOverlayImg.alpha = 0;// 1 - (FlxG.camera.zoom - 1);
 					}
 					if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 1)
 					{
 						FlxG.camera.y = 0;
 						desiredZoomReached = true;
 						panicOverlayImg.alpha = 0;
-						fogOverlayImg.alpha = 1;
+						fogOverlayImg.alpha = 0;
 					}
 					else if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 2)
 					{

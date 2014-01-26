@@ -38,7 +38,7 @@ package tutorial
 		 * Create the player
 		 */
 		override protected function createPlayer():void {
-			player = new Player(4290, 620); //(playerStart.x, playerStart.y); // (4290, 720);
+			player = new Player(90, 620); //(playerStart.x, playerStart.y); // (4290, 720);
 		}
 		
 		public function getPlayerX():FlxPoint {
@@ -50,6 +50,7 @@ package tutorial
 			for (var i:int = 0; i < Assets.LA_NUM_TOTAL; i++)
 			{
 				var LA:LevelArea = new LevelArea(Assets.LA_LOCS[i], Assets.LA_NPCS[i], Assets.LA_BLS[i], Assets.LA_SFS[i], player, imgGroup, npcGroup, i);
+				LA.toggleAllContent(true);
 				LAs.push(LA);
 				add(LA);
 			}
@@ -63,7 +64,7 @@ package tutorial
 			
 			for each (var LAInd:int in adjLAs)
 			{
-				LAs[LAInd].toggleAllContent(false);
+				LAs[LAInd].toggleAllContent(true);
 			}
 			
 			activeLA = newInd;

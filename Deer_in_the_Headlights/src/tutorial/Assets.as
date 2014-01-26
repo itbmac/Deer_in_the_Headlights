@@ -36,7 +36,7 @@ package tutorial
 		
 		[Embed(source = "../../assets/sprites/bird.png")]                  public static var SPRITE_BIRD:Class;
 		[Embed(source = "../../assets/sprites/bush.png")]                  public static var SPRITE_BUSH:Class;
-		[Embed(source = "../../assets/deer3_double.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer3_triple.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/sprites/dog.png")]                   public static var SPRITE_DOG:Class;
 		[Embed(source = "../../assets/sprites/owl.png")]                   public static var SPRITE_OWL:Class;
 		[Embed(source = "../../assets/sprites/spider.png")]                public static var SPRITE_SPIDER:Class;
@@ -78,9 +78,10 @@ package tutorial
 		public static var REGION_UNDGRD:int = 5;
 		public static var REGION_MNTN  :int = 6;
 		
-		[Embed(source = "../../assets/city/forest_full_orange.png")]                    public static var FFO:Class;
-		[Embed(source = "../../assets/city/test_city_background.png")]                  public static var BBB:Class;
-		[Embed(source = "../../assets/city/test_city_foreground.png")]                  public static var BFB:Class;
+		[Embed(source = "../../assets/city/forest_full_light.png")]            public static var FIR:Class;
+		[Embed(source = "../../assets/city/forest_full_between.png")]                     public static var SND:Class;
+		[Embed(source = "../../assets/city/test_city_3rd.png")]                         public static var TRD:Class;
+		[Embed(source = "../../assets/city/test_city_background.png")]                  public static var FTH:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -89,13 +90,12 @@ package tutorial
 		public static var STR_EMPTY:String = "";
 		
 		public static var LA_01_LOC:FlxPoint = new FlxPoint(0, 0);
-		public static var LA_01_BL:Array = new Array( Assets.BBB
+		public static var LA_01_BL:Array = new Array( Assets.FIR
 													);
-		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1),
-													  new FlxPoint(1,1)
+		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		public static var LA_01_NPCS:Array = new Array(
-		new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 			);	
 			
 		
@@ -105,14 +105,13 @@ package tutorial
 		
 		public static var LA_02_LOC:FlxPoint = new FlxPoint(5000, 0);
 		
-		public static var LA_02_BL:Array = new Array( Assets.BBB,
-													  Assets.FFO
+		public static var LA_02_BL:Array = new Array( Assets.SND
 													);
-		public static var LA_02_SF:Array = new Array( new FlxPoint(.85,1),
+		public static var LA_02_SF:Array = new Array(
 													  new FlxPoint(1,1)
 													);
 		public static var LA_02_NPCS:Array = new Array(
-		new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 			);
 				
 		
@@ -122,19 +121,28 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
 		public static var LA_03_LOC:FlxPoint = new FlxPoint(10000, 0);
-		//[Embed(source = "../../assets/background/background_stars_h2.png")]             public static var LA_03_BL_02:Class;
-		//[Embed(source = "../../assets/background/background_clouds_1_h2.png")]          public static var LA_03_BL_03:Class;
-		public static var LA_03_BL:Array = new Array( //Assets.LA_01_BL_01,
-													//  Assets.LA_02_BL_02,
-												//	  Assets.LA_02_BL_03, 
-													  Assets.BBB
+		public static var LA_03_BL:Array = new Array(Assets.TRD
 													);
-		public static var LA_03_SF:Array = new Array(// new FlxPoint(.3,1),
-													  //new FlxPoint(.4,1),
-													  //new FlxPoint(.5,1),
+		public static var LA_03_SF:Array = new Array(
 													  new FlxPoint(1,1)
 													);
 		public static var LA_03_NPCS:Array = new Array(
+				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
+				
+			);
+			
+		
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ----------------------------------------------                LEVEL AREA 04                 --------------------------------------------
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		
+		public static var LA_04_LOC:FlxPoint = new FlxPoint(15000, 0);
+		public static var LA_04_BL:Array = new Array(Assets.FTH
+													);
+		public static var LA_04_SF:Array = new Array(
+													  new FlxPoint(1,1)
+													);
+		public static var LA_04_NPCS:Array = new Array(
 				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
 				
 			);
@@ -145,24 +153,28 @@ package tutorial
 		// ----------------------------------------------             VER 1.1: LEVEL AREAS             --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_NUM_TOTAL:int = 3;
-		public static var LA_NUM_WIDE:int = 3;
+		public static var LA_NUM_TOTAL:int = 4;
+		public static var LA_NUM_WIDE:int = 4;
 		public static var LA_NUM_TALL:int = 1;
 		public static var LA_LOCS:Array = new Array( Assets.LA_01_LOC,
 													 Assets.LA_02_LOC,
-													 Assets.LA_03_LOC
+													 Assets.LA_03_LOC,
+													 Assets.LA_04_LOC
 												   );
 		public static var LA_BLS:Array = new Array( Assets.LA_01_BL,
 													Assets.LA_02_BL,
-													Assets.LA_03_BL
+													Assets.LA_03_BL,
+													Assets.LA_04_BL
 												  );
 		public static var LA_SFS:Array = new Array( Assets.LA_01_SF, 
 													Assets.LA_02_SF,
-													Assets.LA_03_SF
+													Assets.LA_03_SF,
+													Assets.LA_04_SF
 												  );
 		public static var LA_NPCS:Array = new Array( Assets.LA_01_NPCS, 
 													 Assets.LA_02_NPCS,
-													 Assets.LA_03_NPCS
+													 Assets.LA_03_NPCS,
+													 Assets.LA_04_NPCS
 												   );
 		
 	}
