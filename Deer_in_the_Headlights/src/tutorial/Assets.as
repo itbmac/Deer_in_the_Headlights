@@ -200,13 +200,7 @@ package tutorial
 		public static var LA_NUM_TOTAL:int = 6;
 		public static var LA_NUM_WIDE:int = 6;
 		public static var LA_NUM_TALL:int = 1;
-		public static var LA_BLS:Array = new Array( Assets.LA_01_BL,
-													Assets.LA_02_BL,
-													Assets.LA_03_BL,
-													Assets.LA_04_BL,
-													Assets.LA_05_BL,
-													Assets.LA_06_BL
-												  );
+		
 		public static var LA_FLS:Array = new Array( Assets.LA_01_FL,
 													Assets.LA_02_FL,
 													Assets.LA_03_FL,
