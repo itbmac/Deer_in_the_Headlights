@@ -46,7 +46,7 @@ package tutorial
 			if ((last == -1 || last + width < x) &&  Math.random() <= probability)
 			{
 				var y : int = randomIntBetween(minY, minY + yRange);
-				trace("At " + x + "," + y);
+				//trace("At " + x + "," + y);
 				
 				return new GameObject(x, y, null, 0, state, graphic, "", 0, movementStyle);;
 			} else

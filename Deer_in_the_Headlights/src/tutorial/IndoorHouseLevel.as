@@ -31,6 +31,9 @@ package tutorial
 		private var LACurrent : LevelArea;
 		private var LARight : LevelArea;
 		private var CurrentLAP : LevelAreaPrototype;
+		private var currentLAPIndex : int;
+		
+		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 90, 620);
 		
 		var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
 		
@@ -48,33 +51,40 @@ package tutorial
 		 * Create the player
 		 */
 		override protected function createPlayer():void {
-			player = new Player(90, 620); //(playerStart.x, playerStart.y); // (4290, 720);
+			player = new Player(DEFAULT_START.x, DEFAULT_START.y); //(playerStart.x, playerStart.y); // (4290, 720);
 		}
 		
 		public function getPlayerX():FlxPoint {
 			return player.getMidpoint();
 		}
 		
-		override protected function createMap():void 
+		private function setLAP(index : int) : void
 		{
-			// TODO: add objects
-			CurrentLAP = Assets.LA_01_P; 
-			// TODO: make actually circular
+			trace("Loading LAP " + index);
+			// TODO: don't reset if same index?
+			currentLAPIndex = index;
+			CurrentLAP = Assets.LAs[index];
 			
+			if (LALeft != null)
+				LALeft.destroy();
+			if (LACurrent != null)
+				LACurrent.destroy();
+			if (LARight != null)
+				LARight.destroy();
 			LALeft = CurrentLAP.make(new FlxPoint(0,0), this);
 			LACurrent = CurrentLAP.make(new FlxPoint(LevelArea.DEFAULT_WIDTH, 0), this);
 			LARight = CurrentLAP.make(new FlxPoint(2*LevelArea.DEFAULT_WIDTH, 0), this);
 			LACurrent.toggleAllContent(true);
-			
-			/*for (var i:int = 0; i < Assets.LA_NUM_TOTAL; i++)
+			if (player != null)
 			{
-				var LA:LevelArea = new LevelArea(Assets.LA_LOCS[i], Assets.LA_NPCS[i], Assets.LA_BLS[i], Assets.LA_SFS[i], player, imgGroup, npcGroup, i);
-				LA.toggleAllContent(true);
-				LAs.push(LA);
-				add(LA);
-			}*/
-			
-			//setLAAreas(0);
+				player.x = DEFAULT_START.x;
+				player.y = DEFAULT_START.y;
+			}
+		}
+		
+		override protected function createMap():void 
+		{
+			setLAP(0);
 		}
 		
 		public function setLAAreas(newInd:int):void 
@@ -174,6 +184,21 @@ package tutorial
 					throw new Error("LA rotation didn't catch up with player");
 				}
 			}
+			
+			if (FlxG.keys.pressed("ONE"))
+				setLAP(0);
+			else if (FlxG.keys.pressed("TWO"))
+				setLAP(1);
+			else if (FlxG.keys.pressed("THREE"))
+				setLAP(2);
+			else if (FlxG.keys.pressed("FOUR"))
+				setLAP(3);
+			else if (FlxG.keys.pressed("FIVE"))
+				setLAP(4);
+			else if (FlxG.keys.pressed("SIX"))
+				setLAP(5);
+			else if (FlxG.keys.pressed("L"))
+				setLAP((currentLAPIndex + 1) % Assets.LAs.length);
 		}
 	}
 }

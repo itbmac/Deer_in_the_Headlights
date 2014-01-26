@@ -22,7 +22,7 @@ package tutorial
 		public function make(pos : FlxPoint, level : TopDownLevel) : LevelArea
 		{
 			trace("Got " + proceduralObjectPrototypes.length + " prototypes");
-			var npcArray = new Array();
+			var npcArray : Array= new Array();
 			
 			for each (var proceduralObjectPrototype : ProceduralObjectProtoype in proceduralObjectPrototypes)
 			{

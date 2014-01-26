@@ -50,76 +50,85 @@ package tutorial
 		public static var REGION_UNDGRD:int = 5;
 		public static var REGION_MNTN  :int = 6;
 		
+		public static var STR_EMPTY:String = "";
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 01                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		public static var STR_EMPTY:String = "";
 		
-		public static var LA_01_LOC:FlxPoint = new FlxPoint(0, 0);
-		public static var LA_01_BL:Array = new Array( //Assets.FIR
+		public static var LA_01_BL:Array = new Array( Assets.FIR
 													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		
-		public static var LA_01_PTREE : ProceduralObjectProtoype = 
-			new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200); // TODO: change prob
-		
 		private static var LA_01_NPCS:Array = new Array(
-				LA_01_PTREE
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
 			);	
 		
-		public static var LA_01_P : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);
+		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 02                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_02_LOC:FlxPoint = new FlxPoint(5000, 0);
+		public static var LA_02_BL:Array = new Array( Assets.FIR
+													);
+		public static var LA_02_SF:Array = new Array( new FlxPoint(1, 1)
+													);
 		
-		public static var LA_02_BL:Array = new Array( Assets.SND
-													);
-		public static var LA_02_SF:Array = new Array(
-													  new FlxPoint(1,1)
-													);
-		public static var LA_02_NPCS:Array = new Array(
-				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
-			);
-				
+		private static var LA_02_NPCS:Array = new Array(
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+			);	
+		
+		public static var LA_02 : LevelAreaPrototype = new LevelAreaPrototype(LA_02_NPCS);
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 03                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_03_LOC:FlxPoint = new FlxPoint(10000, 0);
-		public static var LA_03_BL:Array = new Array(Assets.TRD
+		public static var LA_03_BL:Array = new Array( Assets.FIR
 													);
-		public static var LA_03_SF:Array = new Array(
-													  new FlxPoint(1,1)
+		public static var LA_03_SF:Array = new Array( new FlxPoint(1, 1)
 													);
-		public static var LA_03_NPCS:Array = new Array(
-				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
-				
-			);
+		
+		private static var LA_03_NPCS:Array = new Array(
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+			);	
+		
+		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 04                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_04_LOC:FlxPoint = new FlxPoint(15000, 0);
-		public static var LA_04_BL:Array = new Array(Assets.FTH
+		public static var LA_04_BL:Array = new Array( Assets.FIR
 													);
-		public static var LA_04_SF:Array = new Array(
-													  new FlxPoint(1,1)
+		public static var LA_04_SF:Array = new Array( new FlxPoint(1, 1)
 													);
-		public static var LA_04_NPCS:Array = new Array(
-				new Array(-500, 200, 0,      Assets.TREE,            Assets.STR_EMPTY,       Assets.REGION_PLAINS)
-				
-			);
-			
+		
+		private static var LA_04_NPCS:Array = new Array(
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+			);	
+		
+		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS);
+		
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		
+		public static var LA_05_BL:Array = new Array( Assets.FIR
+													);
+		public static var LA_05_SF:Array = new Array( new FlxPoint(1, 1)
+													);
+		
+		private static var LA_05_NPCS:Array = new Array(
+				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
+			);	
+		
+		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS);
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
@@ -129,11 +138,6 @@ package tutorial
 		public static var LA_NUM_TOTAL:int = 4;
 		public static var LA_NUM_WIDE:int = 4;
 		public static var LA_NUM_TALL:int = 1;
-		public static var LA_LOCS:Array = new Array( Assets.LA_01_LOC,
-													 Assets.LA_02_LOC,
-													 Assets.LA_03_LOC,
-													 Assets.LA_04_LOC
-												   );
 		public static var LA_BLS:Array = new Array( Assets.LA_01_BL,
 													Assets.LA_02_BL,
 													Assets.LA_03_BL,
@@ -144,10 +148,11 @@ package tutorial
 													Assets.LA_03_SF,
 													Assets.LA_04_SF
 												  );
-		public static var LA_NPCS:Array = new Array( Assets.LA_01_NPCS, 
-													 Assets.LA_02_NPCS,
-													 Assets.LA_03_NPCS,
-													 Assets.LA_04_NPCS
+		public static var LAs:Array = new Array( Assets.LA_01, 
+													 Assets.LA_02,
+													 Assets.LA_03,
+													 Assets.LA_04,
+													Assets.LA_05
 												   );
 		
 	}
