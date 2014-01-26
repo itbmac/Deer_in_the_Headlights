@@ -62,8 +62,8 @@ package tutorial
 			addAnimation("walk_left",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
 			addAnimation("sprint_right",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
 			addAnimation("sprint_left", [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
-			addAnimation("idle_right", [0], 7, true);
-			addAnimation("idle_left", [9], 7, true);
+			addAnimation("idle_right", [0], 12, true);
+			addAnimation("idle_left", [9], 12, true);
 		}
 		override protected function updateAnimations():void 
 		{
