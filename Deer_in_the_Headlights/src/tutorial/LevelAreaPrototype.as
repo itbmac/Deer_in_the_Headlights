@@ -1,8 +1,6 @@
 package tutorial 
 {
-	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
-	import topdown.TopDownEntity;
 	import topdown.TopDownLevel;
 	/**
 	 * ...
@@ -12,10 +10,8 @@ package tutorial
 	{
 		private var proceduralObjectPrototypes : Array;
 		
-		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array,
-			width : int = LevelArea.DEFAULT_WIDTH, height : int = LevelArea.DEFAULT_HEIGHT) 
+		public function LevelAreaPrototype(newProceduralObjectPrototypes : Array) 
 		{
-			
 			this.proceduralObjectPrototypes = newProceduralObjectPrototypes;
 		}
 		

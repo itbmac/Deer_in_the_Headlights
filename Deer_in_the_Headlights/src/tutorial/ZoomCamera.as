@@ -40,6 +40,7 @@ package tutorial
             super(X, Y, Width, Height, Zoom);
 
             targetZoom = 1;
+
         }
 
         public override function update():void

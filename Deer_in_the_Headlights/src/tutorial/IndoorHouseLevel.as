@@ -1,7 +1,5 @@
 package tutorial 
 {
-	import flash.events.ErrorEvent;
-	import flash.geom.Rectangle;
 	import org.flixel.*;
 	import topdown.*;
 	
@@ -36,7 +34,7 @@ package tutorial
 		private const DEFAULT_START : FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH + 90, 620);
 		
 		var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
-		
+
 		/**
 		 * Constructor
 		 * @param	state		State displaying the level
@@ -80,11 +78,6 @@ package tutorial
 				player.x = DEFAULT_START.x;
 				player.y = DEFAULT_START.y;
 			}
-		}
-		
-		override protected function createMap():void 
-		{
-			setLAP(0);
 		}
 		
 		public function setLAAreas(newInd:int):void 
@@ -131,18 +124,18 @@ package tutorial
 		{
 			return (i >= 0) && (i < Assets.LA_NUM_TOTAL);
 		}
+	
 		
 		/**
 		 * Update each timestep
 		 */
 		override public function update():void 
 		{			
-			//if (activeLAChanged)
-				//setLAAreas(activeLA);
+			if (activeLAChanged)
+				setLAAreas(activeLA);
 			
 			super.update(); // NOTE: map -> player collision happens in super.update()
-			
-			
+
 			FlxG.log("Player at " + player.x.toString()  );
 			var center : Number = (player.x + player.width / 2) ;
 			//FlxG.log("(" + (player.x -FlxG.camera.scroll.x ) + "; " + player.x + ", Scroll: " + FlxG.camera.scroll.x.toString() + "," + FlxG.camera.scroll.y.toString() + ")");

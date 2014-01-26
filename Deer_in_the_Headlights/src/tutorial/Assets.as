@@ -7,11 +7,11 @@ package tutorial
 	 * @author MacKenzie Bates
 	 */
 	public class Assets
-	{	
+	{
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                   SPRITES                    --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/deer/deer3_triple.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer/deer3_quad_small.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/forest/tree2.png")]                         public static var TREE:Class;
 		
 		
@@ -60,7 +60,6 @@ package tutorial
 													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
-		
 		private static var LA_01_NPCS:Array = new Array(
 				new ProceduralObjectProtoype(Assets.TREE, 0, 0, Assets.REGION_PLAINS, 0.00075, 200)
 			);	
