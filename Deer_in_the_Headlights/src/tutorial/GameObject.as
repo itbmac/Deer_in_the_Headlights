@@ -60,10 +60,13 @@ package tutorial
 					loadGraphic(
 						displayGraphic, // image to use
 						true, // animated
-						false, // don't generate "flipped" images since they're already in the image
+						true, // generate flipped?
 						765, // width of each frame (in pixels)
 						300 // height of each frame (in pixels)
 					);
+					
+					if (x > player.x)
+						facing = LEFT;
 					
 					addAnimation("idle", [0], 7, true);
 					addAnimation("animate", [0, 1, 2, 3, 4, 5, 6], 10, false);

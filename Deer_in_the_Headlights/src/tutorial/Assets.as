@@ -102,6 +102,7 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
+		//new FixedObjectPrototype(Assets.CAR_TRIGGER,990,500),
 				new TriggerPrototype(Assets.STREETLIGHT, 1590, 475, 250, 200, 200, true, false, true,0),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
@@ -121,7 +122,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,0),
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200, true, false, true, 0),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		

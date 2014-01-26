@@ -40,7 +40,7 @@ package tutorial
 		{
 			if (player.odeermeter >= minOdeermeter)
 			{
-				var go : GameObject = new GameObject(base.x + relX, base.y + relY, null, 0, state, graphic, "", 0, movementStyle);
+				var go : GameObject = new GameObject(base.x + relX, base.y + relY, player, 0, state, graphic, "", 0, movementStyle);
 				go.scale = new FlxPoint(scale, scale);
 				go.scrollFactor = new FlxPoint(scrollFactor, 1);
 				

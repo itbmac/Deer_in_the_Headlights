@@ -48,7 +48,7 @@ package tutorial
 			if (player.odeermeter >= minOdeermeter)
 			{
 				FlxG.log("Odeermeter sufficient at " + player.odeermeter + ", needed " + minOdeermeter);
-				var go : Trigger = new Trigger(base.x + relX, base.y + relY, null, 0, state, graphic, "", 0, movementStyle);
+				var go : Trigger = new Trigger(base.x + relX, base.y + relY, player, 0, state, graphic, "", 0, movementStyle);
 				go.scale = new FlxPoint(scale, scale);
 				go.scrollFactor = new FlxPoint(scrollFactor, 1);
 				go.proximityThreshold = proximityThreshold;

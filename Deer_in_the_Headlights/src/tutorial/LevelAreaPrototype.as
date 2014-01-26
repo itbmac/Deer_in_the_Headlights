@@ -33,7 +33,7 @@ package tutorial
 				if (obj is ProceduralObjectProtoype)
 				{
 					var proceduralObjectPrototype : ProceduralObjectProtoype = obj as ProceduralObjectProtoype;
-					trace("--");
+					//trace("--");
 					var last : int = -1;
 					
 					for (var x:int = pos.x; x < pos.x + LevelArea.DEFAULT_WIDTH; x++)
@@ -41,7 +41,7 @@ package tutorial
 						var newGameObject : GameObject = proceduralObjectPrototype.request(x, last);
 						if (newGameObject != null)
 						{
-							trace("Created at " + x);
+							//trace("Created at " + x);
 							last = x;
 							npcArray.push(newGameObject);
 						}
@@ -57,7 +57,7 @@ package tutorial
 					throw Error("Level prototype arrays must contain only FixedObjectPrototype or ProceduralObjectPrototype");
 				}
 			}
-			trace("===== Generated " + npcArray.length + " objects =====");
+			//trace("===== Generated " + npcArray.length + " objects =====");
 			
 			var LA : LevelArea = new LevelArea(pos, npcArray, backgroundInstances[subindex], Assets.LA_SFS[index - 1], level.player, level.backgroundImgGroup, level.npcGroup, 0, level.foregroundImgGroup, Assets.LA_FLS[index - 1]);
 			LA.noLoop = noLoop;
