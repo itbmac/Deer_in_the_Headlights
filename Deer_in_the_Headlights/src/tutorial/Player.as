@@ -17,6 +17,9 @@ package tutorial
 		
 		public var state:int = 0;
 		private var lastAnimFinished:Boolean = true;
+		private var animSwitch:Boolean = false;
+		private var lastAnimName:String = "";
+		private var lastAnimFrameRate:int = 9;
 		
 		public function Player(X:Number=100, Y:Number=100):void {
 			super(X, Y);
@@ -25,8 +28,8 @@ package tutorial
 						Assets.SPRITE_DEER, // image to use
 						true, // animated
 						false, // don't generate "flipped" images since they're already in the image
-						512, // width of each frame (in pixels)
-						512 // height of each frame (in pixels)
+						256, // width of each frame (in pixels)
+						256 // height of each frame (in pixels)
 					);
 					
 			health = 100;
@@ -58,47 +61,97 @@ package tutorial
 		 * NOTE: these will be different if your art is different
 		 */
 		override protected function createAnimations():void {
-			addAnimation("walk_right", [0, 1, 2, 3, 4, 5, 6, 7, 8], 12, true);
-			addAnimation("walk_left",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
-			addAnimation("sprint_right",  [18, 19, 20, 21, 22, 23, 24, 25, 26], 12, true);
-			addAnimation("sprint_left", [9, 10, 11, 12, 13, 14, 15, 16, 17], 12, true);
-			addAnimation("idle_right", [0], 12, true);
-			addAnimation("idle_left", [9], 12, true);
+			addAnimation("walk_right_9",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 9,  false);
+			addAnimation("walk_right_10", [0, 1, 2, 3, 4, 5, 6, 7, 8], 7,  false);
+			addAnimation("walk_right_11", [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, false);
+			addAnimation("walk_right_12", [0, 1, 2, 3, 4, 5, 6, 7, 8], 13, false);
+			
+			addAnimation("walk_left_9",   [9, 10, 11, 12, 13, 14, 15, 16, 17], 9,  false);
+			addAnimation("walk_left_10",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 7,  false);
+			addAnimation("walk_left_11",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 10, false);
+			addAnimation("walk_left_12",  [9, 10, 11, 12, 13, 14, 15, 16, 17], 13, false);
+			
+			addAnimation("sprint_right_9",   [18, 19, 20, 21, 22, 23, 24, 25, 26], 9,  false);
+			addAnimation("sprint_right_10",  [18, 19, 20, 21, 22, 23, 24, 25, 26], 7,  false);
+			addAnimation("sprint_right_11",  [18, 19, 20, 21, 22, 23, 24, 25, 26], 10, false);
+			addAnimation("sprint_right_12",  [18, 19, 20, 21, 22, 23, 24, 25, 26], 13, false);
+			
+			addAnimation("sprint_left_9",  [27, 28, 29, 30, 31, 32, 33, 34, 35], 9,  false);
+			addAnimation("sprint_left_10", [27, 28, 29, 30, 31, 32, 33, 34, 35], 7,  false);
+			addAnimation("sprint_left_11", [27, 28, 29, 30, 31, 32, 33, 34, 35], 10, false);
+			addAnimation("sprint_left_11", [27, 28, 29, 30, 31, 32, 33, 34, 35], 13, false);
+			
+			addAnimation("idle_right_9",  [0], 9,  false);
+			addAnimation("idle_right_10", [0], 7,  false);
+			addAnimation("idle_right_11", [0], 10, false);
+			addAnimation("idle_right_12", [0], 13, false);
+			
+			addAnimation("idle_left_9",  [9], 9,  false);
+			addAnimation("idle_left_10", [9], 7,  false);
+			addAnimation("idle_left_11", [9], 10, false);
+			addAnimation("idle_left_12", [9], 13, false);
 		}
 		override protected function updateAnimations():void 
 		{
+			var curAnimName:String;
 			if (velocity.x > (RUNSPEED * 4))
-				play("sprint_right");
+			{
+				curAnimName = "sprint_right_";
+			}
 			else if (velocity.x < (RUNSPEED * -4))
-				play("sprint_left");
+			{
+				curAnimName = "sprint_left_";
+			}
 			else if (velocity.x > 0) 
-				play("walk_right");
+			{
+				curAnimName = "walk_right_";
+			}
 			else if (velocity.x < 0) 
-				play("walk_left");
+			{
+				curAnimName = "walk_left_";
+			}
 			else if (facing == RIGHT)
-				play("idle_right");
+			{
+				curAnimName = "idle_right_";
+			}
 			else if (facing == LEFT)
-				play("idle_left");
+			{
+				curAnimName = "idle_left_";
+			}
+			
+			if ((curAnimName == lastAnimName) && animSwitch)
+			{
+				lastAnimFrameRate++;
+				if (lastAnimFrameRate > 12)
+					lastAnimFrameRate = 9;
+				play(lastAnimName + lastAnimFrameRate);
+				animSwitch = false;
+				trace("same anim diff framerate \n");
+				trace("." + lastAnimName + lastAnimFrameRate + ".");
+			}
+			else if ((curAnimName == lastAnimName) && !animSwitch)
+			{
+				play(lastAnimName + lastAnimFrameRate);
+				trace("same anim same framerate \n");
+				trace("." + lastAnimName + lastAnimFrameRate + ".");
+			}
+			else
+			{
+				play(curAnimName + lastAnimFrameRate);
+				lastAnimName = curAnimName;
+				if (animSwitch)
+					animSwitch = false;
+				trace("diff anim \n");
+				trace(curAnimName + lastAnimFrameRate);
+			}
 		}
 		
 		override public function update():void {
 			angle = 0; // (Math.atan2(FlxG.mouse.y - (y + 25), FlxG.mouse.x - (x + 25)) * 180 / Math.PI) +90;
 			
 			
-			switch (state) 
-			{
-				case STATE_FREE_ROAM:
-					break;
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				default:
-			}
+			if (this.finished) // && !lastAnimFinished)
+				animSwitch = true;
 			
 			lastAnimFinished = this.finished;
 			
