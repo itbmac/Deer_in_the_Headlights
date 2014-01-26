@@ -261,7 +261,7 @@ package topdown
 						moving = false;
 					}
 						
-					if (FlxG.keys.pressed("Q") && FlxG.keys.pressed("W") && FlxG.keys.pressed("O") && FlxG.keys.pressed("P") && moving)
+					if (FlxG.keys.pressed("SPACE") && moving)
 					{
 						player.moveSprint();
 					}

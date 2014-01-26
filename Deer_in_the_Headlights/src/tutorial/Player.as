@@ -186,7 +186,7 @@ package tutorial
 				var index : Number = FlxU.abs(velocity.x) + FlxU.abs(velocity.y);
 				if (index > 10.0)
 				{
-					var slowing : Number = index;
+					var slowing : Number = index*1.5;
 					if (index <= 25.0)
 					{
 						if (index <= 5.0)
