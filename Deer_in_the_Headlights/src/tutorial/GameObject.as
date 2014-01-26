@@ -53,20 +53,36 @@ package tutorial
 			
 			switch (displayGraphic) 
 			{
+				case Assets.FOUNTAIN:
+					loadGraphic(
+						displayGraphic, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						400, // width of each frame (in pixels)
+						400 // height of each frame (in pixels)
+					);
+					
+					addAnimation("idle", [0], 7, true);
+					addAnimation("animate", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
+					
+					xProximityOffset = 0;
+					yProximityOffset = 0;
+					play("animate");
+					break;
 				default:
 					loadGraphic(
 						displayGraphic, // image to use
 						false // animated
 					);
-					addAnimation("walk_right", [0], 7, false);
-					addAnimation("walk_left", [0], 7, false);
+					addAnimation("animate", [0], 7, false);
 					addAnimation("idle", [0], 12, false);
 					
 					xProximityOffset = 0;
 					yProximityOffset = 0;
+					play("idle");
 			}
 			
-			play("idle");
+			
 		}
 		public function setXY(pnt:FlxPoint):void {
 			px = pnt.x;
@@ -115,22 +131,6 @@ package tutorial
 			{
 				velocity.x = 0;
 				velocity.y = 0;
-			}
-			
-			//------------------------------------------------------------------------//
-			//						           ANIMATIONS         				      //
-			//------------------------------------------------------------------------//
-			if (velocity.x != 0 || velocity.y != 0) {
-				if (velocity.x > 0 )
-				{
-					play("walk_right");
-				}
-				else
-				{
-					play("walk_left");
-				}
-			}else {
-				play("idle");
 			}
 			
 			

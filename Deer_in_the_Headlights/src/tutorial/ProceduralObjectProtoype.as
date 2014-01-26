@@ -49,7 +49,7 @@ package tutorial
 			return (last == -1 || last + width < x) &&  Math.random() <= probability;
 		}
 		
-		protected function make(x : int)
+		protected function make(x : int) : GameObject
 		{
 			var y : int = randomIntBetween(minY, minY + yRange);
 			return new GameObject(x, y, null, 0, state, graphic, "", 0, movementStyle);

@@ -129,8 +129,6 @@ package tutorial
 			}
 		}
 		
-		var done : Boolean;
-		
 		/**
 		 * Update each timestep
 		 */
@@ -141,8 +139,6 @@ package tutorial
 			//FlxG.log("Player at " + player.x.toString()  );
 			var center : Number = (player.x + player.width / 2) ;
 			
-			if (done)
-			return;
 			// TODO: move to subroutine?
 			var currentArea : Rectangle = LACurrent.area;
 			if (! LACurrent.area.contains(player.x, player.y))

@@ -31,7 +31,12 @@ package tutorial
 		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_04_DL:Class;
 		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_05_DL:Class;
 		[Embed(source = "../../assets/demo/area_04.png")]                  public static var R_06_DL:Class;
+
 		
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ----------------------------------------------                  TRIGGERS                   ---------------------------------------------
+		// ----------------------------------------------------------------------------------------------------------------------------------------
+		[Embed(source = "../../assets/triggers/trigger_fountain_anim.png")]                  public static var FOUNTAIN:Class;
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
@@ -70,6 +75,7 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
+				//new FixedObjectPrototype(Assets.TREE1, 50, 50)
 				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
 				/*new BackgroundPrototype(Assets.FOREST_GROUND_MID_LIGHT, 0, 0, 0, 1, 700, 0, 1.0),
 				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 1, 1),
@@ -146,7 +152,7 @@ package tutorial
 			
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		// ----------------------------------------------                LEVEL AREA 05                 --------------------------------------------
+		// ----------------------------------------------                LEVEL AREA 06                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
 		public static var LA_06_BL:Array = new Array( Assets.R_06_DL
@@ -155,7 +161,7 @@ package tutorial
 													);
 		
 		private static var LA_06_NPCS:Array = new Array(
-
+				new FixedObjectPrototype(Assets.FOUNTAIN, 50, 400)
 			);	
 		
 		public static var LA_06 : LevelAreaPrototype = new LevelAreaPrototype(LA_06_NPCS);
