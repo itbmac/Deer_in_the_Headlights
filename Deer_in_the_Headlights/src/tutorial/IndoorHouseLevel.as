@@ -111,32 +111,32 @@ package tutorial
 				case Assets.REGION_01:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track1,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				case Assets.REGION_02:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track1,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				case Assets.REGION_03:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track2,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				case Assets.REGION_04:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track2,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				case Assets.REGION_05:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track3,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				case Assets.REGION_06:
 					FlxG.music = new FlxSound();
 					FlxG.music.loadEmbedded(Assets.track4,true);
-					FlxG.music.play();
+					FlxG.music.fadeIn(1.0);
 				break;
 				default:
 			}

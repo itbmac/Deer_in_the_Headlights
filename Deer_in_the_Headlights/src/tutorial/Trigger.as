@@ -28,7 +28,6 @@ package tutorial
 		
 		public function animate():void 
 		{
-			FlxG.play(Assets.SCARED);
 			play("animate");
 		}
 	}

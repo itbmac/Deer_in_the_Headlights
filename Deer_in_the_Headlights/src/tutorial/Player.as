@@ -281,6 +281,8 @@ package tutorial
 		}
 		
 		public function triggerBegin(byTrigger : Trigger) : void {
+			FlxG.music.volume = 0.1;
+			FlxG.play(Assets.SCARED);
 			trigger = byTrigger;
 			 state = STATE_TRIG_APRC_STRT;
 			 if (trigger.zoomOnStop)
