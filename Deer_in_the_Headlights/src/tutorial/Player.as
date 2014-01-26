@@ -79,8 +79,6 @@ package tutorial
 				play("idle_right");
 			else if (facing == LEFT)
 				play("idle_left");
-			
-			//= (velocity.x > 0);
 		}
 		
 		override public function update():void {

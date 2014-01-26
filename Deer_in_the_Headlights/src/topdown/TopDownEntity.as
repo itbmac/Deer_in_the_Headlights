@@ -118,8 +118,6 @@ package topdown
 			
 			curScale = NORM_SCALE + (((y - MIN_Y) / RANGE_Y) * 0.2);
 			scale = new FlxPoint(curScale, curScale);
-			
-			trace(scale.x);
 		}
 		
 		/**
