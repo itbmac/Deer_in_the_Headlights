@@ -84,11 +84,14 @@ package tutorial
 		[Embed(source = "../../assets/background/background_mountains_back_h1.png")]    public static var LA_01_BL_05:Class;
 		[Embed(source = "../../assets/background/background_mountains_front_h1.png")]   public static var LA_01_BL_06:Class;
 		[Embed(source = "../../assets/background/background_main_h1_2.png")]            public static var LA_01_BL_07:Class;
+		
+		[Embed(source = "../../assets/background/background_mountains_front_h1_test.png")]   public static var LA_01_BL_06_TEST:Class;
 		public static var LA_01_BL:Array = new Array( Assets.LA_01_BL_01,
 													  Assets.LA_01_BL_02,
 													  Assets.LA_01_BL_03, 
 													  Assets.LA_01_BL_04,
 													  Assets.LA_01_BL_05,
+													  //Assets.LA_01_BL_06_TEST,
 													  Assets.LA_01_BL_06,
 													  Assets.LA_01_BL_07
 													);
@@ -97,6 +100,7 @@ package tutorial
 													  new FlxPoint(.5,1),
 													  new FlxPoint(.5,1),
 													  new FlxPoint(.75,1),
+													  //new FlxPoint(.85, 1),
 													  new FlxPoint(.85,1),
 													  new FlxPoint(1,1)
 													);

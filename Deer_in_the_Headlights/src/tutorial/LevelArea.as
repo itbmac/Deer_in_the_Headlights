@@ -32,9 +32,16 @@ package tutorial
 			
 			for (var i:int = 0; i < BACKGROUND_IMG_ARRAY.length; i++)
 			{
-				var background: FlxSprite = new FlxSprite(LEVEL_POSITION.x, LEVEL_POSITION.y, BACKGROUND_IMG_ARRAY[i]);
-				//background.scrollFactor.x = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
-				//background.scrollFactor.y = BACKGROUND_SCROLL_FACTOR_ARRAY[i].y;
+				var s = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
+				var z = LEVEL_POSITION.x;
+					
+				var adjusted = z; // - (z - 384) * (1 - s); // - z * (1 - s); // (z - 100) * s + 100
+				
+				var background: FlxSprite = new FlxSprite(adjusted , LEVEL_POSITION.y, BACKGROUND_IMG_ARRAY[i]); 
+				
+				background.scrollFactor.x = BACKGROUND_SCROLL_FACTOR_ARRAY[i].x;
+				background.scrollFactor.y = BACKGROUND_SCROLL_FACTOR_ARRAY[i].y;
+				background.mod = true;
 				background.exists = true;
 				imgGroup.add(background);
 				areasBackgrounds.push(background);
@@ -44,6 +51,19 @@ package tutorial
 			this.imgGroup = imgGroup;
 			
 			createNPCs(NPC_ARRAY, player, npcGroup);
+		}
+		
+		public function shift(dx : int) : void
+		{
+			areaPosition.x += dx;
+			for each (var backg:FlxSprite in areasBackgrounds)
+			{
+				backg.x += dx;
+			}
+			for each (var npc:GameObject in areasNPCs)
+			{
+				npc.x += dx;
+			}
 		}
 
 		public function get area() : Rectangle

@@ -32,7 +32,7 @@ package tutorial
 		private var LARight : LevelArea;
 		private var CurrentLAP : LevelAreaPrototype;
 		
-		var midpoint : int = PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
+		var midpoint : int = 0; // PlayState.LEVEL_SIZE.x / 2; // TODO: pick a multiple of level area size?
 		
 		/**
 		 * Constructor
@@ -132,7 +132,9 @@ package tutorial
 			super.update(); // NOTE: map -> player collision happens in super.update()
 			
 			
-			FlxG.log("Player at " + player.x.toString());
+			//FlxG.log("Player at " + player.x.toString() + ", scroll at " + FlxG.camera.scroll.x.toString() );
+			var center : Number = (player.x + player.width / 2) ;
+			//FlxG.log("(" + (player.x -FlxG.camera.scroll.x ) + "; " + player.x + ", Scroll: " + FlxG.camera.scroll.x.toString() + "," + FlxG.camera.scroll.y.toString() + ")");
 			
 			// TODO: move to subroutine?
 			var currentArea : Rectangle = LACurrent.area;
@@ -141,12 +143,20 @@ package tutorial
 				if (player.x < currentArea.left)
 				{
 					LARight.destroy();
+					LACurrent.shift(5000);
+					LARight.shift(5000);
+					player.x += 5000;
+					
 					LARight = LACurrent;
 					LACurrent = LALeft;
 					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);
 				} else if (player.x > currentArea.right)
 				{
 					LALeft.destroy();
+					LACurrent.shift(-5000);
+					LARight.shift(-5000);
+					player.x += -5000;
+					
 					LALeft = LACurrent;
 					LACurrent = LARight;
 					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this);

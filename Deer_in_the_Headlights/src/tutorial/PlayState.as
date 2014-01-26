@@ -14,7 +14,7 @@ package tutorial
 		/**
 		 * Constants
 		 */
-		public static var LEVEL_SIZE:FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH*10000, 1000); // (8215, 700); // level size (in pixels) 
+		public static var LEVEL_SIZE:FlxPoint = new FlxPoint(LevelArea.DEFAULT_WIDTH*100, 1000); // (8215, 700); // level size (in pixels) 
 		
 		/**
 		 * Current level
