@@ -11,33 +11,38 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                   SPRITES                    --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/deer/deer4.png")]                         public static var SPRITE_DEER:Class;
-		[Embed(source = "../../assets/forest/tree2.png")]                         public static var TREE:Class;
+		[Embed(source = "../../assets/deer/deer4.png")]                                  public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/forest/tree2.png")]                                public static var TREE:Class;
 		[Embed(source = "../../assets/forest/tree1_resize.png")]                         public static var TREE1:Class;
 		[Embed(source = "../../assets/forest/tree2_resize.png")]                         public static var TREE2:Class;
 		[Embed(source = "../../assets/forest/tree3_resize.png")]                         public static var TREE3:Class;
-		[Embed(source = "../../assets/forest/forest_mid_light.png")]                         public static var FOREST_MID_LIGHT:Class;
-		[Embed(source = "../../assets/forest/tree_bg_light.png")]                         public static var TREE_BG_LIGHT:Class;
-		[Embed(source = "../../assets/forest/forest_backdrop_light.png")]                         public static var FOREST_BG_LIGHT:Class;
-		[Embed(source = "../../assets/forest/ground_mid_light.png")]                         public static var FOREST_GROUND_MID_LIGHT:Class;
+		[Embed(source = "../../assets/forest/forest_mid_light.png")]                     public static var FOREST_MID_LIGHT:Class;
+		[Embed(source = "../../assets/forest/tree_bg_light.png")]                        public static var TREE_BG_LIGHT:Class;
+		[Embed(source = "../../assets/forest/forest_backdrop_light.png")]                public static var FOREST_BG_LIGHT:Class;
+		[Embed(source = "../../assets/forest/ground_mid_light.png")]                     public static var FOREST_GROUND_MID_LIGHT:Class;
+		[Embed(source = "../../assets/forest/drunk_leaf.png")]                           public static var DRUNK_LEAF:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                  DEMO IMGS                   --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_DL:Class;
-		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_DL:Class;
-		[Embed(source = "../../assets/demo/area_03.png")]                  public static var R_03_DL:Class;
-
+		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_BL:Class;
+		[Embed(source = "../../assets/demo/area_01.png")]                  public static var R_01_FL:Class;
+		
+		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_BL:Class;
+		[Embed(source = "../../assets/demo/area_02.png")]                  public static var R_02_FL:Class;
+		
+		[Embed(source = "../../assets/demo/area_03_back.png")]             public static var R_03_BL:Class;
+		[Embed(source = "../../assets/demo/area_03_back.png")]             public static var R_03_FL:Class;
+		
 		[Embed(source = "../../assets/demo/area_04_back.png")]             public static var R_04_BL:Class;
 		[Embed(source = "../../assets/demo/area_04_fore.png")]             public static var R_04_FL:Class;
 		
 		[Embed(source = "../../assets/demo/area_05_back.png")]             public static var R_05_BL:Class;
 		[Embed(source = "../../assets/demo/area_05_fore.png")]             public static var R_05_FL:Class;
 		
-		[Embed(source = "../../assets/demo/area_04_back.png")]             public static var R_06_BL:Class;
-		[Embed(source = "../../assets/demo/area_04_fore.png")]             public static var R_06_FL:Class;
-
+		[Embed(source = "../../assets/demo/area_06_back.png")]             public static var R_06_BL:Class;
+		[Embed(source = "../../assets/demo/area_06_fore.png")]             public static var R_06_FL:Class;
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                  TRIGGERS                   ---------------------------------------------
@@ -47,7 +52,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/images/start_screen_2.png")]           public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/start_screen_3.png")]           public static var HUD_START_SCREEN:Class;
 		[Embed(source = "../../assets/images/panic_mode_square_3.png")]      public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")]        public static var PANIC_OVERLAY:Class;
 		
@@ -76,9 +81,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 01                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_01_BL:Array = new Array( Assets.R_01_DL
+		public static var LA_01_BL:Array = new Array( Assets.R_01_BL
 													);
-		public static var LA_01_FL:Array = new Array(// Assets.R_01_DL
+		public static var LA_01_FL:Array = new Array(// Assets.R_01_FL
 													);
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
@@ -89,8 +94,8 @@ package tutorial
 				new ProceduralObjectProtoype(Assets.TREE_BG_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 1, 1),
 				new ProceduralObjectProtoype(Assets.FOREST_MID_LIGHT, 0, 0, Assets.REGION_PLAINS, 0.001, 0, 0, 1, 0.75),
 				new ProceduralObjectProtoype(Assets.TREE1, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),
-				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),
-				new ProceduralObjectProtoype(Assets.TREE3, 0, 0, Assets.REGION_PLAINS, 0.00025, 200)*/
+				new ProceduralObjectProtoype(Assets.TREE2, 0, 0, Assets.REGION_PLAINS, 0.00025, 200),*/
+		//new GameObject(300,0,null,0,0,Assets.DRUNK_LEAF, "", 0, 0)
 			);	
 		
 		public static var LA_01 : LevelAreaPrototype = new LevelAreaPrototype(LA_01_NPCS);
@@ -100,9 +105,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 02                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_02_BL:Array = new Array( Assets.R_02_DL
+		public static var LA_02_BL:Array = new Array( Assets.R_02_BL
 													);
-		public static var LA_02_FL:Array = new Array(// Assets.R_01_DL
+		public static var LA_02_FL:Array = new Array(// Assets.R_02_FL
 													);
 		public static var LA_02_SF:Array = new Array( new FlxPoint(1, 1)
 													);
@@ -118,9 +123,9 @@ package tutorial
 		// ----------------------------------------------                LEVEL AREA 03                 --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		
-		public static var LA_03_BL:Array = new Array( Assets.R_03_DL
+		public static var LA_03_BL:Array = new Array( Assets.R_03_BL
 													);
-		public static var LA_03_FL:Array = new Array(// Assets.R_01_DL
+		public static var LA_03_FL:Array = new Array(// Assets.R_03_FL
 													);
 		public static var LA_03_SF:Array = new Array( new FlxPoint(1, 1)
 													);
