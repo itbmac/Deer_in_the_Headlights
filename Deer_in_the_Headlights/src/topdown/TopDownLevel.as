@@ -253,6 +253,7 @@ package topdown
 				if (FlxG.keys.pressed("DOWN"))
 					player.moveDown();
 				
+				if (!(FlxG.keys.pressed("DOWN") || FlxG.keys.pressed("UP")))
 				{
 					player.acceleration.y = 0;
 				}
