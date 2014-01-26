@@ -31,6 +31,8 @@ package tutorial
 		public var xProximityOffset:int = 0; //Point from which to judge if player is close
 		public var yProximityOffset:int = 0; //Point from which to judge if player is close
 		
+		private var originalX;
+		
 		public function GameObject(X:int, Y:int, player:TopDownEntity = null, LA:int = 0, initialState:int = 0,
 			dispGraphic:Class = null, dispText:String = "", dispRegion:int = 0, moveStyle:int = 0,
 			xOffsetThres:int = 0, yOffsetThres:int = 0, xVel:int = 0, yVel:int = 0)
@@ -50,6 +52,7 @@ package tutorial
 			
 			velocity.x = xVel;
 			velocity.y = yVel;
+			originalX = x;
 			
 			switch (displayGraphic) 
 			{
@@ -109,13 +112,6 @@ package tutorial
 		public function setXY(pnt:FlxPoint):void {
 			px = pnt.x;
 			py = pnt.y;
-		}
-		
-		protected function createAnimations():void {
-
-			addAnimation("walk", [1,2], 12, false);
-			addAnimation("idle", [1], 12, false);
-			
 		}
 
 		public override function update():void {
