@@ -67,7 +67,7 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                    MUSIC                     --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/sound/act_3.mp3")]           public static var track1:Class; // music for region 1-2
+		[Embed(source = "../../assets/sound/act_3_min.mp3")]           public static var track1:Class; // music for region 1-2
 		[Embed(source = "../../assets/sound/god_beat_3.mp3")]      public static var track2:Class; // music for region 3-4
 		[Embed(source = "../../assets/sound/street_music_1.mp3")]  public static var track3:Class; // music for region 5
 		[Embed(source = "../../assets/sound/act_1_hack.mp3")]      public static var track4:Class; // music for region 6
