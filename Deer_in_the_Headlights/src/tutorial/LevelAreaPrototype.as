@@ -18,7 +18,7 @@ package tutorial
 			this.proceduralObjectPrototypes = newProceduralObjectPrototypes;
 		}
 		
-		public function make(pos : FlxPoint, level : TopDownLevel) : LevelArea
+		public function make(pos : FlxPoint, level : TopDownLevel, index:int) : LevelArea
 		{
 			//trace("Got " + proceduralObjectPrototypes.length + " prototypes");
 			var npcArray : Array= new Array();
@@ -41,7 +41,7 @@ package tutorial
 			}
 			trace("===== Generated " + npcArray.length + " npcs =====");
 			
-			return new LevelArea(pos, npcArray, Assets.LA_BLS[0], Assets.LA_SFS[0], level.player, level.imgGroup, level.npcGroup, 0);
+			return new LevelArea(pos, npcArray, Assets.LA_BLS[index-1], Assets.LA_SFS[index-1], level.player, level.imgGroup, level.npcGroup, 0);
 		}
 		
 	}
