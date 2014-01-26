@@ -53,6 +53,66 @@ package tutorial
 			
 			switch (displayGraphic) 
 			{
+				case Assets.CAR_TRIGGER:
+					loadGraphic(
+						displayGraphic, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						765, // width of each frame (in pixels)
+						300 // height of each frame (in pixels)
+					);
+					
+					addAnimation("idle", [0], 7, true);
+					addAnimation("animate", [0, 1, 2, 3, 4, 5, 6], 10, false);
+					
+					xProximityOffset = 0;
+					yProximityOffset = 0;
+					break;
+				case Assets.STOPLIGHT:
+					loadGraphic(
+						displayGraphic, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						348, // width of each frame (in pixels)
+						500 // height of each frame (in pixels)
+					);
+					
+					addAnimation("idle", [0], 7, true);
+					addAnimation("animate", [0, 1, 2, 3, 4, 5, 6], 10, false);
+					
+					xProximityOffset = 0;
+					yProximityOffset = 0;
+					break;
+				case Assets.ROOT_TRIGGER:
+					loadGraphic(
+						displayGraphic, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						200, // width of each frame (in pixels)
+						200 // height of each frame (in pixels)
+					);
+					
+					addAnimation("idle", [0], 10, true);
+					addAnimation("animate", [0, 1, 2, 3, 4, 5], 11, false);
+					
+					xProximityOffset = 0;
+					yProximityOffset = 0;
+					break;
+				case Assets.STREETLIGHT:
+					loadGraphic(
+						displayGraphic, // image to use
+						true, // animated
+						false, // don't generate "flipped" images since they're already in the image
+						300, // width of each frame (in pixels)
+						340 // height of each frame (in pixels)
+					);
+					
+					addAnimation("idle", [0,0,1,1,0,1,0,1,1], 10, true);
+					addAnimation("animate", [4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20,21,22,23], 10, false);
+					
+					xProximityOffset = 0;
+					yProximityOffset = 0;
+					break;
 				case Assets.FOUNTAIN:
 					loadGraphic(
 						displayGraphic, // image to use
@@ -62,12 +122,11 @@ package tutorial
 						400 // height of each frame (in pixels)
 					);
 					
-					addAnimation("idle", [0], 7, true);
-					addAnimation("animate", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
+					addAnimation("idle", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
+					addAnimation("animate", [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], 10, false);
 					
 					xProximityOffset = 0;
 					yProximityOffset = 0;
-					play("animate");
 					break;
 				case Assets.DRUNK_LEAF:
 					loadGraphic(
@@ -104,7 +163,7 @@ package tutorial
 					play("idle");
 			}
 			
-			
+			play("idle");
 		}
 		public function setXY(pnt:FlxPoint):void {
 			px = pnt.x;
@@ -119,35 +178,7 @@ package tutorial
 		}
 
 		public override function update():void {
-			
-			//------------------------------------------------------------------------//
-			//						       Stage Action         				      //
-			//------------------------------------------------------------------------//
-			if (movementStyle == 1) { 
-				if ((x > (xOrigin + xOffsetThreshold)) || (x < (xOrigin - xOffsetThreshold)))
-					velocity.x = -velocity.x;
-				if ((y > (yOrigin + yOffsetThreshold)) || (y < (yOrigin - yOffsetThreshold)))
-					velocity.y = -velocity.y;
-					
-				x += velocity.x;
-				y += velocity.y;
-			}
-			else if (movementStyle == 2) {  
-				if ((x > (xOrigin + xOffsetThreshold)) || (x < (xOrigin - xOffsetThreshold)))
-					velocity.x = -velocity.x;
-				if ((y > (yOrigin + yOffsetThreshold)) || (y < (yOrigin - yOffsetThreshold)))
-					velocity.y = -velocity.y;
-					
-				x += Math.cos(velocity.x)*velocity.x;
-				y += Math.sin(velocity.y);
-			}
-			else if (movementStyle == 0)
-			{
-				velocity.x = 0;
-				velocity.y = 0;
-			}
-			
-			
+						
 			super.update();
 		}
 	}

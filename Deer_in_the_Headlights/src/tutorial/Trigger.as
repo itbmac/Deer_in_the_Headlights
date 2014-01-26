@@ -25,6 +25,10 @@ package tutorial
 			visited = true;
 		}
 		
+		public function animate():void 
+		{
+			play("animate");
+		}
 	}
 
 }

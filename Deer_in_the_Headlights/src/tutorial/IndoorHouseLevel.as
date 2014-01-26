@@ -138,7 +138,7 @@ package tutorial
 		}
 		
 		public function nextLevel() : void {
-			setLAP(1 + ((currentLAPIndex + 1 - 1) % Assets.LAs.length));
+			setLAP((currentLAPIndex + 1) % (Assets.LAs.length + 1));
 		}
 		
 		private function getSubindex(delta : int = 0) : int {
