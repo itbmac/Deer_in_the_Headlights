@@ -12,7 +12,7 @@ package topdown
 		 * Constants
 		 */
 		public static const WALKSPEED:int = 100;
-		public static const RUNSPEED:int =  280;
+		public static const RUNSPEED:int =  400;
 		public static const FRICTION:Number = 5;
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
@@ -146,6 +146,13 @@ package topdown
 				acceleration.x = RUNSPEED * .5;
 			if (facing == LEFT)
 				acceleration.x = -RUNSPEED * .5;
+		}
+		
+		public function changeDirection() : void {
+			if (facing == RIGHT)
+				facing = LEFT;
+			else if (facing == LEFT)
+				facing = RIGHT;
 		}
 	}
 }

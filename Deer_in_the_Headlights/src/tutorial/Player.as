@@ -31,6 +31,8 @@ package tutorial
 		private var lastAnimName:String = "";
 		private var lastAnimFrameRate:int = 9;
 		private var trigger : Trigger;
+		private var lastX : int;
+		
 		
 		/**
 		 * Constructor
@@ -205,8 +207,17 @@ package tutorial
 					velocity.y = 0.0;
 					state = STATE_TRIG_APRC_STOP;
 					// cheat
-					state = STATE_FREE_ROAM;
-					IndoorHouseLevel.instance.endZoom();
+					if (trigger.shortCircuit)
+					{
+						state = STATE_FREE_ROAM;
+						IndoorHouseLevel.instance.endZoom();
+					} else
+					{
+						if (trigger.flipDirectionOnRun)
+							changeDirection();
+						
+						 moveSprint();
+					}
 					
 				}
 			}
