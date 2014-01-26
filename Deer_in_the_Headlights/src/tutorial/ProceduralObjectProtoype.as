@@ -25,23 +25,23 @@ package tutorial
 		//private var differentTypeSeparation : int;
 		
 		public function ProceduralObjectProtoype(graphic : Class, state : int = 0, movementStyle : int = 0, region : int = 0,
-												probability : Number = 0.0005, minY : int = 0, yRange : int = 0, scrollFactor : Number = 1.0, scale : Number = 1.0) 
+												probability : Number = 0.0005, minY : int = 0, yRange : int = 0,
+												scrollFactor : Number = 1.0, scale : Number = 1.0, width : Number = 0.0) 
 		{
 			this.state = state;
 			this.graphic = graphic;
 			this.movementStyle = movementStyle
 			this.region = region;
-			this.width = (new graphic).bitmapData.width;
+			if (width == 0.0)
+				width = (new graphic).bitmapData.width;
+				
+			this.width = width;
 			
 			this.minY = minY;
 			this.yRange = yRange;
 			this.probability = probability;
 			this.scrollFactor = scrollFactor;
 			this.scale = scale;
-		}
-		
-		private function randomIntBetween(min:int, max:int):int {
-			return Math.floor(Math.random() * (max - min + 1) + min);
 		}
 		
 		protected function shouldMake(x : int, last : int) : Boolean
@@ -51,7 +51,7 @@ package tutorial
 		
 		protected function make(x : int) : GameObject
 		{
-			var y : int = randomIntBetween(minY, minY + yRange);
+			var y : int = PlayState.randomIntBetween(minY, minY + yRange);
 			return new GameObject(x, y, null, 0, state, graphic, "", 0, movementStyle);
 		}
 		

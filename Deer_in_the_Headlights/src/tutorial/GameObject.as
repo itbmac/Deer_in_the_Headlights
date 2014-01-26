@@ -71,18 +71,26 @@ package tutorial
 					break;
 				case Assets.DRUNK_LEAF:
 					loadGraphic(
-						Assets.DRUNK_LEAF, // image to use
+						displayGraphic, // image to use
 						true, // animated
 						false,
 						64,
 						720
 					);
-					addAnimation("walk_right", [0], 7, false);
-					addAnimation("walk_left", [0], 7, false);
-					addAnimation("idle", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38], 12, true);
+					var frameList : Array = new Array();
+					var start : int = PlayState.randomIntBetween(0, 38);
+					for (var i : int = 0; i <= 38; i++)
+					{
+						frameList.push((start + i) % 39);
+					}
+					//[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]
+					
+					addAnimation("idle", frameList, PlayState.randomIntBetween(9, 15), true);
 					
 					xProximityOffset = 0;
 					yProximityOffset = 0;
+					play("idle");
+					break;
 				default:
 					loadGraphic(
 						displayGraphic, // image to use

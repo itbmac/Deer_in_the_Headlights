@@ -47,6 +47,9 @@ package tutorial
 					var fixedObjectPrototype : FixedObjectPrototype = obj as FixedObjectPrototype;
 					var newGameObject : GameObject = fixedObjectPrototype.make(pos);
 					npcArray.push(newGameObject);
+				} else 
+				{
+					throw Error("Level prototype arrays must contain only FixedObjectPrototype or ProceduralObjectPrototype");
 				}
 			}
 			trace("===== Generated " + npcArray.length + " objects =====");

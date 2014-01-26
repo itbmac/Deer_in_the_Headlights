@@ -22,6 +22,10 @@ package tutorial
 		 */
 		public static var LEVEL:TopDownLevel = null;
 		
+		public static function randomIntBetween(min:int, max:int):int {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+		
 		/**
 		 * Create state
 		 */
