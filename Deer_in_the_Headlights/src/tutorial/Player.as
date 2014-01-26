@@ -36,7 +36,7 @@ package tutorial
 		private var lastAnimFrameRate:int = 9;
 		private var trigger : Trigger;
 		private var lastX : int;
-		private var odeermeter : int;
+		public var odeermeter : int;
 		
 		
 		/**
@@ -243,9 +243,10 @@ package tutorial
 				
 				if (odeermeter >= 2500)
 				{
+					// Odeermeter MUST be reset before loading next level
+					odeermeter = 0;
 					IndoorHouseLevel.instance.nextLevel();
 					state = STATE_NXTL_SLOW1;
-					odeermeter = 0;
 				}
 			} else if (state == STATE_NXTL_SLOW1)
 			{

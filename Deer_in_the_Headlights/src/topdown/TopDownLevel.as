@@ -92,9 +92,9 @@ package topdown
 		 * Create the whole level, including all sprites, maps, blocks, etc
 		 */
 		public function create():void {
+			createPlayer();
 			createMap();
 			createGUI();
-			createPlayer();
 			createStartScreen();
 			addGroups();
 			createCamera();
@@ -343,7 +343,6 @@ package topdown
 		public function setFog(val : Number): void
 		{
 			fogOverlayImg.alpha = val;
-			FlxG.log(val);
 		}
 	}
 }

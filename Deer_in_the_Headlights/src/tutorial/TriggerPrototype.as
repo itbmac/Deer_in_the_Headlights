@@ -1,6 +1,8 @@
 package tutorial 
 {
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxG;
+	
 	/**
 	 * ...
 	 * @author ...
@@ -17,9 +19,9 @@ package tutorial
 		
 		public function TriggerPrototype(graphic:Class, relX:int, relY:int, proximityThreshold:Number = 250, xProximityOffset:Number = 0,
 			yProximityOffset:Number = 0,zoomOnStop : Boolean = true, shortCircuit : Boolean = false, flipDirectionOnRun : Boolean = true,
-			scale:Number = 1.0, state:int = 0, movementStyle:int = 0, region:int = 0, scrollFactor:Number = 1.0) 
+			minOdeermeter:int = 0, scale:Number = 1.0, state:int = 0, movementStyle:int = 0, region:int = 0, scrollFactor:Number = 1.0) 
 		{
-			super(graphic, relX, relY, scale, state, movementStyle, region, scrollFactor);
+			super(graphic, relX, relY, scale, state, minOdeermeter, movementStyle, region, scrollFactor);
 			
 			this.zoomOnStop = zoomOnStop;
 			this.shortCircuit = shortCircuit;
@@ -41,19 +43,28 @@ package tutorial
 			this.proximityThreshold = proximityThreshold;
 		}
 		
-		override public function make(base : FlxPoint) : GameObject
+		override public function make(base : FlxPoint, player : Player) : GameObject
 		{
-			var go : Trigger = new Trigger(base.x + relX, base.y + relY, null, 0, state, graphic, "", 0, movementStyle);
-			go.scale = new FlxPoint(scale, scale);
-			go.scrollFactor = new FlxPoint(scrollFactor, 1);
-			go.proximityThreshold = proximityThreshold;
-			go.xProximityOffset = xProximityOffset;
-			go.yProximityOffset = yProximityOffset;
-			go.zoomOnStop = zoomOnStop;
-			go.shortCircuit = shortCircuit;
-			go.flipDirectionOnRun = flipDirectionOnRun;
-			
-			return go;
+			if (player.odeermeter >= minOdeermeter)
+			{
+				FlxG.log("Odeermeter sufficient at " + player.odeermeter + ", needed " + minOdeermeter);
+				var go : Trigger = new Trigger(base.x + relX, base.y + relY, null, 0, state, graphic, "", 0, movementStyle);
+				go.scale = new FlxPoint(scale, scale);
+				go.scrollFactor = new FlxPoint(scrollFactor, 1);
+				go.proximityThreshold = proximityThreshold;
+				go.xProximityOffset = xProximityOffset;
+				go.yProximityOffset = yProximityOffset;
+				go.zoomOnStop = zoomOnStop;
+				go.shortCircuit = shortCircuit;
+				go.flipDirectionOnRun = flipDirectionOnRun;
+				
+				return go;
+			} else
+			{
+				// TODO: reset odeermeeter more?
+				FlxG.log("Odeermeter only at " + player.odeermeter + ", need " + minOdeermeter);
+				return null;
+			}
 		}
 		
 	}

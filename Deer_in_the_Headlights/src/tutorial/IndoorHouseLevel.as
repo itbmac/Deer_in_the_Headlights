@@ -72,10 +72,11 @@ package tutorial
 		
 		private function setLAP(index : int) : void
 		{
-			trace("Loading LAP " + index);
+			FlxG.log("Loading LAP " + index);
+			player.odeermeter = 0;
 			// TODO: don't reset if same index?
 			currentLAPIndex = index;
-			CurrentLAP = Assets.LAs[index-1];
+			CurrentLAP = Assets.LAs[index - 1];
 			
 			if (LALeft != null)
 				LALeft.destroy();
@@ -137,7 +138,14 @@ package tutorial
 		}
 		
 		public function nextLevel() : void {
-			setLAP((currentLAPIndex + 1) % Assets.LAs.length);
+			setLAP(1 + ((currentLAPIndex + 1 - 1) % Assets.LAs.length));
+		}
+		
+		private function getSubindex(delta : int = 0) : int {
+			var partial : int = (subindex + delta) % 3;
+			if (partial < 0)
+				partial += 3;
+			return partial;
 		}
 		
 		/**
@@ -162,32 +170,32 @@ package tutorial
 					player.x = currentArea.right - (currentArea.left - player.x);
 					LACurrent.shift(5000);
 					LALeft.shift(5000);
-					LARight.shift( -10000);
-					subindex = (subindex - 1) % 3;
+					//LARight.shift( -10000);
+					subindex = getSubindex(-1);
 					
 					//var oldLeft :LevelArea = LALeft; 
-					LALeft = LARight;
+					//LALeft = LARight;
 					LARight = LACurrent;
-					//LACurrent = oldLeft;
+					LACurrent = LALeft;
 					
-					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, (subindex - 1) % 3);
+					LALeft = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x - LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, getSubindex(-1));
 				} else if (player.x > currentArea.right)
 				{
 					FlxG.log("Right shift");
 					LALeft.destroy();
 					
 					player.x = currentArea.left + (player.x - currentArea.right);
-					LALeft.shift(10000);
+					//LALeft.shift(10000);
 					LACurrent.shift( -5000);
 					LARight.shift( -5000);
 					
 					//var oldLeft :LevelArea = LALeft; 
 					LALeft = LACurrent;
 					LACurrent = LARight;
-					subindex = (subindex + 1) % 3;
+					subindex = getSubindex(1);
 					//LARight = oldLeft;
 					
-					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, (subindex + 1) % 3);
+					LARight = CurrentLAP.make(new FlxPoint(LACurrent.areaPosition.x + LevelArea.DEFAULT_WIDTH, LACurrent.areaPosition.y), this, currentLAPIndex, getSubindex(1));
 				} else
 				{
 					// TODO?: for these 2 errors possibly just move the player back into a valid position

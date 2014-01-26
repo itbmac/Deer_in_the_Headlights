@@ -47,8 +47,9 @@ package tutorial
 				} else if (obj is FixedObjectPrototype)
 				{
 					var fixedObjectPrototype : FixedObjectPrototype = obj as FixedObjectPrototype;
-					var newGameObject : GameObject = fixedObjectPrototype.make(pos);
-					npcArray.push(newGameObject);
+					var newGameObject : GameObject = fixedObjectPrototype.make(pos, level.player);
+					if (newGameObject != null)
+						npcArray.push(newGameObject);
 				} else 
 				{
 					throw Error("Level prototype arrays must contain only FixedObjectPrototype or ProceduralObjectPrototype");

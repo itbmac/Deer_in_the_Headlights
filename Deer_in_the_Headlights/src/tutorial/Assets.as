@@ -79,7 +79,7 @@ package tutorial
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                LEVEL AREA 01                 --------------------------------------------
-		// ----------------------------------------------------------------------------------------------------------------------------------------
+		// ---------------------------------------------------------------------------------------------------------------------------------------
 		
 		public static var LA_01_BL:Array = new Array( Assets.R_01_BL
 													);
@@ -88,7 +88,7 @@ package tutorial
 		public static var LA_01_SF:Array = new Array( new FlxPoint(1, 1)
 													);
 		private static var LA_01_NPCS:Array = new Array(
-			new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200, true, false, true),
+			new TriggerPrototype(Assets.FOUNTAIN, 1590, 400, 250, 200, 200, true, false, true,1000),
 			new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 				//new FixedObjectPrototype(Assets.TREE1, 50, 50)
 				//new BackgroundPrototype(Assets.FOREST_BG_LIGHT),
@@ -114,7 +114,7 @@ package tutorial
 													);
 		
 		private static var LA_02_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200),
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,1000),
 				new ProceduralObjectProtoype(Assets.DRUNK_LEAF,0,0,0,0.01,0,0,1.0,1.0,64.0)
 			);	
 		
@@ -133,7 +133,7 @@ package tutorial
 													);
 		
 		private static var LA_03_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,1000)
 			);	
 		
 		public static var LA_03 : LevelAreaPrototype = new LevelAreaPrototype(LA_03_NPCS, [[Assets.R_03_BL],[Assets.R_03_BL],[Assets.R_03_BL]]);
@@ -151,7 +151,7 @@ package tutorial
 													);
 		
 		private static var LA_04_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,1000)
 			);	
 		
 		public static var LA_04 : LevelAreaPrototype = new LevelAreaPrototype(LA_04_NPCS, [[Assets.R_04_BL],[Assets.R_04_BL],[Assets.R_04_BL]]);
@@ -168,7 +168,7 @@ package tutorial
 													);
 		
 		private static var LA_05_NPCS:Array = new Array(
-				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200)
+				new TriggerPrototype(Assets.FOUNTAIN, 2590, 400, 250, 200, 200,true, false, true,1000)
 			);	
 		
 		public static var LA_05 : LevelAreaPrototype = new LevelAreaPrototype(LA_05_NPCS, [[Assets.R_05_BL],[Assets.R_05_BL],[Assets.R_05_BL]]);
