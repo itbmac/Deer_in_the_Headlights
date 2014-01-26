@@ -23,6 +23,8 @@ package topdown
 		public var srtScreenGroup:FlxGroup;
 		private var srtScreenImg: FlxSprite;
 		private var panicOverlayImg:FlxSprite;
+		private var fogOverlayImg:FlxSprite;
+		private var foregroundImg:FlxSprite;
 		
 		/**
 		 * Player
@@ -37,7 +39,7 @@ package topdown
 		private var desiredZoom:Number = 1;
 		private var desiredZoomReached:Boolean = false;
 		public var zoomMode:Boolean = false;
-		private var zoomOffset:int = -285;
+		private var zoomOffset:int = -325;
 		private var zoomAcceleration:Number = .05;
 		private var zoomSwitchTimer:int = 0;
 		private var zoomSwitchTimerDelay:int = 50;
@@ -100,11 +102,16 @@ package topdown
 		/**
 		 * Create the overlay screen
 		 */
-		protected function createGUI():void {
+		protected function createGUI():void {			
 			panicOverlayImg = new FlxSprite(0,0, Assets.PANIC_OVERLAY);
 			panicOverlayImg.scrollFactor.x = panicOverlayImg.scrollFactor.y = 0;
 			panicOverlayImg.exists = true;
 			guiGroup.add(panicOverlayImg);
+			
+			fogOverlayImg = new FlxSprite(0,0, Assets.FOG_OVERLAY);
+			fogOverlayImg.scrollFactor.x = fogOverlayImg.scrollFactor.y = 0;
+			fogOverlayImg.exists = true;
+			guiGroup.add(fogOverlayImg);
 		}
 		
 		/**
@@ -221,13 +228,14 @@ package topdown
 				
 				if (FlxG.keys.pressed("RIGHT"))
 					player.moveRight();
-				else if (FlxG.keys.pressed("LEFT"))
+				if (FlxG.keys.pressed("LEFT"))
 					player.moveLeft();
-				else if (FlxG.keys.pressed("UP"))
+				if (FlxG.keys.pressed("UP"))
 					player.moveUp();
-				else if (FlxG.keys.pressed("DOWN"))
+				if (FlxG.keys.pressed("DOWN"))
 					player.moveDown();
-				else
+				
+				if (!(FlxG.keys.pressed("DOWN") || FlxG.keys.pressed("UP") || FlxG.keys.pressed("RIGHT") || FlxG.keys.pressed("LEFT")))
 					moving = false;
 					
 				if (FlxG.keys.pressed("SPACE") && moving)
@@ -262,24 +270,28 @@ package topdown
 						FlxG.camera.zoom += zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
 						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
+						fogOverlayImg.alpha = 1- (FlxG.camera.zoom - 1);
 					}
 					if (FlxG.camera.zoom > desiredZoom)
 					{
 						FlxG.camera.zoom -= zoomAcceleration;
 						FlxG.camera.y = zoomOffset * (FlxG.camera.zoom - 1);
 						panicOverlayImg.alpha = (FlxG.camera.zoom - 1);
+						fogOverlayImg.alpha = 1- (FlxG.camera.zoom - 1);
 					}
 					if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 1)
 					{
 						FlxG.camera.y = 0;
 						desiredZoomReached = true;
-						panicOverlayImg.alpha = 1;
+						panicOverlayImg.alpha = 0;
+						fogOverlayImg.alpha = 1;
 					}
 					else if ((FlxG.camera.zoom == desiredZoom) && desiredZoom == 2)
 					{
 						FlxG.camera.y = zoomOffset;
 						desiredZoomReached = true;
 						panicOverlayImg.alpha = 1;
+						fogOverlayImg.alpha = 0;
 					}
 				}
 				

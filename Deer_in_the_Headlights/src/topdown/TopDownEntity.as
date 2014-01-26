@@ -16,6 +16,12 @@ package topdown
 		public static const SIZE:FlxPoint = new FlxPoint(51, 60); // size in pixels
 		public var sprint:Boolean = false;
 		
+		public static const MIN_Y:int = 530;
+		public static const MAX_Y:int = 610;//635;
+		public var RANGE_Y:int = MAX_Y - MIN_Y;
+		public static const NORM_SCALE :Number = .35;
+		public var curScale :Number = .35;
+		
 		/** Free Roam (Player has control only in this state) */
 		public static const STATE_FREE_ROAM:int = 0;
 		/** Trigger Approach Started (Player has caused a trigger to start and deer will slow to stop) */
@@ -77,7 +83,7 @@ package topdown
 		 * Check keyboard/mouse controls
 		 */
 		protected function updateControls():void {
-			acceleration.y = 0; // no gravity or drag by default
+			//acceleration.y = 0; // no gravity or drag by default
 			
 			velocity.x += acceleration.x;
 			this.x += velocity.x;
@@ -89,6 +95,31 @@ package topdown
 				velocity.x = 0;
 				acceleration.x = 0;
 			}
+			
+			velocity.y += acceleration.y;
+			this.y += velocity.y;
+			acceleration.y *= FRICTION;
+			velocity.y *= FRICTION;
+			
+			if (Math.abs(velocity.y) < .1)
+			{
+				velocity.y = 0;
+				acceleration.y = 0;
+			}
+			
+			if (y <= MIN_Y)
+			{
+				y = MIN_Y;
+			}
+			else if (y >= MAX_Y)
+			{
+				y = MAX_Y;
+			}
+			
+			curScale = NORM_SCALE + (((y - MIN_Y) / RANGE_Y) * 0.2);
+			scale = new FlxPoint(curScale, curScale);
+			
+			trace(scale.x);
 		}
 		
 		/**
@@ -111,16 +142,22 @@ package topdown
 		 * Move entity up
 		 */
 		public function moveUp():void {
-			facing = UP;
-			acceleration.y = -RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
+			if (y >= MIN_Y)
+			{
+				facing = UP;
+				acceleration.y = -RUNSPEED * 2; // accelerate to top speed in 1/4 of a second
+			}
 		}
 		
 		/**
 		 * Move playe rdown
 		 */
 		public function moveDown():void {
-			facing = DOWN;
-			acceleration.y = RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
+			if (y <= MAX_Y)
+			{
+				facing = DOWN;
+				acceleration.y = RUNSPEED * 2; // accelerate to top speed in 1/4 of a second
+			}
 		}
 		
 		/**

@@ -36,7 +36,7 @@ package tutorial
 		
 		[Embed(source = "../../assets/sprites/bird.png")]                  public static var SPRITE_BIRD:Class;
 		[Embed(source = "../../assets/sprites/bush.png")]                  public static var SPRITE_BUSH:Class;
-		[Embed(source = "../../assets/deer2.png")]                         public static var SPRITE_DEER:Class;
+		[Embed(source = "../../assets/deer3.png")]                         public static var SPRITE_DEER:Class;
 		[Embed(source = "../../assets/sprites/dog.png")]                   public static var SPRITE_DOG:Class;
 		[Embed(source = "../../assets/sprites/owl.png")]                   public static var SPRITE_OWL:Class;
 		[Embed(source = "../../assets/sprites/spider.png")]                public static var SPRITE_SPIDER:Class;
@@ -56,14 +56,16 @@ package tutorial
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------              HUD & START SCREEN              --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/images/start_screen.png")] public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/start_screen_2.png")] public static var HUD_START_SCREEN:Class;
+		[Embed(source = "../../assets/images/panic_mode_square_3.png")] public static var FOG_OVERLAY:Class;
 		[Embed(source = "../../assets/images/panic_mode_square.png")] public static var PANIC_OVERLAY:Class;
 		
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------                    MUSIC                     --------------------------------------------
 		// ----------------------------------------------------------------------------------------------------------------------------------------
-		[Embed(source = "../../assets/sound/god_beat_3.mp3")] public static var musicLoop:Class;
+		//[Embed(source = "../../assets/sound/god_beat_3.mp3")] public static var musicLoop:Class;
+		[Embed(source = "../../assets/sound/act_3.mp3")] public static var musicLoop:Class;
 		
 		// ----------------------------------------------------------------------------------------------------------------------------------------
 		// ----------------------------------------------               REGION ENCODINGS               --------------------------------------------

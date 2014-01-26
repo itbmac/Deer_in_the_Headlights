@@ -30,7 +30,6 @@ package tutorial
 					);
 					
 			health = 100;
-			scale = new FlxPoint(.35,.35);
 		}
 		public function getX():int {
 			return this.x;
